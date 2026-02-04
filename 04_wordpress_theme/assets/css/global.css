@@ -1,0 +1,652 @@
+/* ============================================
+   YUSU Design System - Global Styles
+   Includes: Variables, Typography, Reset, Buttons,
+   Navbar, Footer, Modals, and Micro-interactions.
+   ============================================ */
+
+:root {
+    /* Brand Colors */
+    --bs-primary: #B08968;
+    --bs-primary-hover: #9A7759;
+    --bs-primary-active: #85674D;
+    --bs-secondary: #5A5A5A;
+    --bs-dark: #2D2D2D;
+    --bs-light: #F8F8F8;
+    --bs-text-secondary: #6B6B6B;
+
+    /* Status Colors */
+    --bs-danger: #B91C1C;
+    --bs-success: #15803D;
+
+    /* Typography */
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Inter', sans-serif;
+
+    /* Shadows */
+    --shadow-primary: 0 4px 14px 0 rgba(176, 137, 104, 0.35);
+    --shadow-card-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+
+    /* Navbar Dimensions */
+    --navbar-height: 80px;
+    --navbar-scrolled-height: 70px;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bs-light);
+    color: var(--bs-dark);
+    padding-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-serif);
+    color: var(--bs-dark);
+}
+
+.font-serif {
+    font-family: var(--font-serif);
+}
+
+.text-primary {
+    color: var(--bs-primary) !important;
+}
+
+.text-secondary-custom {
+    color: var(--bs-text-secondary);
+}
+
+/* ============================================
+   Button Components
+   ============================================ */
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border: none;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.875rem;
+    border-radius: 4px;
+    box-shadow: var(--shadow-primary);
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--bs-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(176, 137, 104, 0.25);
+}
+
+.btn-outline-dark {
+    background: transparent;
+    border: 1px solid var(--bs-dark);
+    color: var(--bs-dark);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.875rem;
+    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--bs-dark);
+    color: #fff;
+}
+
+/* ============================================
+   Global Animations (Preloader & FadeUp)
+   ============================================ */
+
+/* Preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bs-light);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Scroll Animations */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   Navbar Styles
+   ========================================= */
+.navbar {
+    height: var(--navbar-height);
+    transition: all 0.3s ease;
+    background-color: transparent;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar-brand img {
+    height: 90px;
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+/* Scrolled State */
+.navbar-scrolled {
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    height: var(--navbar-scrolled-height);
+}
+
+/* Nav Links */
+.navbar-nav .nav-link {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--bs-dark);
+    padding: 0.5rem 1rem !important;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--bs-primary);
+}
+
+.navbar-scrolled .navbar-nav .nav-link {
+    color: var(--bs-dark);
+}
+
+.navbar-scrolled .navbar-nav .nav-link:hover,
+.navbar-scrolled .navbar-nav .nav-link.active {
+    color: var(--bs-primary);
+}
+
+/* Dropdown/Mega Menu Chevron */
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.1em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    transition: transform 0.2s ease;
+}
+
+.show>.dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+/* Mega Menu container */
+.navbar .dropdown-menu {
+    border: none;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    margin-top: 0;
+    overflow: visible;
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .navbar .dropdown.position-static {
+        position: static !important;
+    }
+
+    .navbar .nav-link {
+        position: relative;
+        z-index: 1100;
+    }
+
+    .navbar .dropdown-menu.mega-menu {
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 100%;
+        border-top: 1px solid #f0f0f0;
+    }
+
+    .navbar .dropdown-menu.mega-menu::before {
+        content: '';
+        position: absolute;
+        top: -30px;
+        left: 0;
+        width: 100%;
+        height: 30px;
+        background: transparent;
+    }
+
+    .navbar .dropdown:hover .dropdown-menu,
+    .navbar .dropdown .dropdown-menu:hover {
+        display: block;
+        animation: fadeInUp 0.2s ease-out forwards;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mega Menu Content (Used in Header Template Part) */
+.mega-menu-content {
+    padding: 2rem 0;
+    background: #fff;
+}
+
+.mega-menu-header {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--bs-text-secondary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.mega-menu-link {
+    display: block;
+    padding: 0.5rem 0;
+    color: var(--bs-dark);
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.mega-menu-link:hover {
+    color: var(--bs-primary);
+    transform: translateX(4px);
+}
+
+.mega-menu-link .count {
+    color: var(--bs-text-secondary);
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+}
+
+/* View All Links hover effect */
+.view-all-link {
+    transition: color 0.2s ease;
+}
+
+.view-all-link:hover {
+    color: var(--bs-primary) !important;
+}
+
+/* Featured Product in Menu (Used in Header) */
+.menu-product-card {
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.menu-product-img {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #f8f8f8;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.menu-product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.menu-product-card:hover .menu-product-img img {
+    transform: scale(1.05);
+}
+
+.menu-product-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    color: var(--bs-dark);
+    margin-bottom: 0px;
+    /* 减少间距给副标题 */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 1.2;
+}
+
+.menu-product-subtitle {
+    color: var(--bs-text-secondary);
+    font-size: 0.8125rem;
+    /* 13px */
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.menu-product-card:hover .menu-product-title {
+    color: var(--bs-primary);
+}
+
+/* Mobile Navbar overrides */
+@media (max-width: 991.98px) {
+    .navbar {
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar-nav .nav-link {
+        color: var(--bs-dark);
+        padding: 1rem 0 !important;
+        border-bottom: 1px solid #f8f8f8;
+    }
+
+    .navbar-brand img {
+        filter: none !important;
+    }
+
+    .navbar-toggler {
+        border: none;
+        padding: 0;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+    .dropdown-menu {
+        box-shadow: none;
+        padding-left: 1rem;
+        background-color: #f9f9f9;
+    }
+}
+
+/* Logo & Toggler Visibility Logic */
+.navbar-scrolled .navbar-brand-logo-light {
+    display: none;
+}
+
+.navbar:not(.navbar-scrolled) .navbar-brand-logo-dark {
+    display: block;
+}
+
+.navbar:not(.navbar-scrolled) .navbar-brand-logo-light {
+    display: none;
+}
+
+.navbar:not(.navbar-scrolled) .navbar-toggler-icon-custom {
+    color: var(--bs-dark);
+}
+
+.navbar-scrolled .navbar-toggler-icon-custom {
+    color: var(--bs-dark);
+}
+
+@media (max-width: 991.98px) {
+    .navbar:not(.navbar-scrolled) .navbar-brand-logo-dark {
+        display: block;
+    }
+
+    .navbar:not(.navbar-scrolled) .navbar-brand-logo-light {
+        display: none;
+    }
+
+    .navbar:not(.navbar-scrolled) .navbar-toggler-icon-custom {
+        color: var(--bs-dark);
+    }
+}
+
+/* ============================================
+   Footer Styles
+   ============================================ */
+.site-footer {
+    background-color: var(--bs-dark);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.site-footer h5 {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--bs-primary);
+}
+
+.footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-contact-item i {
+    width: 18px;
+    height: 18px;
+    color: var(--bs-primary);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.footer-contact-item a {
+    color: #B08968;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-contact-item a:hover {
+    color: #9A7759;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.2s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--bs-primary);
+    color: #fff;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* Modals (Sample, Cert, Video) - defined in footer */
+.modal-content.bg-black {
+    background-color: #000;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ============================================
+   Mobile Navigation Optimization
+   ============================================ */
+
+/* 移动端导航链接 - 确保最小 44px 触摸目标 */
+@media (max-width: 991.98px) {
+
+    /* 导航链接增大触摸区域 */
+    .navbar-nav .nav-link {
+        min-height: 48px;
+        padding: 0.875rem 0 !important;
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+    }
+
+    /* 下拉菜单项增大触摸区域 */
+    .navbar .dropdown-menu .dropdown-item {
+        min-height: 44px;
+        padding: 0.75rem 1rem;
+        display: flex;
+        align-items: center;
+    }
+
+    /* 移动端 Mega Menu 样式优化 */
+    .mega-menu {
+        position: static !important;
+        width: 100% !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0.5rem 1rem !important;
+        background: #f8f8f8 !important;
+    }
+
+    .mega-menu-content {
+        padding: 1rem 0 !important;
+    }
+
+    .mega-menu-header {
+        font-size: 0.875rem;
+        padding: 0.5rem 0;
+        margin-bottom: 0.5rem;
+    }
+
+    /* 分类链接增大触摸区域 */
+    .mega-menu-link {
+        min-height: 44px;
+        padding: 0.75rem 0.5rem !important;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .mega-menu-link:last-child {
+        border-bottom: none;
+    }
+
+    /* 移动端按钮全宽 */
+    .mega-menu .btn {
+        margin-top: 0.5rem;
+    }
+
+    /* 导航收起时的背景 */
+    .navbar-collapse {
+        background: #fff;
+        padding: 1rem;
+        margin: 0 -12px;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 移动端导航分隔线 */
+    .navbar-nav .nav-item.border-top {
+        border-color: rgba(0, 0, 0, 0.1) !important;
+    }
+
+    /* 移动端子菜单 */
+    .mobile-submenu {
+        background: #f9f9f9;
+        border-left: 3px solid var(--bs-primary);
+        margin-left: 0.5rem;
+    }
+
+    .mobile-submenu .nav-link {
+        font-size: 0.9375rem;
+        color: var(--bs-dark);
+        padding: 0.625rem 0.75rem !important;
+        min-height: 44px;
+    }
+
+    .mobile-submenu .nav-link:hover {
+        color: var(--bs-primary);
+        background: rgba(176, 137, 104, 0.05);
+    }
+
+    /* Chevron 旋转动画 */
+    .nav-link[data-bs-toggle="collapse"] i[data-lucide="chevron-down"] {
+        transition: transform 0.2s ease;
+    }
+
+    .nav-link[data-bs-toggle="collapse"][aria-expanded="true"] i[data-lucide="chevron-down"] {
+        transform: rotate(180deg);
+    }
+}

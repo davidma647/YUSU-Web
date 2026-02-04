@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Metadata -->
+    <title>Contact Us | Request a Quote or Samples | YUSU Packaging</title>
+    <meta name="description"
+        content="Get a free quote or samples for cosmetic packaging. 24-hour response guaranteed. Trusted by 500+ brands. Contact YUSU Packaging today.">
+
+    <!-- Google Fonts: Cormorant Garamond + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* ============================================
+           YUSU Design System - Custom SCSS Variables Override
+           Based on code_rules.md & home.html
+           ============================================ */
+
+        :root {
+            /* Brand Colors */
+            --bs-primary: #B08968;
+            --bs-primary-hover: #9A7759;
+            --bs-primary-active: #85674D;
+            --bs-secondary: #5A5A5A;
+            --bs-dark: #2D2D2D;
+            --bs-light: #F8F8F8;
+            --bs-text-secondary: #6B6B6B;
+
+            /* Status Colors */
+            --bs-danger: #B91C1C;
+            --bs-success: #15803D;
+            --bs-body-bg: #F8F8F8;
+
+            /* Typography */
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Inter', sans-serif;
+
+            /* Shadows */
+            --shadow-primary: 0 4px 14px 0 rgba(176, 137, 104, 0.35);
+            --shadow-card-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+
+            /* Navbar Dimensions */
+            --navbar-height: 80px;
+            --navbar-scrolled-height: 70px;
+        }
+
+        /* ============================================
+           Base Styles
+           ============================================ */
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bs-light);
+            color: var(--bs-dark);
+            padding-top: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-serif);
+            color: var(--bs-dark);
+        }
+
+        .font-serif {
+            font-family: var(--font-serif);
+        }
+
+        .text-primary {
+            color: var(--bs-primary) !important;
+        }
+
+        .text-secondary-custom {
+            color: var(--bs-text-secondary);
+        }
+
+        /* ============================================
+           Button Overrides
+           ============================================ */
+
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border: none;
+            font-family: var(--font-sans);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow-primary);
+            padding: 0.75rem 1.5rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--bs-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(176, 137, 104, 0.25);
+        }
+
+        .btn-primary:active {
+            background-color: var(--bs-primary-active);
+            transform: translateY(0);
+        }
+
+        .btn-outline-dark {
+            background: transparent;
+            border: 1px solid var(--bs-dark);
+            color: var(--bs-dark);
+            font-family: var(--font-sans);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline-dark:hover {
+            background-color: var(--bs-dark);
+            color: #fff;
+        }
+
+        /* ============================================
+           Animation & Micro-interactions
+           ============================================ */
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bs-light);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+
+        #preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           Navigation Bar Styles (Copied from home.html)
+           ============================================ */
+
+        .navbar {
+            height: var(--navbar-height);
+            transition: all 0.3s ease;
+            background-color: transparent;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            height: var(--navbar-scrolled-height);
+        }
+
+        .navbar-nav .nav-link {
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--bs-dark);
+            padding: 0.5rem 1rem !important;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--bs-primary);
+        }
+
+        .navbar-scrolled .navbar-nav .nav-link {
+            color: var(--bs-dark);
+        }
+
+        .navbar-scrolled .navbar-nav .nav-link:hover,
+        .navbar-scrolled .navbar-nav .nav-link.active {
+            color: var(--bs-primary);
+        }
+
+        .dropdown-toggle::after {
+            display: inline-block;
+            margin-left: 0.255em;
+            vertical-align: 0.1em;
+            content: "";
+            border-top: 0.3em solid;
+            border-right: 0.3em solid transparent;
+            border-bottom: 0;
+            border-left: 0.3em solid transparent;
+            transition: transform 0.2s ease;
+        }
+
+        .show>.dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        .navbar .dropdown-menu {
+            border: none;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 0;
+            margin-top: 0;
+            overflow: visible;
+            display: none;
+        }
+
+        @media (min-width: 992px) {
+            .navbar .dropdown.position-static {
+                position: static !important;
+            }
+
+            .navbar .nav-link {
+                position: relative;
+                z-index: 1100;
+            }
+
+            .navbar .dropdown-menu.mega-menu {
+                width: 100%;
+                left: 0;
+                right: 0;
+                top: 100%;
+                border-top: 1px solid #f0f0f0;
+            }
+
+            .navbar .dropdown-menu.mega-menu::before {
+                content: '';
+                position: absolute;
+                top: -30px;
+                left: 0;
+                width: 100%;
+                height: 30px;
+                background: transparent;
+            }
+
+            .navbar .dropdown:hover .dropdown-menu,
+            .navbar .dropdown .dropdown-menu:hover {
+                display: block;
+                animation: fadeInUp 0.2s ease-out forwards;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mega-menu-content {
+            padding: 2rem 0;
+            background: #fff;
+        }
+
+        .mega-menu-header {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--bs-text-secondary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mega-menu-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--bs-dark);
+            text-decoration: none;
+            font-family: var(--font-sans);
+            font-size: 0.9375rem;
+            transition: color 0.15s ease, transform 0.15s ease;
+        }
+
+        .mega-menu-link:hover {
+            color: var(--bs-primary);
+            transform: translateX(4px);
+        }
+
+        .mega-menu-link .count {
+            color: var(--bs-text-secondary);
+            font-size: 0.75rem;
+            margin-left: 0.25rem;
+        }
+
+        .menu-product-card {
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .menu-product-img {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #f8f8f8;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+        }
+
+        .menu-product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-product-card:hover .menu-product-img img {
+            transform: scale(1.05);
+        }
+
+        .menu-product-title {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            color: var(--bs-dark);
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .menu-product-card:hover .menu-product-title {
+            color: var(--bs-primary);
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar {
+                background-color: #fff;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            }
+
+            .navbar-nav .nav-link {
+                color: var(--bs-dark);
+                padding: 1rem 0 !important;
+                border-bottom: 1px solid #f8f8f8;
+            }
+
+            .navbar-brand img {
+                filter: none !important;
+            }
+
+            .navbar-toggler {
+                border: none;
+                padding: 0;
+            }
+
+            .navbar-toggler:focus {
+                box-shadow: none;
+            }
+
+            .dropdown-menu {
+                box-shadow: none;
+                padding-left: 1rem;
+                background-color: #f9f9f9;
+            }
+        }
+
+        .navbar:not(.navbar-scrolled) .navbar-toggler-icon-custom {
+            color: var(--bs-dark);
+        }
+
+        .navbar-scrolled .navbar-toggler-icon-custom {
+            color: var(--bs-dark);
+        }
+
+        /* ============================================
+           Contact Page Specific Styles
+           ============================================ */
+
+        /* Hero */
+        .contact-hero {
+            padding-top: 140px;
+            /* Navbar height + spacing */
+            padding-bottom: 60px;
+            background-color: var(--bs-light);
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-hero .lead {
+            font-size: 1.125rem;
+            color: var(--bs-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Form Card */
+        .contact-form-card {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            border: 1px solid #F3F4F6;
+        }
+
+        .form-floating>.form-control,
+        .form-floating>.form-select {
+            border: 1px solid #E5E7EB;
+            border-radius: 4px;
+            background-color: #FAFAFA;
+        }
+
+        .form-floating>.form-control:focus,
+        .form-floating>.form-select:focus {
+            border-color: var(--bs-primary);
+            box-shadow: 0 0 0 4px rgba(176, 137, 104, 0.1);
+            background-color: #fff;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+        }
+
+        /* Info Sidebar */
+        .info-sidebar {
+            height: 100%;
+            padding-left: 2rem;
+        }
+
+        .info-card {
+            margin-bottom: 3rem;
+        }
+
+        .trust-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .trust-list li {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.9375rem;
+            color: var(--bs-dark);
+        }
+
+        .trust-list li i {
+            color: var(--bs-success);
+            min-width: 20px;
+        }
+
+        .contact-channel {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #fff;
+            border: 1px solid #F3F4F6;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .contact-channel:hover {
+            border-color: var(--bs-primary);
+            transform: translateX(4px);
+        }
+
+        .contact-channel-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bs-light);
+            color: var(--bs-primary);
+            border-radius: 50%;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: #E5E7EB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bs-text-secondary);
+            border-radius: 4px;
+        }
+
+        /* FAQ Accordion */
+        .accordion-item {
+            border: none;
+            border-bottom: 1px solid #E5E7EB;
+            background: transparent;
+        }
+
+        .accordion-button {
+            background: transparent;
+            box-shadow: none;
+            padding: 1.5rem 0;
+            font-family: var(--font-serif);
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--bs-dark);
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: var(--bs-primary);
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .accordion-button::after {
+            background-size: 1rem;
+        }
+
+        .accordion-body {
+            padding: 0 0 1.5rem 0;
+            color: var(--bs-text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        /* Footer (Copied Styles) */
+        .site-footer {
+            background-color: var(--bs-dark);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .site-footer h5 {
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--bs-primary);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .footer-contact-item i {
+            color: var(--bs-primary);
+            margin-top: 0.15rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--bs-primary);
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        @media (max-width: 991.98px) {
+            .info-sidebar {
+                padding-left: 0;
+                margin-top: 3rem;
+            }
+
+            .contact-form-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- ============================================
+         Module 0: Global Navigation Bar
+         ============================================ -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" id="mainNavbar">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a class="navbar-brand" href="home.html">
+                <span class="font-serif fw-bold text-dark fs-3">YUSU<span class="text-primary">.</span></span>
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i data-lucide="menu" class="navbar-toggler-icon-custom"></i>
+            </button>
+
+            <!-- Nav Content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                    </li>
+                    <!-- Products Mega Menu -->
+                    <li class="nav-item dropdown position-static">
+                        <a class="nav-link dropdown-toggle" href="/products" id="productsDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Products
+                        </a>
+                        <!-- Mega Menu Container -->
+                        <div class="dropdown-menu mega-menu shadow-lg" aria-labelledby="productsDropdown">
+                            <div class="container mega-menu-content">
+                                <div class="row">
+                                    <div class="col-lg-7 border-end pe-lg-5">
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <div class="mega-menu-header mb-0 border-0 p-0 text-primary">★ Signature
+                                                Originals</div>
+                                            <a href="/products?filter=ip-protected"
+                                                class="text-secondary-custom text-decoration-none small">
+                                                View All Originals <i data-lucide="arrow-right"
+                                                    style="width: 12px; height: 12px; vertical-align: middle;"></i>
+                                            </a>
+                                        </div>
+                                        <div class="row g-4">
+                                            <div class="col-4">
+                                                <a href="/products/gold-bar-bottle" class="menu-product-card">
+                                                    <div class="menu-product-img"><img
+                                                            src="assets/images/products/B-AP40.png"
+                                                            alt="Gold Bar Bottle"></div>
+                                                    <div class="menu-product-title">Gold Bar <i data-lucide="lock"
+                                                            style="width: 12px; height: 12px; color: var(--bs-primary)"></i>
+                                                    </div>
+                                                    <div class="small text-muted">B-AP40 Luxury</div>
+                                                </a>
+                                            </div>
+                                            <div class="col-4">
+                                                <a href="/products/plum-blossom-bottle" class="menu-product-card">
+                                                    <div class="menu-product-img"><img
+                                                            src="assets/images/products/A-BE23.png" alt="Plum Blossom">
+                                                    </div>
+                                                    <div class="menu-product-title">Plum Blossom <i data-lucide="lock"
+                                                            style="width: 12px; height: 12px; color: var(--bs-primary)"></i>
+                                                    </div>
+                                                    <div class="small text-muted">A-BE23 Oriental</div>
+                                                </a>
+                                            </div>
+                                            <div class="col-4">
+                                                <a href="/products/chamfered-bottle" class="menu-product-card">
+                                                    <div class="menu-product-img"><img
+                                                            src="assets/images/products/B-AP37.png" alt="Chamfered">
+                                                    </div>
+                                                    <div class="menu-product-title">Chamfered <i data-lucide="lock"
+                                                            style="width: 12px; height: 12px; color: var(--bs-primary)"></i>
+                                                    </div>
+                                                    <div class="small text-muted">B-AP37 Geometric</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 p-2 bg-light rounded text-center small text-secondary-custom">
+                                            <i data-lucide="shield-check"
+                                                style="width: 14px; height: 14px; margin-right: 4px;"></i>
+                                            All designs above are exclusive IP-protected originals by YUSU.
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 ps-lg-5">
+                                        <div class="mega-menu-header">By Category</div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <a href="/products/foundation-bottles" class="mega-menu-link">Foundation
+                                                    Bottles <span class="count">50+</span></a>
+                                                <a href="/products/lip-packaging" class="mega-menu-link">Lip Packaging
+                                                    <span class="count">30+</span></a>
+                                                <a href="/products/cushion-compact" class="mega-menu-link">Cushion &
+                                                    Compact <span class="count">25+</span></a>
+                                            </div>
+                                            <div class="col-6">
+                                                <a href="/products/skincare" class="mega-menu-link">Skincare <span
+                                                        class="count">40+</span></a>
+                                                <a href="/products/sun-protection" class="mega-menu-link">Sun Protection
+                                                    <span class="count">20+</span></a>
+                                                <a href="/products/perfume-bottles" class="mega-menu-link">Perfume
+                                                    Bottles <span class="count">15+</span></a>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4">
+                                            <a href="/products" class="btn btn-outline-dark btn-sm w-100">Browse Full
+                                                Catalog</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/innovation">Innovation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Resources</a>
+                        <ul class="dropdown-menu border-0 shadow-lg p-2" aria-labelledby="resourcesDropdown"
+                            style="min-width: 200px; border-radius: 4px; margin-top: 0;">
+                            <li><a class="dropdown-item py-2 rounded" href="/resources/blog"><i data-lucide="file-text"
+                                        style="width: 16px; height: 16px; margin-right: 8px;"></i> Blog & Insights</a>
+                            </li>
+                            <li><a class="dropdown-item py-2 rounded" href="/resources/faq"><i data-lucide="help-circle"
+                                        style="width: 16px; height: 16px; margin-right: 8px;"></i> FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item d-lg-none"><a class="nav-link" href="/contact">Contact</a></li>
+                </ul>
+                <div class="d-none d-lg-flex align-items-center gap-3">
+                    <a href="/contact" class="btn btn-primary">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         Header & Hero
+         ============================================ -->
+    <header class="contact-hero fade-up">
+        <div class="container">
+            <h1>Let's Start Your Project</h1>
+            <p class="lead">Free samples available. Get a response within 24 hours.</p>
+        </div>
+    </header>
+
+    <!-- ============================================
+         Main Content: Form & Info
+         ============================================ -->
+    <main class="container mb-5">
+        <div class="row g-5">
+            <!-- Left Column: Contact Form -->
+            <div class="col-lg-7 fade-up delay-100">
+                <div class="contact-form-card">
+                    <h2 class="h4 mb-4">Request a Quote or Samples</h2>
+                    <form id="inquiryForm" class="needs-validation" novalidate>
+                        <div class="row g-3">
+                            <!-- Name -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" placeholder="John Smith" required>
+                                    <label for="name">Your Name *</label>
+                                    <div class="invalid-feedback">Please provide your name.</div>
+                                </div>
+                            </div>
+                            <!-- Email -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" placeholder="name@example.com"
+                                        required>
+                                    <label for="email">Business Email *</label>
+                                    <div class="invalid-feedback">Please provide a valid work email.</div>
+                                </div>
+                            </div>
+                            <!-- Company -->
+                            <div class="col-md-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="company" placeholder="ABC Cosmetics">
+                                    <label for="company">Company Name</label>
+                                </div>
+                            </div>
+                            <!-- Country -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="country">
+                                        <option selected disabled value="">Select Region</option>
+                                        <option value="ID">Indonesia</option>
+                                        <option value="VN">Vietnam</option>
+                                        <option value="TH">Thailand</option>
+                                        <option value="PH">Philippines</option>
+                                        <option value="MY">Malaysia</option>
+                                        <option value="SG">Singapore</option>
+                                        <option value="Other">Others</option>
+                                    </select>
+                                    <label for="country">Country / Region</label>
+                                </div>
+                            </div>
+                            <!-- Inquiry Type -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="inquiryType">
+                                        <option selected value="quote">Request Quote</option>
+                                        <option value="samples">Request Samples</option>
+                                        <option value="custom">Custom Design Inquiry</option>
+                                        <option value="general">General Question</option>
+                                    </select>
+                                    <label for="inquiryType">Why are you contacting us?</label>
+                                </div>
+                            </div>
+                            <!-- Product Interest -->
+                            <div class="col-12">
+                                <label
+                                    class="form-label text-secondary-custom small text-uppercase fw-bold mb-2">Products
+                                    of Interest</label>
+                                <div class="d-flex flex-wrap gap-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="checkFoundation">
+                                        <label class="form-check-label" for="checkFoundation">Foundation Bottles</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="checkLips">
+                                        <label class="form-check-label" for="checkLips">Lipstick/Gloss</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="checkCushion">
+                                        <label class="form-check-label" for="checkCushion">Air Cushion</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="checkOther">
+                                        <label class="form-check-label" for="checkOther">Others</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Message -->
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message"
+                                        style="height: 120px"></textarea>
+                                    <label for="message">Your Message (Optional)</label>
+                                </div>
+                            </div>
+                            <!-- Submit -->
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-primary w-100 py-3">Submit Inquiry</button>
+                                <p class="text-center text-secondary-custom small mt-3 mb-0">
+                                    We typically respond within 24 hours on business days.
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column: Info & Trust -->
+            <div class="col-lg-5 fade-up delay-200">
+                <div class="info-sidebar">
+                    <!-- Trust Points -->
+                    <div class="info-card">
+                        <h3 class="h5 mb-3">Why Contact Us?</h3>
+                        <ul class="trust-list">
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                <div><strong>Free Samples</strong><br><small class="text-secondary-custom">No cost for
+                                        items. You only pay shipping.</small></div>
+                            </li>
+                            <li>
+                                <i data-lucide="clock"></i>
+                                <div><strong>24-Hour Response</strong><br><small class="text-secondary-custom">Dedicated
+                                        team for fast replies.</small></div>
+                            </li>
+                            <li>
+                                <i data-lucide="shield-check"></i>
+                                <div><strong>NDA Available</strong><br><small class="text-secondary-custom">Your custom
+                                        designs stay confidential.</small></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Client Logos -->
+                    <div class="info-card">
+                        <h3 class="h6 text-uppercase text-secondary-custom mb-3"
+                            style="letter-spacing:0.1em; font-size:0.75rem">Trusted By</h3>
+                        <div class="d-flex flex-wrap gap-3 opacity-50">
+                            <!-- Using text placeholders as per Code Rules to avoid broken images if assets missing, but referencing specific names -->
+                            <span class="fw-bold fs-5">COSMAX</span>
+                            <span class="fw-bold fs-5">NBC</span>
+                            <span class="fw-bold fs-5">ZEESEA</span>
+                        </div>
+                    </div>
+
+                    <!-- Direct Contact -->
+                    <div class="info-card">
+                        <h3 class="h5 mb-3">Other Ways to Reach Us</h3>
+
+                        <a href="mailto:sales@yusupackaging.com" class="contact-channel text-decoration-none text-dark">
+                            <div class="contact-channel-icon"><i data-lucide="mail"></i></div>
+                            <div>
+                                <div class="small text-secondary-custom text-uppercase">Email Sales</div>
+                                <div class="fw-medium">sales@yusupackaging.com</div>
+                            </div>
+                        </a>
+
+                        <a href="#" class="contact-channel text-decoration-none text-dark">
+                            <div class="contact-channel-icon"><i data-lucide="message-circle"></i></div>
+                            <div>
+                                <div class="small text-secondary-custom text-uppercase">WhatsApp</div>
+                                <div class="fw-medium">+86 1XX XXXX XXXX</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Factory Address -->
+                    <div class="info-card">
+                        <h3 class="h5 mb-3">Factory Location</h3>
+                        <p class="small text-secondary-custom mb-2">
+                            Guangzhou Yusu Packaging Products Co., Ltd.<br>
+                            Baiyun District, Guangzhou, Guangdong, China
+                        </p>
+                        <div class="map-placeholder">
+                            <div class="text-center">
+                                <i data-lucide="map" class="mb-2" style="width:32px;height:32px"></i>
+                                <p class="mb-0">Google Map Placeholder</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============================================
+         FAQ Section
+         ============================================ -->
+    <section class="py-5 bg-white border-top">
+        <div class="container py-lg-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="text-center mb-5">Common Questions</h2>
+                    <div class="accordion" id="faqAccordion">
+                        <!-- FAQ 1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq1">
+                                    How long does it take to receive samples?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Samples typically ship within 3-5 business days. Delivery takes 5-10 days depending
+                                    on your location.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FAQ 2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq2">
+                                    What is the minimum order quantity (MOQ)?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our standard MOQ starts at 10,000 pieces for most products. However, we do offer
+                                    lower MOQs for select in-stock items. Please contact us for specific details.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FAQ 3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq3">
+                                    Do you ship internationally?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes. We ship to 50+ countries. Our primary markets include Indonesia, Vietnam,
+                                    Thailand, the Philippines, and Malaysia, but we can ship globally via sea or air
+                                    freight.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         Module 9: Footer (Copied from home.html)
+         ============================================ -->
+    <div id="footer-container">
+        <footer class="site-footer py-5" role="contentinfo">
+            <div class="container">
+                <div class="row g-4 justify-content-between">
+                    <!-- Brand Column -->
+                    <div class="col-lg-4 col-md-6">
+                        <span class="d-block font-serif fs-3 fw-bold mb-3">YUSU<span
+                                class="text-primary">.</span></span>
+                        <p class="mb-4 text-white-50" style="max-width: 300px;">
+                            Premier supplier of patented cosmetic packaging. IP-protected designs, in-house R&D, and
+                            manufacturing excellence.
+                        </p>
+                        <div class="social-icons">
+                            <a href="#"><i data-lucide="linkedin"></i></a>
+                            <a href="#"><i data-lucide="instagram"></i></a>
+                            <a href="#"><i data-lucide="facebook"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Products -->
+                    <div class="col-lg-2 col-md-6">
+                        <h5>Products</h5>
+                        <ul class="footer-links">
+                            <li><a href="/products/foundation">Foundation Bottles</a></li>
+                            <li><a href="/products/lips">Lip Packaging</a></li>
+                            <li><a href="/products/compacts">Cushion Compacts</a></li>
+                            <li><a href="/products/skincare">Skincare Sets</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company -->
+                    <div class="col-lg-2 col-md-6">
+                        <h5>Company</h5>
+                        <ul class="footer-links">
+                            <li><a href="/about">About Us</a></li>
+                            <li><a href="/innovation">Innovation</a></li>
+                            <li><a href="/services">Services</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="col-lg-3 col-md-6">
+                        <h5>Contact Us</h5>
+                        <div class="footer-contact-item">
+                            <i data-lucide="map-pin"></i>
+                            <span class="text-white-50">Baiyun District, Guangzhou, China</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i data-lucide="mail"></i>
+                            <a href="mailto:sales@yusupackaging.com">sales@yusupackaging.com</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i data-lucide="phone"></i>
+                            <a href="tel:+861234567890">+86 123 456 7890</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom mt-5 pt-4 d-flex flex-wrap justify-content-between align-items-center">
+                    <p>&copy; 2026 YUSU Packaging. All rights reserved.</p>
+                    <div class="d-flex gap-3">
+                        <a href="/privacy" class="text-white-50 small text-decoration-none">Privacy Policy</a>
+                        <a href="/terms" class="text-white-50 small text-decoration-none">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <!-- Global Interactions (Copied from home.html) + Form Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // 0. Active Link Highlighting
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+
+                const href = link.getAttribute('href');
+                if (!href || href === '#') return;
+
+                const hrefClean = href.replace(/^\//, '').replace(/\.html$/, '');
+                const pathClean = currentPath.split('/').pop().replace(/\.html$/, '');
+
+                if (pathClean === hrefClean) {
+                    link.classList.add('active');
+                } else if (hrefClean !== '' && hrefClean !== 'home' && hrefClean !== 'index' && currentPath.includes(hrefClean)) {
+                    link.classList.add('active');
+                }
+            });
+
+            // 1. Preloader
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                window.addEventListener('load', () => {
+                    preloader.classList.add('fade-out');
+                    setTimeout(() => preloader.remove(), 500);
+                });
+                setTimeout(() => { if (document.body.contains(preloader)) preloader.classList.add('fade-out'); }, 3000);
+            }
+
+            // 2. Sticky Navbar
+            const navbar = document.getElementById('mainNavbar');
+            function updateNavbarStyle() {
+                if (window.scrollY > 20) {
+                    navbar.classList.add('navbar-scrolled');
+                    navbar.classList.remove('navbar-transparent');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                    navbar.classList.add('navbar-transparent');
+                }
+            }
+            if (navbar) {
+                updateNavbarStyle();
+                window.addEventListener('scroll', updateNavbarStyle);
+            }
+
+            // 3. Desktop Mega Menu Hover
+            if (window.matchMedia('(min-width: 992px)').matches) {
+                document.querySelectorAll('.nav-item.dropdown').forEach(dropdown => {
+                    dropdown.addEventListener('mouseenter', function () {
+                        const t = this.querySelector('.dropdown-toggle');
+                        const m = this.querySelector('.dropdown-menu');
+                        if (t && m) { t.classList.add('show'); m.classList.add('show'); }
+                    });
+                    dropdown.addEventListener('mouseleave', function () {
+                        const t = this.querySelector('.dropdown-toggle');
+                        const m = this.querySelector('.dropdown-menu');
+                        if (t && m) { t.classList.remove('show'); m.classList.remove('show'); }
+                    });
+                });
+            }
+
+            // 4. Fade Up Animations
+            const fadeElems = document.querySelectorAll('.fade-up');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            fadeElems.forEach(el => observer.observe(el));
+
+            // 5. Contact Form Validation (Bootstrap)
+            const form = document.getElementById('inquiryForm');
+            if (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            }
+        });
+    </script>
+</body>
+
+</html>

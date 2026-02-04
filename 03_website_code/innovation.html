@@ -1,0 +1,2108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Metadata -->
+    <title>Innovation Center | R&D-Powered Packaging Design | YUSU</title>
+    <meta name="description"
+        content="Explore YUSU's in-house R&D center. 130+ IP-protected designs, 1000+ product library, and 100s of new creations every year. Innovate with us.">
+    <link rel="canonical" href="https://www.yusu.com/innovation.html">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yusu.com/innovation.html">
+    <meta property="og:title" content="Innovation Center | YUSU Packaging">
+    <meta property="og:description"
+        content="Empower your brand with YUSU's R&D. 130+ patents, 1000+ product library. Innovating Your Brand, Protecting Your Uniqueness.">
+    <meta property="og:image" content="https://www.yusu.com/assets/images/lab-bg.jpg">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.yusu.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Innovation Center",
+              "item": "https://www.yusu.com/innovation.html"
+            }
+          ]
+        },
+        {
+          "@type": "Organization",
+          "name": "YUSU Packaging",
+          "url": "https://www.yusu.com/",
+          "logo": "https://www.yusu.com/assets/images/logo.png",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "areaServed": "Global"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the typical timeline for a private mold project?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "For a standard custom project, our 'Rapid 35' protocol applies: 7 days for 3D engineering, 25 days for mold piloting, and 3 days for T1 sampling. Total development time is approximately 5-7 weeks."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much does a custom cosmetic bottle mold cost?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Investment varies by complexity, typically ranging from $2,000 to $8,000 for injection molds. YUSU offers a 'Volume Rebate Program' where mold costs can be refunded upon reaching volume thresholds."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Who owns the intellectual property (IP) of the design?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You do. For all Private Mold projects, the client retains 100% IP ownership universally. We sign a binding NDA and Non-Compete Agreement before starting."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the MOQ for custom developed items?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "While standard stock items have an MOQ of 5,000 units, custom private mold projects generally require an MOQ of 10,000 to 20,000 units per run."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <!-- Google Fonts: Cormorant Garamond + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* ============================================
+           YUSU Design System - Custom SCSS Variables Override
+           Based on code_rules.md
+           ============================================ */
+
+        :root {
+            /* Brand Colors */
+            --bs-primary: #B08968;
+            --bs-primary-hover: #9A7759;
+            --bs-primary-active: #85674D;
+            --bs-secondary: #5A5A5A;
+            --bs-dark: #2D2D2D;
+            --bs-light: #F8F8F8;
+            --bs-text-secondary: #6B6B6B;
+
+            /* Status Colors */
+            --bs-danger: #B91C1C;
+            --bs-success: #15803D;
+
+            /* Typography */
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Inter', sans-serif;
+
+            /* Shadows */
+            --shadow-primary: 0 4px 14px 0 rgba(176, 137, 104, 0.35);
+            --shadow-card-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+
+            /* Navbar Dimensions */
+            --navbar-height: 80px;
+            --navbar-scrolled-height: 70px;
+        }
+
+        /* ============================================
+           Base Styles
+           ============================================ */
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bs-light);
+            color: var(--bs-dark);
+            padding-top: 0;
+            /* Navbar is fixed/transparent initially */
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-serif);
+            color: var(--bs-dark);
+        }
+
+        .font-serif {
+            font-family: var(--font-serif);
+        }
+
+        .text-primary {
+            color: var(--bs-primary) !important;
+        }
+
+        .text-secondary-custom {
+            color: var(--bs-text-secondary);
+        }
+
+        /* ============================================
+           Button Overrides
+           ============================================ */
+
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border: none;
+            font-family: var(--font-sans);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow-primary);
+            padding: 0.75rem 1.5rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--bs-primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:active {
+            background-color: var(--bs-primary-active);
+            transform: translateY(0);
+        }
+
+        .btn-outline-dark {
+            background: transparent;
+            border: 1px solid var(--bs-dark);
+            color: var(--bs-dark);
+            font-family: var(--font-sans);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline-dark:hover {
+            background-color: var(--bs-dark);
+            color: #fff;
+        }
+
+        /* ============================================
+           Animation & Micro-interactions
+           ============================================ */
+
+        /* 1. Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bs-light);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+
+        #preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* 2. Scroll Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered delays for groups */
+        .delay-100 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-200 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-300 {
+            transition-delay: 0.3s;
+        }
+
+        /* Certificate Grid Hover Effect */
+        .cert-item-grid img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cert-item-grid:hover img {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        /* 3. Refined Hover Effects */
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(176, 137, 104, 0.25);
+        }
+
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* =========================================
+           Navbar Styles
+           ========================================= */
+        .navbar {
+            height: var(--navbar-height);
+            transition: all 0.3s ease;
+            background-color: transparent;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        /* Scrolled State */
+        .navbar-scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            height: var(--navbar-scrolled-height);
+        }
+
+        /* Nav Links */
+        .navbar-nav .nav-link {
+            font-family: var(--font-sans);
+            font-weight: 600;
+            /* Medium for visibility */
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--bs-dark);
+            /* Default dark for light hero */
+            padding: 0.5rem 1rem !important;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--bs-primary);
+        }
+
+        /* Scrolled State Links */
+        .navbar-scrolled .navbar-nav .nav-link {
+            color: var(--bs-dark);
+        }
+
+        .navbar-scrolled .navbar-nav .nav-link:hover,
+        .navbar-scrolled .navbar-nav .nav-link.active {
+            color: var(--bs-primary);
+        }
+
+        /* Dropdown/Mega Menu Chevron */
+        .dropdown-toggle::after {
+            display: inline-block;
+            margin-left: 0.255em;
+            vertical-align: 0.1em;
+            /* Align center */
+            content: "";
+            border-top: 0.3em solid;
+            border-right: 0.3em solid transparent;
+            border-bottom: 0;
+            border-left: 0.3em solid transparent;
+            transition: transform 0.2s ease;
+        }
+
+        .show>.dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        /* Mega Menu container */
+        .navbar .dropdown-menu {
+            border: none;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 0;
+            margin-top: 0;
+            overflow: visible;
+            display: none;
+            /* JS handles display for hover effect on desktop */
+        }
+
+        /* Ensure Mega Menu is full width on desktop */
+        @media (min-width: 992px) {
+            .navbar .dropdown.position-static {
+                position: static !important;
+            }
+
+            .navbar .nav-link {
+                position: relative;
+                z-index: 1100;
+            }
+
+            .navbar .dropdown-menu.mega-menu {
+                width: 100%;
+                left: 0;
+                right: 0;
+                top: 100%;
+                /* Just below navbar */
+                border-top: 1px solid #f0f0f0;
+            }
+
+            .navbar .dropdown-menu.mega-menu::before {
+                content: '';
+                position: absolute;
+                top: -30px;
+                left: 0;
+                width: 100%;
+                height: 30px;
+                background: transparent;
+            }
+
+            /* Show on hover via CSS as fallback/assist to JS */
+            .navbar .dropdown:hover .dropdown-menu,
+            .navbar .dropdown .dropdown-menu:hover {
+                display: block;
+                animation: fadeInUp 0.2s ease-out forwards;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mega Menu Content */
+        .mega-menu-content {
+            padding: 2rem 0;
+            background: #fff;
+        }
+
+        .mega-menu-header {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--bs-text-secondary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mega-menu-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--bs-dark);
+            text-decoration: none;
+            font-family: var(--font-sans);
+            font-size: 0.9375rem;
+            transition: color 0.15s ease, transform 0.15s ease;
+        }
+
+        .mega-menu-link:hover {
+            color: var(--bs-primary);
+            transform: translateX(4px);
+        }
+
+        .mega-menu-link .count {
+            color: var(--bs-text-secondary);
+            font-size: 0.75rem;
+            margin-left: 0.25rem;
+        }
+
+        /* Featured Product in Menu */
+        .menu-product-card {
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .menu-product-img {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #f8f8f8;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+        }
+
+        .menu-product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-product-card:hover .menu-product-img img {
+            transform: scale(1.05);
+        }
+
+        .menu-product-title {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            color: var(--bs-dark);
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .menu-product-card:hover .menu-product-title {
+            color: var(--bs-primary);
+        }
+
+        /* Mobile Navbar overrides */
+        @media (max-width: 991.98px) {
+            .navbar {
+                background-color: #fff;
+                /* Always white on mobile */
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            }
+
+            .navbar-nav .nav-link {
+                color: var(--bs-dark);
+                padding: 1rem 0 !important;
+                border-bottom: 1px solid #f8f8f8;
+            }
+
+            .navbar-brand img {
+                filter: none !important;
+                /* Always show colored logo */
+            }
+
+            .navbar-toggler {
+                border: none;
+                padding: 0;
+            }
+
+            .navbar-toggler:focus {
+                box-shadow: none;
+            }
+
+            .dropdown-menu {
+                box-shadow: none;
+                padding-left: 1rem;
+                background-color: #f9f9f9;
+            }
+        }
+
+        /* Color handling for Transparent/Scrolled states */
+        .navbar-scrolled .navbar-brand-logo-light {
+            display: none;
+        }
+
+        /* Default: Show Dark Logo */
+        .navbar:not(.navbar-scrolled) .navbar-brand-logo-dark {
+            display: block;
+        }
+
+        .navbar:not(.navbar-scrolled) .navbar-brand-logo-light {
+            display: none;
+        }
+
+        .navbar:not(.navbar-scrolled) .navbar-toggler-icon-custom {
+            color: var(--bs-dark);
+        }
+
+        .navbar-scrolled .navbar-toggler-icon-custom {
+            color: var(--bs-dark);
+        }
+
+        /* Force dark toggler on mobile view regardless of scroll (since mobile bg is white) */
+        @media (max-width: 991.98px) {
+            .navbar:not(.navbar-scrolled) .navbar-brand-logo-dark {
+                display: block;
+            }
+
+            .navbar:not(.navbar-scrolled) .navbar-brand-logo-light {
+                display: none;
+            }
+
+            .navbar:not(.navbar-scrolled) .navbar-toggler-icon-custom {
+                color: var(--bs-dark);
+            }
+        }
+
+        /* ============================================
+           Hero Section
+           ============================================ */
+
+        .hero-section {
+            min-height: 90vh;
+            /* Industrial Precision: High-key gradient for text contrast (Left) + Subject focus (Right) */
+            background: linear-gradient(90deg, rgba(248, 248, 248, 1) 30%, rgba(248, 248, 248, 0.85) 55%, rgba(248, 248, 248, 0) 100%),
+                url('assets/images/banner/innovation_banner.jpg') no-repeat right center / cover;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-top: -80px;
+            /* Pull up behind navbar */
+            padding-top: 80px;
+            /* Compensate for content */
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--bs-dark);
+            line-height: 1.2;
+        }
+
+        .hero-section .lead {
+            font-size: 1.25rem;
+            color: var(--bs-text-secondary);
+            font-weight: 400;
+        }
+
+        .trust-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--bs-text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .trust-indicator-divider {
+            color: rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section .lead {
+                font-size: 1rem;
+            }
+        }
+
+        /* ============================================
+           Data Visualization Section
+           ============================================ */
+
+        .data-viz-section {
+            background-color: var(--bs-dark);
+            color: #fff;
+        }
+
+        .counter-card {
+            text-align: center;
+            padding: 2rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .counter-card:last-child {
+            border-right: none;
+        }
+
+        @media (max-width: 991px) {
+            .counter-card {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .counter-card:last-child {
+                border-bottom: none;
+            }
+        }
+
+        .counter-value {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--bs-primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .counter-label {
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .counter-text {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           Section Styles
+           ============================================ */
+
+        .section-heading {
+            font-size: 2.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subheading {
+            font-size: 1rem;
+            color: var(--bs-text-secondary);
+            font-weight: 400;
+        }
+
+        /* ============================================
+           Product Cards (Hero Products Spotlight)
+           ============================================ */
+
+        .product-card {
+            background: #fff;
+            border: 1px solid #F3F4F6;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            box-shadow: var(--shadow-card-hover);
+            transform: translateY(-4px);
+        }
+
+        .product-card-image {
+            aspect-ratio: 1 / 1;
+            background-color: #F8F8F8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-card-image img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        .product-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+            color: var(--bs-primary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .product-card-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--bs-dark);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: color 0.2s ease;
+        }
+
+        .product-card-link:hover {
+            color: var(--bs-primary);
+        }
+
+        /* ============================================
+           Design Philosophy Section
+           ============================================ */
+
+        .feature-box {
+            padding: 3rem 2rem;
+            background: #fff;
+            border: 1px solid #F3F4F6;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            border-color: var(--bs-primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .feature-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-box p {
+            font-size: 0.9375rem;
+            color: var(--bs-text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* ============================================
+           One-Stop Service (Process Steps)
+           ============================================ */
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background-color: rgba(176, 137, 104, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--bs-primary);
+        }
+
+        .process-step h4 {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step p {
+            font-size: 0.875rem;
+            color: var(--bs-text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* 连接线 (仅在桌面端显示) */
+        @media (min-width: 992px) {
+            .process-step:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                top: 32px;
+                right: -10%;
+                width: 20%;
+                height: 2px;
+                background: linear-gradient(90deg, var(--bs-primary) 0%, rgba(176, 137, 104, 0.2) 100%);
+            }
+        }
+
+
+        /* ============================================
+           Final CTA Section
+           ============================================ */
+
+        .final-cta-section {
+            background: linear-gradient(135deg, rgba(176, 137, 104, 0.95) 0%, rgba(154, 119, 89, 0.95) 100%),
+                url('assets/images/factory-bg.jpg') center/cover no-repeat;
+            color: #fff;
+        }
+
+        .final-cta-section h2 {
+            color: #fff;
+        }
+
+        .final-cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-white {
+            background-color: #fff;
+            color: var(--bs-dark);
+            border: none;
+            font-family: var(--font-sans);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-white:hover {
+            background-color: var(--bs-dark);
+            color: #fff;
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            font-family: var(--font-sans);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline-white:hover {
+            background-color: #fff;
+            color: var(--bs-dark);
+        }
+
+        /* ============================================
+           Footer
+           ============================================ */
+
+        .site-footer {
+            background-color: var(--bs-dark);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .site-footer h5 {
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--bs-primary);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-contact-item i {
+            width: 18px;
+            height: 18px;
+            color: var(--bs-primary);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .footer-contact-item a {
+            color: #B08968;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-contact-item a:hover {
+            color: #9A7759;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--bs-primary);
+            color: #fff;
+        }
+
+        /* Footer Bottom */
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        /* Custom Input Placeholder for Glass Form */
+        .placeholder-white-50::placeholder {
+            color: rgba(255, 255, 255, 0.5) !important;
+            opacity: 1;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        /* ============================================
+           Marquee Animation for Certificates
+           ============================================ */
+        .marquee-container {
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .marquee-track {
+            width: max-content;
+            animation: scroll 20s linear infinite;
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        .cert-item {
+            width: 120px;
+            height: 160px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            opacity: 0.6;
+            filter: grayscale(100%);
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .cert-item:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: scale(1.05);
+            border-color: var(--bs-primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .cert-placeholder {
+            width: 100%;
+            height: 100%;
+            background: #fcfcfc url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23cccccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>') no-repeat center center;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            font-size: 0.65rem;
+            color: #ccc;
+            padding-bottom: 1rem;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-120px * 6 - 1.5rem * 6));
+            }
+
+            /* card width + gap * count */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- ============================================
+         Module 0: Navbar
+         ============================================ -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" id="mainNavbar">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a class="navbar-brand" href="home.html">
+                <!-- Fallback Text Logo if image missing -->
+                <span class="font-serif fw-bold text-dark fs-3">YUSU<span class="text-primary">.</span></span>
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i data-lucide="menu" class="navbar-toggler-icon-custom"></i>
+            </button>
+
+            <!-- Nav Content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                    </li>
+                    <!-- Products Mega Menu -->
+                    <li class="nav-item dropdown position-static">
+                        <a class="nav-link dropdown-toggle" href="products.html" id="productsDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Products
+                        </a>
+                        <!-- Mega Menu Container -->
+                        <div class="dropdown-menu mega-menu shadow-lg" aria-labelledby="productsDropdown">
+                            <div class="container mega-menu-content">
+                                <div class="row">
+                                    <!-- Left Column: Signature Originals -->
+                                    <div class="col-lg-7 border-end pe-lg-5">
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <div class="mega-menu-header mb-0 border-0 p-0 text-primary">★ Signature
+                                                Originals</div>
+                                            <a href="products.html?filter=ip-protected"
+                                                class="text-secondary-custom text-decoration-none small">
+                                                View All Originals <i data-lucide="arrow-right"
+                                                    style="width: 12px; height: 12px; vertical-align: middle;"></i>
+                                            </a>
+                                        </div>
+
+                                        <div class="row g-4">
+                                            <!-- Product 1 -->
+                                            <div class="col-4">
+                                                <a href="product-detail.html" class="menu-product-card">
+                                                    <div class="menu-product-img">
+                                                        <img src="assets/images/products/B-AP40.png"
+                                                            alt="Gold Bar Bottle">
+                                                    </div>
+                                                    <div class="menu-product-title">
+                                                        Gold Bar <i data-lucide="lock"
+                                                            style="width: 12px; height: 12px; color: var(--bs-primary)"></i>
+                                                    </div>
+                                                    <div class="small text-muted">B-AP40 Luxury</div>
+                                                </a>
+                                            </div>
+                                            <!-- Product 2 -->
+                                            <div class="col-4">
+                                                <a href="product-detail.html" class="menu-product-card">
+                                                    <div class="menu-product-img">
+                                                        <img src="assets/images/products/A-BE23.png" alt="Plum Blossom">
+                                                    </div>
+                                                    <div class="menu-product-title">
+                                                        Plum Blossom <i data-lucide="lock"
+                                                            style="width: 12px; height: 12px; color: var(--bs-primary)"></i>
+                                                    </div>
+                                                    <div class="small text-muted">A-BE23 Oriental</div>
+                                                </a>
+                                            </div>
+                                            <!-- Product 3 -->
+                                            <div class="col-4">
+                                                <a href="product-detail.html" class="menu-product-card">
+                                                    <div class="menu-product-img">
+                                                        <img src="assets/images/products/B-AP37.png" alt="Chamfered">
+                                                    </div>
+                                                    <div class="menu-product-title">
+                                                        Chamfered <i data-lucide="lock"
+                                                            style="width: 12px; height: 12px; color: var(--bs-primary)"></i>
+                                                    </div>
+                                                    <div class="small text-muted">B-AP37 Geometric</div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-3 p-2 bg-light rounded text-center small text-secondary-custom">
+                                            <i data-lucide="shield-check"
+                                                style="width: 14px; height: 14px; margin-right: 4px;"></i>
+                                            All designs above are exclusive IP-protected originals by YUSU.
+                                        </div>
+                                    </div>
+
+                                    <!-- Right Column: Categories -->
+                                    <div class="col-lg-5 ps-lg-5">
+                                        <div class="mega-menu-header">By Category</div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <a href="product-detail.html" class="mega-menu-link">
+                                                    Foundation Bottles <span class="count">50+</span>
+                                                </a>
+                                                <a href="product-detail.html" class="mega-menu-link">
+                                                    Lip Packaging <span class="count">30+</span>
+                                                </a>
+                                                <a href="product-detail.html" class="mega-menu-link">
+                                                    Cushion & Compact <span class="count">25+</span>
+                                                </a>
+                                            </div>
+                                            <div class="col-6">
+                                                <a href="product-detail.html" class="mega-menu-link">
+                                                    Skincare <span class="count">40+</span>
+                                                </a>
+                                                <a href="product-detail.html" class="mega-menu-link">
+                                                    Sun Protection <span class="count">20+</span>
+                                                </a>
+                                                <a href="product-detail.html" class="mega-menu-link">
+                                                    Perfume Bottles <span class="count">15+</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4">
+                                            <a href="products.html" class="btn btn-outline-dark btn-sm w-100">
+                                                Browse Full Catalog
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="innovation.html">Innovation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+
+                    <!-- Resources Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Resources
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow-lg p-2" aria-labelledby="resourcesDropdown"
+                            style="min-width: 200px; border-radius: 4px; margin-top: 0;">
+                            <li><a class="dropdown-item py-2 rounded" href="blog.html">
+                                    <i data-lucide="file-text"
+                                        style="width: 16px; height: 16px; margin-right: 8px;"></i> Blog & Insights
+                                </a></li>
+                            <li><a class="dropdown-item py-2 rounded" href="faq.html">
+                                    <i data-lucide="help-circle"
+                                        style="width: 16px; height: 16px; margin-right: 8px;"></i> FAQ
+                                </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item d-lg-none">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- Right CTA -->
+                <div class="d-none d-lg-flex align-items-center gap-3">
+                    <a href="contact.html" class="btn btn-primary">
+                        Get a Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         1. Innovation Hero Section
+         ============================================ -->
+    <section id="innovation-hero" class="hero-section hero-innovation" aria-labelledby="hero-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-xl-7">
+                    <!-- H1 -->
+                    <h1 id="hero-heading" class="mb-3">
+                        Trend-Setting Packaging Innovations
+                    </h1>
+
+                    <!-- Subheadline -->
+                    <p class="lead mb-4">
+                        Empower Your Brand with our R&D. <strong>100+ Original Designs Created Annually</strong>. 130+
+                        Available for Exclusive IP Protection.
+                    </p>
+
+                    <!-- Supporting Text -->
+                    <p class="mb-5 text-secondary-custom" style="max-width: 540px;">
+                        Stand out in a crowded market with packaging solutions engineered for your success. Turn global
+                        trends into your brand's exclusive assets—protected, premium, and ready for launch.
+                    </p>
+
+                    <!-- Trust Indicators -->
+                    <div class="d-flex flex-wrap gap-4 mb-5">
+                        <span class="trust-indicator">
+                            <i data-lucide="sparkles" style="width: 18px; height: 18px;"></i>
+                            Trend-Setting R&D
+                        </span>
+                        <span class="trust-indicator-divider d-none d-md-inline">|</span>
+                        <span class="trust-indicator">
+                            <i data-lucide="factory" style="width: 18px; height: 18px;"></i>
+                            In-House Mold Workshop
+                        </span>
+                        <span class="trust-indicator-divider d-none d-md-inline">|</span>
+                        <span class="trust-indicator">
+                            <i data-lucide="lock" style="width: 18px; height: 18px;"></i>
+                            Exclusive Private Molds
+                        </span>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="products.html" class="btn btn-primary">
+                            Explore Our Creations
+                        </a>
+                        <a href="contact.html" class="btn btn-outline-dark">
+                            Start Custom Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         2. Data Visualization Section
+         ============================================ -->
+    <section id="innovation-data" class="data-viz-section py-5">
+        <div class="container py-lg-4">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="text-white mb-2">Innovation by the Numbers</h2>
+                </div>
+            </div>
+
+            <div class="row g-0">
+                <!-- Data Point 1 -->
+                <div class="col-lg-4">
+                    <div class="counter-card h-100">
+                        <div class="counter-value" data-value="130">130+</div>
+                        <div class="counter-label">Exclusively Protected Originals</div>
+                        <p class="counter-text">Secure your market share with verified patents.</p>
+                    </div>
+                </div>
+
+                <!-- Data Point 2 -->
+                <div class="col-lg-4">
+                    <div class="counter-card h-100">
+                        <div class="counter-value" data-value="1000">1000+</div>
+                        <div class="counter-label">Market-Ready Library</div>
+                        <p class="counter-text">Ready-to-customize designs across all categories.</p>
+                    </div>
+                </div>
+
+                <!-- Data Point 3 -->
+                <div class="col-lg-4">
+                    <div class="counter-card h-100">
+                        <div class="counter-value">100+</div>
+                        <div class="counter-label">New Designs Annually</div>
+                        <p class="counter-text">Launching market-ready designs consistently.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         3. Design Philosophy Section
+         ============================================ -->
+    <section id="design-philosophy" class="py-5 bg-white">
+        <div class="container py-lg-5">
+            <div class="text-center mb-5">
+                <h2 class="section-heading">Our Approach to Innovation</h2>
+            </div>
+
+            <div class="row g-4">
+                <!-- Feature 1 -->
+                <div class="col-lg-4">
+                    <div class="feature-box">
+                        <i data-lucide="sparkles" class="text-primary mb-3" style="width: 32px; height: 32px;"></i>
+                        <h3>Trend-Setting Aesthetics</h3>
+                        <p>Define the market rather than following it. Equip your brand with distinct visual identities
+                            crafted to elevate your perceived value and command attention.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="col-lg-4">
+                    <div class="feature-box">
+                        <i data-lucide="wrench" class="text-primary mb-3" style="width: 32px; height: 32px;"></i>
+                        <h3>Precision Engineering</h3>
+                        <p>Precision-engineered for heavy-wall luxury feel and airtight performance. We control every
+                            micron from critical dimensions to final assembly.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="col-lg-4">
+                    <div class="feature-box">
+                        <i data-lucide="shield-check" class="text-primary mb-3" style="width: 32px; height: 32px;"></i>
+                        <h3>Full IP Protection</h3>
+                        <p>Secure your market uniqueness. We provide comprehensive intellectual property protection for
+                            our original designs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         LEAD MAGNET: Trend Report
+         ============================================ -->
+    <section id="trend-report" class="py-5 bg-dark text-white position-relative overflow-hidden">
+        <!-- Background decorative element -->
+        <div class="position-absolute top-0 end-0 overflow-hidden h-100 w-50 d-none d-lg-block"
+            style="background: linear-gradient(90deg, transparent, rgba(176, 137, 104, 0.1)); transform: skewX(-20deg);">
+        </div>
+
+        <div class="container position-relative z-1 py-lg-4">
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-4 mb-lg-0">
+                    <span class="text-primary text-uppercase fw-bold mb-2 d-block"
+                        style="letter-spacing: 0.1em; font-size: 0.875rem;">Exclusive Insight</span>
+                    <h2 class="font-serif display-5 mb-3 text-white">2026 Cosmetic Packaging Trend Report</h2>
+                    <p class="text-white-50 lead mb-4" style="max-width: 600px;">
+                        Stay ahead of the curve. Download our comprehensive analysis of sustainable materials,
+                        luxury finishes, and smart packaging technologies shaping the future of beauty.
+                    </p>
+                    <div class="d-flex gap-4">
+                        <div class="d-flex align-items-center gap-2">
+                            <i data-lucide="check-circle" class="text-primary" style="width: 20px; height: 20px;"></i>
+                            <span class="small text-white-50">Color Trends</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <i data-lucide="check-circle" class="text-primary" style="width: 20px; height: 20px;"></i>
+                            <span class="small text-white-50">Material Science</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <i data-lucide="check-circle" class="text-primary" style="width: 20px; height: 20px;"></i>
+                            <span class="small text-white-50">Consumer Shifts</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="card border-0 shadow-lg bg-white text-dark p-4">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold mb-3 font-serif">Get Your Free Copy</h5>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="emailInput" class="form-label visually-hidden">Business Email</label>
+                                    <input type="email" class="form-control form-control-lg bg-light border-0"
+                                        id="emailInput" placeholder="Business Email Address">
+                                </div>
+                                <div class="d-grid">
+                                    <button type="button" class="btn btn-primary btn-lg">
+                                        Download Report
+                                        <i data-lucide="download" class="ms-2"
+                                            style="width: 18px; height: 18px; vertical-align: text-bottom;"></i>
+                                    </button>
+                                </div>
+                                <div class="mt-3 text-center">
+                                    <small class="text-muted" style="font-size: 0.75rem;">
+                                        Join 5,000+ beauty brand founders. No spam.
+                                    </small>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         4. IP-Protected Gallery Section
+         ============================================ -->
+    <section id="protected-gallery" class="py-5">
+        <div class="container py-lg-4">
+            <!-- Section Title -->
+            <div class="text-center mb-5">
+                <h2 class="section-heading">Exclusive Originals</h2>
+                <p class="section-subheading">Protected designs available only through YUSU. Each creation is registered
+                    for intellectual property protection.</p>
+            </div>
+
+            <!-- Product Cards -->
+            <div class="row g-4 mb-5">
+                <!-- Product 1: Gold Bar -->
+                <div class="col-md-4">
+                    <article class="product-card h-100">
+                        <div class="product-card-image">
+                            <img src="assets/images/products/B-AP40.png" alt="Gold Bar Foundation Bottle B-AP40"
+                                loading="lazy">
+                        </div>
+                        <div class="p-4">
+                            <div class="product-badge mb-2">
+                                <i data-lucide="lock" style="width: 14px; height: 14px;"></i>
+                                IP-Protected Design
+                            </div>
+                            <h4 class="mb-2 fs-5 font-serif fw-bold">Gold Bar Foundation Bottle</h4>
+                            <div class="small text-muted mb-3">Code: B-AP40</div>
+                            <p class="mb-3 text-secondary-custom" style="font-size: 0.9375rem;">
+                                Precision-engineered geometry. Bold metallic finish. Unmistakable shelf presence.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Product 2: Plum Blossom -->
+                <div class="col-md-4">
+                    <article class="product-card h-100">
+                        <div class="product-card-image">
+                            <img src="assets/images/products/A-BE23.png" alt="Plum Blossom Foundation Bottle A-BE23"
+                                loading="lazy">
+                        </div>
+                        <div class="p-4">
+                            <div class="product-badge mb-2">
+                                <i data-lucide="lock" style="width: 14px; height: 14px;"></i>
+                                IP-Protected Design
+                            </div>
+                            <h4 class="mb-2 fs-5 font-serif fw-bold">Plum Blossom Bottle</h4>
+                            <div class="small text-muted mb-3">Code: A-BE23</div>
+                            <p class="mb-3 text-secondary-custom" style="font-size: 0.9375rem;">
+                                Oriental elegance meets modern craft. Rose gold electroplating. Cultural storytelling.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Product 3: Chamfered -->
+                <div class="col-md-4">
+                    <article class="product-card h-100">
+                        <div class="product-card-image">
+                            <img src="assets/images/products/B-AP37.png" alt="Chamfered Foundation Bottle B-AP37"
+                                loading="lazy">
+                        </div>
+                        <div class="p-4">
+                            <div class="product-badge mb-2">
+                                <i data-lucide="lock" style="width: 14px; height: 14px;"></i>
+                                IP-Protected Design
+                            </div>
+                            <h4 class="mb-2 fs-5 font-serif fw-bold">Chamfered Foundation Bottle</h4>
+                            <div class="small text-muted mb-3">Code: B-AP37</div>
+                            <p class="mb-3 text-secondary-custom" style="font-size: 0.9375rem;">
+                                Geometric minimalism. Clean lines. For brands that value quiet luxury.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Gallery CTA -->
+            <div class="text-center">
+                <a href="products.html?filter=yusu-original" class="btn btn-outline-dark">
+                    View All Signature Designs
+                    <i data-lucide="arrow-right" class="ms-2" style="width: 16px; height: 16px;"></i>
+                </a>
+            </div>
+
+            <!-- Contextual Evidence: Certificate Grid -->
+            <div class="mt-5 pt-4 border-top border-light-subtle">
+                <p class="text-center text-secondary-custom small text-uppercase letter-spacing-1 mb-4">
+                    Verified Patent Certificates (Design & Utility)
+                </p>
+                <div class="row g-4 justify-content-center">
+                    <!-- Patent 1 -->
+                    <div class="col-6 col-md-3">
+                        <div class="cert-item-grid cursor-pointer" data-bs-toggle="modal"
+                            data-bs-target="#certificateModal" data-cert-title="Patent CN-2024-8832"
+                            data-cert-type="Design Patent" data-cert-image="assets/images/products/meihuazhuanli.jpg">
+                            <img src="assets/images/products/meihuazhuanli.jpg" alt="Patent Certificate"
+                                class="img-fluid rounded shadow-sm border" style="cursor: pointer;">
+                        </div>
+                    </div>
+                    <!-- Patent 2 -->
+                    <div class="col-6 col-md-3">
+                        <div class="cert-item-grid cursor-pointer" data-bs-toggle="modal"
+                            data-bs-target="#certificateModal" data-cert-title="Patent US-D987-112"
+                            data-cert-type="Utility Model" data-cert-image="assets/images/products/meihuazhuanli.jpg">
+                            <img src="assets/images/products/meihuazhuanli.jpg" alt="Patent Certificate"
+                                class="img-fluid rounded shadow-sm border" style="cursor: pointer;">
+                        </div>
+                    </div>
+                    <!-- Patent 3 -->
+                    <div class="col-6 col-md-3">
+                        <div class="cert-item-grid cursor-pointer" data-bs-toggle="modal"
+                            data-bs-target="#certificateModal" data-cert-title="Patent EU-0091-334"
+                            data-cert-type="Design Patent" data-cert-image="assets/images/products/meihuazhuanli.jpg">
+                            <img src="assets/images/products/meihuazhuanli.jpg" alt="Patent Certificate"
+                                class="img-fluid rounded shadow-sm border" style="cursor: pointer;">
+                        </div>
+                    </div>
+                    <!-- Patent 4 -->
+                    <div class="col-6 col-md-3">
+                        <div class="cert-item-grid cursor-pointer" data-bs-toggle="modal"
+                            data-bs-target="#certificateModal" data-cert-title="Patent KR-3021-556"
+                            data-cert-type="Utility Model" data-cert-image="assets/images/products/meihuazhuanli.jpg">
+                            <img src="assets/images/products/meihuazhuanli.jpg" alt="Patent Certificate"
+                                class="img-fluid rounded shadow-sm border" style="cursor: pointer;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         5. Process Showcase Section
+         ============================================ -->
+    <section id="process-showcase" class="py-5 bg-white">
+        <div class="container py-lg-5">
+            <div class="text-center mb-5">
+                <h2 class="section-heading">From Trend to Product</h2>
+                <p class="section-subheading">Bring your vision to life faster. A streamlined 5-step journey from
+                    trend insight to finished product, designed for your speed-to-market.</p>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <!-- Step 1 -->
+                <div class="col-6 col-lg">
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <i data-lucide="search" style="width: 28px; height: 28px;"></i>
+                        </div>
+                        <h4>Trend Analysis</h4>
+                        <p>Global market insights.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="col-6 col-lg">
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <i data-lucide="lightbulb" style="width: 28px; height: 28px;"></i>
+                        </div>
+                        <h4>Concept</h4>
+                        <p>Original sketches.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="col-6 col-lg">
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <i data-lucide="box" style="width: 28px; height: 28px;"></i>
+                        </div>
+                        <h4>3D Modeling</h4>
+                        <p>Precision detailing.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="col-6 col-lg">
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <i data-lucide="hammer" style="width: 28px; height: 28px;"></i>
+                        </div>
+                        <h4>In-House Mold</h4>
+                        <p>Closed-loop fabrication.</p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="col-6 col-lg">
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <i data-lucide="factory" style="width: 28px; height: 28px;"></i>
+                        </div>
+                        <h4>Production</h4>
+                        <p>Quality manufacturing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Process Differentiator Box -->
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="proof-points p-4 text-center"
+                        style="background: rgba(176, 137, 104, 0.05); border-color: rgba(176, 137, 104, 0.2);">
+                        <h5 class="font-serif fw-bold text-primary mb-2">Closed-Loop Control</h5>
+                        <p class="mb-0 text-secondary-custom">
+                            Gain full transparency and speed. With our entire process in-house—from design to mold to
+                            production—you avoid third-party delays and enjoy consistent, premium quality controlled at
+                            every step.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         R&D FAQ (GEO Optimized)
+         ============================================ -->
+    <section id="innovation-faq" class="py-5 bg-white border-top border-light-subtle">
+        <div class="container py-lg-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <h2 class="section-heading mb-3">Common Questions</h2>
+                    </div>
+
+                    <div class="accordion accordion-flush" id="accordionRnD">
+                        <!-- FAQ 1: Timeline -->
+                        <div class="accordion-item border-bottom border-light-subtle">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed py-4 bg-transparent fw-bold font-serif fs-5"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne">
+                                    What is the typical timeline for a private mold project?
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionRnD">
+                                <div class="accordion-body pb-4 text-secondary-custom">
+                                    For a standard custom project, our "Rapid 35" protocol applies:
+                                    <strong>7 days</strong> for 3D engineering, <strong>25 days</strong> for mold
+                                    piloting, and <strong>3 days</strong> for T1 sampling.
+                                    Total development time is approximately 5-7 weeks, significantly faster than the
+                                    industry average of 12 weeks.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 2: Cost -->
+                        <div class="accordion-item border-bottom border-light-subtle">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed py-4 bg-transparent fw-bold font-serif fs-5"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo">
+                                    How much does a custom cosmetic bottle mold cost?
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionRnD">
+                                <div class="accordion-body pb-4 text-secondary-custom">
+                                    Investment varies by complexity, typically ranging from <strong>$2,000 to
+                                        $8,000</strong> for injection molds.
+                                    However, YUSU offers a <strong class="text-primary">"Volume Rebate
+                                        Program"</strong>—mold costs can be fully refunded once orders reach a
+                                    agreed-upon volume threshold.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3: IP Ownership -->
+                        <div class="accordion-item border-bottom border-light-subtle">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed py-4 bg-transparent fw-bold font-serif fs-5"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree">
+                                    Who owns the intellectual property (IP) of the design?
+                                </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionRnD">
+                                <div class="accordion-body pb-4 text-secondary-custom">
+                                    You do. For all Private Mold projects, <strong>the client retains 100% IP
+                                        ownership</strong> universally.
+                                    We sign a binding NDA and Non-Compete Agreement before starting, ensuring your
+                                    unique design remains exclusively yours.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4: Minimum Order Quantity (MOQ) -->
+                        <div class="accordion-item border-bottom border-light-subtle">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed py-4 bg-transparent fw-bold font-serif fs-5"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour">
+                                    What is the MOQ for custom developed items?
+                                </button>
+                            </h2>
+                            <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionRnD">
+                                <div class="accordion-body pb-4 text-secondary-custom">
+                                    While our standard stock items have an MOQ of 5,000 units, custom private mold
+                                    projects generally require an MOQ of <strong>10,000 to 20,000 units</strong>
+                                    per run to ensure production efficiency and cost-effectiveness.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         6. Final CTA Section
+         ============================================ -->
+    <section id="final-cta" class="final-cta-section py-5">
+        <div class="container py-lg-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-heading mb-3">Innovating Your Brand,<br>Protecting Your Uniqueness.</h2>
+                    <p class="mb-5" style="font-size: 1.125rem;">
+                        Launch your next bestseller with packaging that is uniquely yours. Integrate our R&D power,
+                        rapid engineering, and smart manufacturing into your supply chain.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="contact.html" class="btn btn-outline-white">
+                            Start Private Mold Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         Module 9: Footer
+         组件路径: components/footer.html
+         WordPress: <?php get_template_part('template-parts/footer'); ?>
+         ============================================ -->
+    <div id="footer-container">
+        <footer class="site-footer py-5" role="contentinfo">
+            <div class="container">
+                <div class="row g-4 justify-content-between">
+                    <!-- Brand Column -->
+                    <div class="col-lg-4 col-md-6">
+                        <span class="d-block font-serif fs-3 fw-bold mb-3">YUSU<span
+                                class="text-primary">.</span></span>
+                        <p class="mb-4 text-white-50" style="max-width: 300px;">
+                            Premier cosmetic packaging innovator. Integrating In-House R&D, rapid mold engineering, and
+                            smart manufacturing.
+                        </p>
+                        <div class="social-icons">
+                            <a href="#"><i data-lucide="linkedin"></i></a>
+                            <a href="#"><i data-lucide="instagram"></i></a>
+                            <a href="#"><i data-lucide="facebook"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Products -->
+                    <div class="col-lg-2 col-md-6">
+                        <h5>Products</h5>
+                        <ul class="footer-links">
+                            <li><a href="/products/foundation">Foundation Bottles</a></li>
+                            <li><a href="/products/lips">Lip Packaging</a></li>
+                            <li><a href="/products/compacts">Cushion Compacts</a></li>
+                            <li><a href="/products/skincare">Skincare Sets</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company -->
+                    <div class="col-lg-2 col-md-6">
+                        <h5>Company</h5>
+                        <ul class="footer-links">
+                            <li><a href="/about">About Us</a></li>
+                            <li><a href="/innovation">Innovation</a></li>
+                            <li><a href="/services">Services</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="col-lg-3 col-md-6">
+                        <h5>Contact Us</h5>
+                        <div class="footer-contact-item">
+                            <i data-lucide="map-pin"></i>
+                            <span class="text-white-50">Baiyun District, Guangzhou, China</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i data-lucide="mail"></i>
+                            <a href="mailto:sales@yusupackaging.com">sales@yusupackaging.com</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i data-lucide="phone"></i>
+                            <a href="tel:+861234567890">+86 123 456 7890</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom mt-5 pt-4 d-flex flex-wrap justify-content-between align-items-center">
+                    <p>&copy; 2026 YUSU Packaging. All rights reserved.</p>
+                    <div class="d-flex gap-3">
+                        <a href="/privacy" class="text-white-50 small text-decoration-none">Privacy Policy</a>
+                        <a href="/terms" class="text-white-50 small text-decoration-none">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ============================================
+         Certificate Modal
+         ============================================ -->
+    <div class="modal fade" id="certificateModal" tabindex="-1" aria-labelledby="certificateModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title font-serif fw-bold" id="certificateModalLabel">Certificate View</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-0">
+                    <img src="" id="certModalImage" class="img-fluid w-100" alt="Certificate">
+                    <div class="p-4 bg-white">
+                        <h4 class="mb-1" id="certModalName">Patent Name</h4>
+                        <p class="text-muted small mb-0" id="certModalType">Patent Type</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <!-- Animation & Interaction Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // 1. Preloader Logic
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                window.addEventListener('load', function () {
+                    preloader.classList.add('fade-out');
+                    setTimeout(() => {
+                        preloader.remove();
+                    }, 500); // Wait for transition to finish
+                });
+
+                // Fallback: Force remove after 3s if load event hangs
+                setTimeout(() => {
+                    if (document.body.contains(preloader)) {
+                        preloader.classList.add('fade-out');
+                        setTimeout(() => preloader.remove(), 500);
+                    }
+                }, 3000);
+            }
+
+            // 2. Scroll Animations (IntersectionObserver)
+            const fadeUpObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        fadeUpObserver.unobserve(entry.target); // Animate only once
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            // Target elements to animate
+            const animatedElements = document.querySelectorAll('.section-heading, .section-subheading, .product-card, .process-step, .stat-item, .hero-section h1, .hero-section .lead, .hero-section .btn, .feature-box');
+
+            animatedElements.forEach((el, index) => {
+                el.classList.add('fade-up');
+                // Optional: Add staggering delay classes based on visual groups
+                if (el.classList.contains('product-card') || el.classList.contains('feature-box')) {
+                    // Simple staggering for grids
+                    const delay = (index % 3) * 100; // 0, 100, 200ms
+                    el.style.transitionDelay = `${delay}ms`;
+                }
+                fadeUpObserver.observe(el);
+            });
+
+            // 3. Count-up Animation for Stats
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const valueDisplay = entry.target.querySelector('.counter-value');
+                        if (!valueDisplay) return; // Guard clause
+
+                        const targetValue = parseInt(valueDisplay.getAttribute('data-value') || '0', 10);
+                        const duration = 2000;
+                        let startTimestamp = null;
+
+                        const step = (timestamp) => {
+                            if (!startTimestamp) startTimestamp = timestamp;
+                            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+
+                            // Easing function for smooth stop
+                            const easeOutQuad = 1 - Math.pow(1 - progress, 3);
+
+                            const currentVal = Math.floor(easeOutQuad * targetValue);
+                            valueDisplay.textContent = currentVal + (targetValue > 100 ? "+" : "");
+
+                            if (progress < 1) {
+                                requestAnimationFrame(step);
+                            } else {
+                                valueDisplay.textContent = targetValue + (targetValue > 100 ? "+" : "");
+                            }
+                        };
+
+                        requestAnimationFrame(step);
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.counter-card').forEach(el => {
+                statsObserver.observe(el);
+            });
+
+            // 4. Certificate Modal Logic
+            const certModal = document.getElementById('certificateModal');
+            if (certModal) {
+                certModal.addEventListener('show.bs.modal', function (event) {
+                    const trigger = event.relatedTarget;
+                    const imageSrc = trigger.getAttribute('data-cert-image');
+                    const title = trigger.getAttribute('data-cert-title');
+                    const type = trigger.getAttribute('data-cert-type');
+
+                    const modalImage = certModal.querySelector('#certModalImage');
+                    const modalTitle = certModal.querySelector('#certModalName');
+                    const modalType = certModal.querySelector('#certModalType');
+
+                    if (modalImage) modalImage.src = imageSrc;
+                    if (modalTitle) modalTitle.textContent = title;
+                    if (modalType) modalType.textContent = type;
+                });
+            }
+        });
+    </script>
+
+    <!-- Navbar Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 0. Active Link Highlighting
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+            navLinks.forEach(link => {
+                link.classList.remove('active'); // Remove any hardcoded active class
+
+                const href = link.getAttribute('href');
+                if (!href || href === '#') return;
+
+                // Logic for matching current URL to href
+                // Handles: /products matching /products.html, /products/detail, etc.
+                const hrefClean = href.replace(/^\//, '').replace(/\.html$/, '');
+                const pathClean = currentPath.split('/').pop().replace(/\.html$/, '');
+
+                if (pathClean === hrefClean) {
+                    link.classList.add('active');
+                } else if (hrefClean !== '' && hrefClean !== 'home' && currentPath.includes(hrefClean)) {
+                    // For sub-pages or matching /innovation in /innovation.html
+                    // But prevent home matching everything
+                    link.classList.add('active');
+                }
+            });
+
+            // 1. Sticky Navbar Logic
+            const navbar = document.getElementById('mainNavbar');
+
+            function updateNavbarStyle() {
+                if (window.scrollY > 20) {
+                    navbar.classList.add('navbar-scrolled');
+                    navbar.classList.remove('navbar-transparent');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                    navbar.classList.add('navbar-transparent');
+                }
+            }
+
+            // Initial check and event listener
+            if (navbar) {
+                updateNavbarStyle();
+                window.addEventListener('scroll', updateNavbarStyle);
+            }
+
+            // 2. Desktop Dropdown Hover Interaction
+            if (window.matchMedia('(min-width: 992px)').matches) {
+                const dropdowns = document.querySelectorAll('.nav-item.dropdown');
+
+                dropdowns.forEach(dropdown => {
+                    dropdown.addEventListener('mouseenter', function () {
+                        const toggle = this.querySelector('.dropdown-toggle');
+                        const menu = this.querySelector('.dropdown-menu');
+                        if (toggle && menu) {
+                            toggle.classList.add('show');
+                            toggle.setAttribute('aria-expanded', 'true');
+                            menu.classList.add('show');
+                        }
+                    });
+
+                    dropdown.addEventListener('mouseleave', function () {
+                        const toggle = this.querySelector('.dropdown-toggle');
+                        const menu = this.querySelector('.dropdown-menu');
+                        if (toggle && menu) {
+                            toggle.classList.remove('show');
+                            toggle.setAttribute('aria-expanded', 'false');
+                            menu.classList.remove('show');
+                        }
+                    });
+                });
+            }
+
+            // 3. Certificate Modal Dynamic Content
+            const certificateModal = document.getElementById('certificateModal');
+            if (certificateModal) {
+                certificateModal.addEventListener('show.bs.modal', function (event) {
+                    const button = event.relatedTarget;
+                    const certName = button.getAttribute('data-cert-name');
+                    const certType = button.getAttribute('data-cert-type');
+
+                    const modalTitle = certificateModal.querySelector('#certModalName');
+                    const modalType = certificateModal.querySelector('#certModalType');
+
+                    modalTitle.textContent = certName;
+                    modalType.textContent = certType;
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Metadata -->
+    <title>How to Choose the Right Foundation Bottle for Your Brand | YUSU Blog</title>
+    <meta name="description"
+        content="Learn how to select the perfect foundation bottle – from size and material to pump type and finish. Expert tips from YUSU's R&D team with 1000+ designs.">
+
+    <!-- Google Fonts: Cormorant Garamond + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* ============================================
+           YUSU Design System - Core Variables
+           ============================================ */
+        :root {
+            /* Brand Colors */
+            --bs-primary: #B08968;
+            --bs-primary-hover: #9A7759;
+            --bs-primary-active: #85674D;
+            --bs-secondary: #5A5A5A;
+            --bs-dark: #2D2D2D;
+            --bs-light: #F8F8F8;
+            --bs-text-secondary: #6B6B6B;
+            /* Typography */
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Inter', sans-serif;
+            /* Shadows */
+            --shadow-primary: 0 4px 14px 0 rgba(176, 137, 104, 0.35);
+            --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-card-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            /* Navbar */
+            --navbar-height: 80px;
+            --navbar-scrolled-height: 70px;
+        }
+
+        /* ============================================
+           Base Styles
+           ============================================ */
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bs-light);
+            color: var(--bs-dark);
+            padding-top: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-serif);
+            color: var(--bs-dark);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: #4A4A4A;
+        }
+
+        a {
+            color: var(--bs-primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--bs-primary-hover);
+        }
+
+        .font-serif {
+            font-family: var(--font-serif);
+        }
+
+        .text-primary {
+            color: var(--bs-primary) !important;
+        }
+
+        .text-secondary-custom {
+            color: var(--bs-text-secondary);
+        }
+
+        /* ============================================
+           Buttons
+           ============================================ */
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border: none;
+            font-family: var(--font-sans);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow-primary);
+            padding: 0.75rem 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--bs-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(176, 137, 104, 0.25);
+        }
+
+        .btn-outline-dark {
+            background: transparent;
+            border: 1px solid var(--bs-dark);
+            color: var(--bs-dark);
+            font-family: var(--font-sans);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+            border-radius: 4px;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline-dark:hover {
+            background-color: var(--bs-dark);
+            color: #fff;
+        }
+
+        /* ============================================
+           Navigation Bar Styles (From Home)
+           ============================================ */
+        .navbar {
+            height: var(--navbar-height);
+            transition: all 0.3s ease;
+            background-color: #fff;
+            /* Article page ALWAYS white bg */
+            padding-top: 0;
+            padding-bottom: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-brand img {
+            height: 40px;
+            width: auto;
+        }
+
+        .navbar-nav .nav-link {
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--bs-dark);
+            padding: 0.5rem 1rem !important;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--bs-primary);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--bs-primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mega Menu container */
+        .navbar .dropdown-menu {
+            border: none;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 0;
+            margin-top: 0;
+            overflow: visible;
+            display: none;
+        }
+
+        @media (min-width: 992px) {
+            .navbar .dropdown.position-static {
+                position: static !important;
+            }
+
+            .navbar .nav-link {
+                position: relative;
+                z-index: 1100;
+            }
+
+            .navbar .dropdown-menu.mega-menu {
+                width: 100%;
+                left: 0;
+                right: 0;
+                top: 100%;
+                border-top: 1px solid #f0f0f0;
+            }
+
+            .navbar .dropdown:hover .dropdown-menu,
+            .navbar .dropdown .dropdown-menu:hover {
+                display: block;
+                animation: fadeInUp 0.2s ease-out forwards;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mega-menu-content {
+            padding: 2rem 0;
+            background: #fff;
+        }
+
+        .mega-menu-header {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--bs-text-secondary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mega-menu-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--bs-dark);
+            text-decoration: none;
+            font-family: var(--font-sans);
+            font-size: 0.9375rem;
+            transition: color 0.15s ease, transform 0.15s ease;
+        }
+
+        .mega-menu-link:hover {
+            color: var(--bs-primary);
+            transform: translateX(4px);
+        }
+
+        .mega-menu-link .count {
+            color: var(--bs-text-secondary);
+            font-size: 0.75rem;
+            margin-left: 0.25rem;
+        }
+
+        /* Featured Product in Menu */
+        .menu-product-card {
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .menu-product-img {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #f8f8f8;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+        }
+
+        .menu-product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-product-card:hover .menu-product-img img {
+            transform: scale(1.05);
+        }
+
+        .menu-product-title {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            color: var(--bs-dark);
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .menu-product-card:hover .menu-product-title {
+            color: var(--bs-primary);
+        }
+
+        /* ============================================
+           Article Specific Styles
+           ============================================ */
+
+        /* 1. Article Header */
+        .article-header {
+            padding-top: calc(var(--navbar-height) + 4rem);
+            /* More top padding */
+            padding-bottom: 6rem;
+            /* Increased padding */
+            text-align: center;
+            margin-bottom: 5rem;
+            /* Added margin for separation */
+        }
+
+        .article-title {
+            font-size: 3.5rem;
+            /* Larger */
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            /* Wider gap */
+            font-size: 0.9375rem;
+            color: var(--bs-text-secondary);
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        /* 2. Content Layout */
+        .article-body {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            /* Better readability */
+            color: #333;
+        }
+
+        .article-body h2 {
+            font-size: 2.25rem;
+            margin-top: 4rem;
+            /* More breathing room */
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .article-body h3 {
+            font-size: 1.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        /* 3. Hero Image */
+        .article-hero-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+            background-color: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 4rem;
+            /* More space below image */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .article-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 4. Tables */
+        .article-table-container {
+            margin: 2rem 0;
+            overflow-x: auto;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+
+        .table-custom {
+            width: 100%;
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        .table-custom th {
+            background-color: #f9f9f9;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            padding: 1rem;
+            border-bottom: 2px solid #eee;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        .table-custom td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+
+        /* 5. Mid-Article CTA */
+        .cta-box {
+            background-color: var(--bs-primary);
+            color: #fff;
+            padding: 2.5rem;
+            border-radius: 4px;
+            margin: 3rem 0;
+            text-align: center;
+            background-image: linear-gradient(135deg, rgba(176, 137, 104, 1) 0%, rgba(154, 119, 89, 1) 100%);
+        }
+
+        .cta-box h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-white-cta {
+            background: #fff;
+            color: var(--bs-primary);
+            padding: 0.75rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .btn-white-cta:hover {
+            background: #f0f0f0;
+            color: var(--bs-primary-active);
+        }
+
+        /* 6. Sidebar (TOC & Author) */
+        .sidebar-sticky-container {
+            position: sticky;
+            top: 100px;
+            /* Below navbar */
+        }
+
+        .sidebar-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-left: 2px solid #f0f0f0;
+        }
+
+
+
+        .toc-link {
+            display: block;
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            color: var(--bs-text-secondary);
+            font-size: 0.9rem;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .toc-link::before {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: transparent;
+            transition: background 0.2s;
+        }
+
+        .toc-link:hover,
+        .toc-link.active {
+            color: var(--bs-primary);
+            font-weight: 500;
+        }
+
+        .toc-link.active::before {
+            background: var(--bs-primary);
+        }
+
+        /* 7. Key Takeaways Box */
+        .key-takeaways {
+            background-color: #FDF8F4;
+            /* Light beige/orange tint */
+            border-left: 4px solid var(--bs-primary);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .key-takeaways h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--bs-dark);
+            margin-bottom: 1rem;
+        }
+
+        .key-takeaways li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* 8. Related Articles */
+        .related-card {
+            background: transparent;
+            border: none;
+            transition: transform 0.3s ease;
+            height: 100%;
+            border-bottom: 1px solid transparent;
+            /* Align hover state */
+            padding-bottom: 1rem;
+        }
+
+        .related-card:hover {
+            transform: translateY(-6px);
+            /* box-shadow removed for cleaner look */
+        }
+
+        .related-card:hover .related-category {
+            color: var(--bs-primary-hover);
+        }
+
+        .related-img {
+            height: 240px;
+            /* Taller image */
+            background: #eee;
+            overflow: hidden;
+            border-radius: 4px;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .related-card:hover .related-img {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .related-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .related-card:hover .related-img img {
+            transform: scale(1.05);
+        }
+
+        .related-body {
+            padding: 0;
+            /* Remove padding since no border */
+        }
+
+        .related-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--bs-primary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .related-title {
+            font-size: 1.25rem;
+            font-family: var(--font-serif);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+            color: var(--bs-dark);
+            transition: color 0.2s ease;
+        }
+
+        .related-card:hover .related-title {
+            color: var(--bs-primary);
+        }
+
+        /* ============================================
+           Footer (From Home)
+           ============================================ */
+        .site-footer {
+            background-color: var(--bs-dark);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+        }
+
+        .site-footer h5 {
+            color: #fff;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--bs-primary);
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #fff;
+            margin-right: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .social-icons a:hover {
+            background: var(--bs-primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 991.98px) {
+            .article-header {
+                padding-top: calc(var(--navbar-height) + 1rem);
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .sidebar-sticky-container {
+                position: static;
+                margin-top: 3rem;
+            }
+
+            .cta-box {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================
+         Navbar (Copied & Cleaned)
+         ============================================ -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="home.html">
+                <span class="font-serif fw-bold text-dark fs-3">YUSU<span class="text-primary">.</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <i data-lucide="menu"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-4">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                    </li>
+                    <!-- Products -->
+                    <li class="nav-item dropdown position-static">
+                        <a class="nav-link dropdown-toggle" href="/products" id="productsDropdown" role="button"
+                            data-bs-toggle="dropdown">Products</a>
+                        <div class="dropdown-menu mega-menu shadow-lg">
+                            <div class="container mega-menu-content">
+                                <div class="row">
+                                    <div class="col-lg-7 border-end pe-lg-5">
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <div class="mega-menu-header mb-0 border-0 p-0 text-primary">★ Signature
+                                                Originals</div>
+                                            <a href="#" class="text-secondary-custom text-decoration-none small">View
+                                                All Originals <i data-lucide="arrow-right"
+                                                    style="width:12px; height:12px;"></i></a>
+                                        </div>
+                                        <div class="row g-4">
+                                            <div class="col-4"><a href="#" class="menu-product-card">
+                                                    <div class="menu-product-img"><img
+                                                            src="assets/images/products/B-AP40.png" alt="Product"></div>
+                                                    <div class="menu-product-title">Gold Bar <i data-lucide="lock"
+                                                            style="width:12px; height:12px;"></i></div>
+                                                    <div class="small text-muted">B-AP40 Luxury</div>
+                                                </a></div>
+                                            <div class="col-4"><a href="#" class="menu-product-card">
+                                                    <div class="menu-product-img"><img
+                                                            src="assets/images/products/A-BE23.png" alt="Product"></div>
+                                                    <div class="menu-product-title">Plum Blossom <i data-lucide="lock"
+                                                            style="width:12px; height:12px;"></i></div>
+                                                    <div class="small text-muted">A-BE23 Oriental</div>
+                                                </a></div>
+                                            <div class="col-4"><a href="#" class="menu-product-card">
+                                                    <div class="menu-product-img"><img
+                                                            src="assets/images/products/B-AP37.png" alt="Product"></div>
+                                                    <div class="menu-product-title">Chamfered <i data-lucide="lock"
+                                                            style="width:12px; height:12px;"></i></div>
+                                                    <div class="small text-muted">B-AP37 Geometric</div>
+                                                </a></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 ps-lg-5">
+                                        <div class="mega-menu-header">By Category</div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <a href="#" class="mega-menu-link">Foundation Bottles <span
+                                                        class="count">50+</span></a>
+                                                <a href="#" class="mega-menu-link">Lip Packaging <span
+                                                        class="count">30+</span></a>
+                                                <a href="#" class="mega-menu-link">Cushion Comb <span
+                                                        class="count">25+</span></a>
+                                            </div>
+                                            <div class="col-6">
+                                                <a href="#" class="mega-menu-link">Skincare <span
+                                                        class="count">40+</span></a>
+                                                <a href="#" class="mega-menu-link">Sun Protection <span
+                                                        class="count">20+</span></a>
+                                                <a href="#" class="mega-menu-link">Perfume Bottles <span
+                                                        class="count">15+</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/innovation">Innovation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+
+                    <!-- Resources Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Resources
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow-lg p-2" aria-labelledby="resourcesDropdown"
+                            style="min-width: 200px; border-radius: 4px; margin-top: 0;">
+                            <li><a class="dropdown-item py-2 rounded" href="/resources/blog">
+                                    <i data-lucide="file-text"
+                                        style="width: 16px; height: 16px; margin-right: 8px;"></i> Blog & Insights
+                                </a></li>
+                            <li><a class="dropdown-item py-2 rounded" href="/resources/faq">
+                                    <i data-lucide="help-circle"
+                                        style="width: 16px; height: 16px; margin-right: 8px;"></i> FAQ
+                                </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item d-lg-none">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-none d-lg-flex align-items-center gap-3">
+                    <a href="/contact" class="btn btn-primary">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         Article Specific Content
+         ============================================ -->
+
+    <!-- Header/Hero -->
+    <header class="article-header bg-white">
+        <div class="container text-center">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center small text-uppercase fw-medium text-secondary-custom">
+                    <li class="breadcrumb-item"><a href="home.html" class="text-reset">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" class="text-reset">Blog</a></li>
+                    <li class="breadcrumb-item"><a href="#" class="text-reset">Buyer's Guide</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">How to Choose</li>
+                </ol>
+            </nav>
+
+            <h1 class="article-title mt-2 mb-4">How to Choose the Right Foundation<br>Bottle for Your Brand</h1>
+
+            <div class="article-meta">
+                <span class="meta-item"><i data-lucide="user" style="width:16px;"></i> YUSU R&D Team</span>
+                <span class="meta-item"><i data-lucide="calendar" style="width:16px;"></i> Jan 24, 2026</span>
+                <span class="meta-item"><i data-lucide="clock" style="width:16px;"></i> 7 min read</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container pb-5">
+        <div class="row g-5">
+            <!-- Main Content -->
+            <main class="col-lg-8">
+                <!-- Hero Image -->
+                <div class="article-hero-image">
+                    <img src="assets/images/blog/foundation-bottle-guide-hero.jpg"
+                        alt="Various foundation bottle designs including glass and plastic options"
+                        onerror="this.src='http://data.ylz1.com/public/upload/2026/01/24/30df618d-f5e2-4545-a4b5-5556add6e93e.png'">
+                </div>
+
+                <div class="article-body">
+                    <p class="lead text-dark fw-medium mb-4">Choosing the right foundation bottle is more than a
+                        packaging decision. It shapes how customers see your brand. The bottle affects product
+                        freshness, user experience, and shelf appeal.</p>
+
+                    <p>This guide covers the key factors you need to consider. Whether you are launching a new product
+                        or upgrading your current packaging, these tips will help you make the right choice.</p>
+
+                    <h2 id="why-it-matters">Why Foundation Bottle Choice Matters</h2>
+                    <p>Your foundation bottle is the first thing customers touch. It creates an instant impression of
+                        quality. A premium bottle suggests a premium product inside. Beyond looks, the bottle protects
+                        your formula. Liquid foundations contain active ingredients that can break down when exposed to
+                        air and light. The right packaging extends shelf life and keeps formulas stable.</p>
+                    <p>For B2B buyers, bottle choice also affects:</p>
+                    <ul class="mb-4">
+                        <li><strong>Production efficiency</strong> – Fill rates and line compatibility</li>
+                        <li><strong>Shipping costs</strong> – Weight and fragility</li>
+                        <li><strong>Brand positioning</strong> – Luxury vs mass market</li>
+                    </ul>
+
+                    <h2 id="key-factors">Key Factors to Consider</h2>
+                    <p>Before selecting a foundation bottle, answer these questions:</p>
+                    <div class="key-takeaways my-4">
+                        <ol class="mb-0 fw-medium">
+                            <li>What is your formula type? (Liquid, cream, mousse, or serum)</li>
+                            <li>Who is your target customer? (Luxury, mid-range, or value)</li>
+                            <li>Where will you sell? (Retail shelves, online, or both)</li>
+                            <li>What is your price point? (Affects material and finish options)</li>
+                            <li>What is your MOQ budget? (Minimum order quantity varies by design)</li>
+                        </ol>
+                    </div>
+
+                    <h2 id="materials">Material Options: Glass vs Plastic</h2>
+                    <p>Understanding the trade-offs between glass and plastic is critical for your logistics and brand
+                        image.</p>
+
+                    <div class="article-table-container">
+                        <table class="table-custom">
+                            <tr>
+                                <th>Factor</th>
+                                <th>Glass</th>
+                                <th>Plastic (PET/PP/PETG)</th>
+                            </tr>
+                            <tr>
+                                <td>Weight</td>
+                                <td>Heavier (Feels substantial)</td>
+                                <td>Lighter (Cheaper shipping)</td>
+                            </tr>
+                            <tr>
+                                <td>Feel</td>
+                                <td>Premium, cool to touch</td>
+                                <td>Varies by thickness</td>
+                            </tr>
+                            <tr>
+                                <td>Fragility</td>
+                                <td>Breakable (Requires padding)</td>
+                                <td>Shatter-resistant</td>
+                            </tr>
+                            <tr>
+                                <td>Cost</td>
+                                <td>Higher initial & shipping</td>
+                                <td>Lower</td>
+                            </tr>
+                            <tr>
+                                <td>UV Protection</td>
+                                <td>Excellent (esp. dark glass)</td>
+                                <td>Requires coating/coloring</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="p-3 bg-light rounded border-start border-4 border-primary mb-4">
+                        <strong>💡 YUSU Tip:</strong> Our 24-hour glass production line ensures quality control from the
+                        first bottle. <a href="#">Learn more about our glass capabilities →</a>
+                    </div>
+
+                    <h2 id="pumps">Pump Types and Dispensing Methods</h2>
+                    <p>The pump affects how customers use your product daily. Common options include:</p>
+                    <ul>
+                        <li><strong>Press Pump (Standard):</strong> Best for liquid foundations. Easy to control
+                            dispensing amount and compatible with most formulas.</li>
+                        <li><strong>Airless Pump:</strong> Protects formula from air exposure. Dispenses nearly 100% of
+                            product. Best for serums and sensitive formulas. <em class="text-secondary">(Higher cost per
+                                unit)</em>.</li>
+                        <li><strong>Dropper:</strong> Precise application control. Modern, serum-like aesthetic. Best
+                            for thinner formulas.</li>
+                        <li><strong>Squeeze Tube:</strong> No pump mechanism needed. Lower cost, lighter weight. Best
+                            for cream foundations.</li>
+                    </ul>
+
+                    <h2 id="finishes">Finish and Decoration Options</h2>
+                    <p>The bottle finish creates the visual impact. Common techniques include Spray Coating
+                        (Matte/Color), Electroplating (Metallic shine), UV Coating (Glossy), Frosted Glass
+                        (Soft/Diffused), and simple Silk Screen Printing for logos.</p>
+
+                    <p>Combine techniques for unique effects. For example, a <strong>frosted glass body + electroplated
+                            cap</strong> creates a sophisticated luxury feel.</p>
+
+                    <!-- Mid-Article CTA -->
+                    <div class="cta-box">
+                        <h3>Need Help Choosing?</h3>
+                        <p>Our R&D team has developed 1000+ foundation bottle designs. We can recommend the right option
+                            for your brand.</p>
+                        <a href="contact.html" class="btn btn-white-cta">Talk to Our Experts</a>
+                    </div>
+
+                    <h2 id="questions">What to Ask Your Supplier</h2>
+                    <p>When sourcing foundation bottles, ensure you get clear answers on:</p>
+                    <ul>
+                        <li><strong>MOQ:</strong> (YUSU: 10,000 pcs minimum)</li>
+                        <li><strong>Free Samples:</strong> (YUSU: Yes, samples free, shipping paid by customer)</li>
+                        <li><strong>Lead Time:</strong> (Varies by customization level)</li>
+                        <li><strong>Custom Mold Development:</strong> (YUSU: Yes, 50%+ faster than average)</li>
+                        <li><strong>IP Protection:</strong> (YUSU: 130+ IP-protected exclusive designs)</li>
+                    </ul>
+
+                    <h2 id="takeaways">Key Takeaways</h2>
+                    <div class="key-takeaways">
+                        <ul class="mb-0">
+                            <li>Match material to market: Glass for luxury, plastic for value/travel.</li>
+                            <li>Choose pump for formula: Airless for sensitive, standard for liquids.</li>
+                            <li>Size matters: 30ml is retail standard, 40ml for premium positioning.</li>
+                            <li>Finish creates impact: Combine techniques for unique designs.</li>
+                            <li>Ask the right questions: MOQ, samples, lead time, IP protection.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Related Articles Area -->
+                <div class="mt-5 pt-5 border-top">
+                    <h3 class="font-serif mb-4">Related Articles</h3>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="related-card border-0">
+                                <div class="related-img rounded mb-3">
+                                    <img src="assets/images/blog/glass-vs-plastic.jpg" alt="Glass vs Plastic"
+                                        onerror="this.src='http://iph.href.lu/300x200?text=Glass+Vs+Plastic'">
+                                </div>
+                                <span class="related-category">Material Guide</span>
+                                <a href="#" class="text-dark">
+                                    <h4 class="related-title h6">Glass vs Plastic Packaging: A Complete Comparison</h4>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="related-card border-0">
+                                <div class="related-img rounded mb-3">
+                                    <img src="assets/images/blog/airless.jpg" alt="Airless Pump"
+                                        onerror="this.src='http://iph.href.lu/300x200?text=Airless+Pump'">
+                                </div>
+                                <span class="related-category">Technology</span>
+                                <a href="#" class="text-dark">
+                                    <h4 class="related-title h6">What Is an Airless Pump? Benefits and Best Uses</h4>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="related-card border-0">
+                                <div class="related-img rounded mb-3">
+                                    <img src="assets/images/blog/trends.jpg" alt="Trends"
+                                        onerror="this.src='http://iph.href.lu/300x200?text=2026+Trends'">
+                                </div>
+                                <span class="related-category">Packaging Trends</span>
+                                <a href="#" class="text-dark">
+                                    <h4 class="related-title h6">2026 Beauty Packaging Trends: What Buyers Need to Know
+                                    </h4>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="col-lg-4">
+                <div class="sidebar-sticky-container">
+
+                    <!-- Table of Contents -->
+                    <div class="sidebar-card">
+                        <h5 class="fw-bold mb-3 font-serif">In This Article</h5>
+                        <ul class="toc-list" id="article-toc">
+                            <li class="toc-item"><a href="#why-it-matters" class="toc-link">Why Choice Matters</a></li>
+                            <li class="toc-item"><a href="#key-factors" class="toc-link">Key Factors to Consider</a>
+                            </li>
+                            <li class="toc-item"><a href="#materials" class="toc-link">Material: Glass vs Plastic</a>
+                            </li>
+                            <li class="toc-item"><a href="#pumps" class="toc-link">Pump Types</a></li>
+                            <li class="toc-item"><a href="#finishes" class="toc-link">Finish & Decoration</a></li>
+                            <li class="toc-item"><a href="#questions" class="toc-link">Questions for Suppliers</a></li>
+                            <li class="toc-item"><a href="#takeaways" class="toc-link">Key Takeaways</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Author Bio -->
+                    <div class="sidebar-card text-center">
+                        <div
+                            style="width: 80px; height: 80px; background: #eee; border-radius: 50%; margin: 0 auto 1rem; overflow: hidden;">
+                            <img src="assets/images/team/rd-team.jpg" alt="YUSU Team"
+                                style="width:100%; height:100%; object-fit:cover;"
+                                onerror="this.src='http://iph.href.lu/100x100?text=YUSU'">
+                        </div>
+                        <h5 class="font-serif fw-bold mb-1">YUSU R&D Team</h5>
+                        <p class="text-secondary-custom small mb-3">Cosmetic Packaging Experts</p>
+                        <p class="small text-muted mb-4">Developed 1000+ designs since 2017. Helping brands create
+                            IP-protected packaging.</p>
+                        <a href="innovation.html" class="btn btn-outline-dark btn-sm w-100">Our Innovation</a>
+                    </div>
+
+                    <!-- Social Share -->
+                    <div class="sidebar-card">
+                        <h6 class="small fw-bold text-uppercase text-secondary mb-3">Share this article</h6>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-light btn-sm flex-grow-1"><i data-lucide="linkedin"
+                                    style="width:16px;"></i></button>
+                            <button class="btn btn-light btn-sm flex-grow-1"><i data-lucide="facebook"
+                                    style="width:16px;"></i></button>
+                            <button class="btn btn-light btn-sm flex-grow-1"><i data-lucide="twitter"
+                                    style="width:16px;"></i></button>
+                            <button class="btn btn-light btn-sm flex-grow-1"><i data-lucide="link"
+                                    style="width:16px;"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- ============================================
+         Footer
+         ============================================ -->
+    <div id="footer-container">
+        <footer class="site-footer py-5" role="contentinfo">
+            <div class="container">
+                <div class="row g-4 justify-content-between">
+                    <div class="col-lg-4 col-md-6">
+                        <span class="d-block font-serif fs-3 fw-bold mb-3">YUSU<span
+                                class="text-primary">.</span></span>
+                        <p class="mb-4 text-white-50" style="max-width: 300px;">Premier supplier of patented cosmetic
+                            packaging. IP-protected designs, in-house R&D, and manufacturing excellence.</p>
+                        <div class="social-icons">
+                            <a href="#"><i data-lucide="linkedin"></i></a>
+                            <a href="#"><i data-lucide="instagram"></i></a>
+                            <a href="#"><i data-lucide="facebook"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <h5>Products</h5>
+                        <ul class="footer-links">
+                            <li><a href="#">Foundation Bottles</a></li>
+                            <li><a href="#">Lip Packaging</a></li>
+                            <li><a href="#">Cushion Compacts</a></li>
+                            <li><a href="#">Skincare Sets</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <h5>Company</h5>
+                        <ul class="footer-links">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="innovation.html">Innovation</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5>Contact Us</h5>
+                        <div class="footer-contact-item"><i data-lucide="map-pin"></i><span class="text-white-50">Baiyun
+                                District, Guangzhou, China</span></div>
+                        <div class="footer-contact-item"><i data-lucide="mail"></i><a
+                                href="mailto:sales@yusupackaging.com">sales@yusupackaging.com</a></div>
+                        <div class="footer-contact-item"><i data-lucide="phone"></i><a href="tel:+861234567890">+86 123
+                                456 7890</a></div>
+                    </div>
+                </div>
+                <div class="footer-bottom mt-5 pt-4 d-flex flex-wrap justify-content-between align-items-center">
+                    <p>&copy; 2026 YUSU Packaging. All rights reserved.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white-50 small text-decoration-none">Privacy Policy</a>
+                        <a href="#" class="text-white-50 small text-decoration-none">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Scripts -->
+    <script>
+        // Init Lucide
+        lucide.createIcons();
+
+        // Sticky Nav Logic (Article specific - always white bg but shadow on scroll)
+        document.addEventListener('DOMContentLoaded', function () {
+            // 0. Active Link Highlighting
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+
+                const href = link.getAttribute('href');
+                if (!href || href === '#') return;
+
+                const hrefClean = href.replace(/^\//, '').replace(/\.html$/, '');
+                const pathClean = currentPath.split('/').pop().replace(/\.html$/, '');
+
+                if (pathClean === hrefClean) {
+                    link.classList.add('active');
+                } else if (hrefClean !== '' && hrefClean !== 'home' && hrefClean !== 'index' && currentPath.includes(hrefClean)) {
+                    link.classList.add('active');
+                }
+            });
+
+            const navbar = document.getElementById('mainNavbar');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 10) {
+                    navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+                } else {
+                    navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+                }
+            });
+
+            // Table of Contents Active State
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    if (entry.intersectionRatio > 0) {
+                        document.querySelector(`.toc-link[href="#${id}"]`)?.classList.add('active');
+                    } else {
+                        document.querySelector(`.toc-link[href="#${id}"]`)?.classList.remove('active');
+                    }
+                });
+            });
+
+            // Track all headers that have an ID
+            document.querySelectorAll('.article-body h2[id]').forEach((section) => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+
+</html>

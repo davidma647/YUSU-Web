@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Cosmetic Packaging | YUSU</title>
+    <meta name="description"
+        content="Get unique, IP-protected foundation bottles & lipstick tubes. 1000+ designs, fast mold development, free samples. Request your quote today.">
+    <meta name="robots" content="noindex">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* =========================================
+           Design System & Variables (Overriding Bootstrap)
+           ========================================= */
+        :root {
+            /* Brand Colors */
+            --bs-primary: #B08968;
+            /* Warm Copper */
+            --bs-primary-rgb: 176, 137, 104;
+            --bs-secondary: #5A5A5A;
+            /* Neutral Grey */
+            --bs-secondary-rgb: 90, 90, 90;
+            --bs-dark: #2D2D2D;
+            /* Charcoal */
+            --bs-dark-rgb: 45, 45, 45;
+            --bs-light: #F8F8F8;
+            /* Neutral White */
+            --bs-light-rgb: 248, 248, 248;
+            --bs-danger: #B91C1C;
+            /* Deep Red */
+            --bs-success: #15803D;
+            /* Deep Green */
+
+            /* Typography */
+            --bs-body-font-family: 'Inter', sans-serif;
+            --bs-font-serif: 'Cormorant Garamond', serif;
+
+            /* Spacing & Layout */
+            --section-padding: 5rem;
+        }
+
+        /* General Resets & Typography */
+        body {
+            background-color: var(--bs-light);
+            color: var(--bs-dark);
+            font-family: var(--bs-body-font-family);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--bs-font-serif);
+            font-weight: 600;
+            color: var(--bs-dark);
+        }
+
+        .lead {
+            font-weight: 400;
+            color: #6B6B6B;
+            /* Text Secondary */
+        }
+
+        /* Utility Classes Overrides */
+        .text-primary {
+            color: var(--bs-primary) !important;
+        }
+
+        .bg-primary {
+            background-color: var(--bs-primary) !important;
+        }
+
+        .text-secondary {
+            color: #6B6B6B !important;
+        }
+
+        /* =========================================
+           Component: Buttons
+           ========================================= */
+        .btn {
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+            color: #fff;
+            box-shadow: 0 4px 14px 0 rgba(176, 137, 104, 0.35);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:active,
+        .btn-primary:focus {
+            background-color: #9A7759 !important;
+            /* Darken 10% */
+            border-color: #9A7759 !important;
+            box-shadow: 0 6px 20px 0 rgba(176, 137, 104, 0.45);
+            transform: translateY(-1px);
+        }
+
+        /* =========================================
+           Component: Cards
+           ========================================= */
+        .card {
+            border: 1px solid #F3F4F6;
+            border-radius: 4px;
+            /* Sharp-ish edges */
+            background-color: #FFFFFF;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            /* Soft, premium shadow */
+        }
+
+        .card-img-top {
+            border-radius: 4px 4px 0 0;
+            height: 300px;
+            object-fit: cover;
+            background-color: #eee;
+            /* Placeholder bg */
+        }
+
+        /* =========================================
+           Section: Hero
+           ========================================= */
+        .hero-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #F8F8F8 0%, #EFEFEF 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 991.98px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-section {
+                padding: 4rem 0;
+            }
+        }
+
+        .trust-indicators {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #5A5A5A;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* =========================================
+           Section: Product Showcase
+           ========================================= */
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--bs-dark);
+            border-radius: 2px;
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* =========================================
+           Section: Trust Bar
+           ========================================= */
+        .trust-bar {
+            background-color: #fff;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 2rem 0;
+        }
+
+        .trust-logo {
+            opacity: 0.6;
+            filter: grayscale(100%);
+            transition: opacity 0.3s;
+            max-height: 40px;
+            width: auto;
+        }
+
+        .trust-logo:hover {
+            opacity: 1;
+        }
+
+        /* =========================================
+           Feature Icons
+           ========================================= */
+        .feature-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            background-color: rgba(176, 137, 104, 0.1);
+            color: var(--bs-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+
+        .feature-icon-emoji {
+            /* Fallback if icons fail, but using Lucide mostly */
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        /* =========================================
+           Section: Lead Form (Bottom)
+           ========================================= */
+        .lead-form-section {
+            background-color: #FFFFFF;
+            border-radius: 8px;
+            padding: 3rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* =========================================
+           Floating Action Button & Animation
+           ========================================= */
+        .fixed-cta-btn {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1050;
+            /* Above most content */
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background-color: var(--bs-primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(176, 137, 104, 0.4);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            animation: breathe 3s infinite ease-in-out;
+        }
+
+        .fixed-cta-btn:hover {
+            background-color: #9A7759;
+            transform: scale(1.05);
+            /* Pause animation on hover */
+            animation-play-state: paused;
+        }
+
+        .fixed-cta-btn i {
+            width: 20px;
+            height: 20px;
+        }
+
+        @keyframes breathe {
+            0% {
+                box-shadow: 0 0 0 0 rgba(176, 137, 104, 0.4);
+                transform: scale(1);
+            }
+
+            50% {
+                box-shadow: 0 0 0 10px rgba(176, 137, 104, 0);
+                transform: scale(1.02);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(176, 137, 104, 0);
+                transform: scale(1);
+            }
+        }
+
+        /* Mobile adjustment for FAB */
+        @media (max-width: 576px) {
+            .fixed-cta-btn {
+                padding: 0.75rem;
+                border-radius: 50%;
+                width: 56px;
+                height: 56px;
+                justify-content: center;
+            }
+
+            .fixed-cta-btn span {
+                display: none;
+                /* Hide text on mobile, just icon */
+            }
+        }
+
+        /* =========================================
+           Forms
+           ========================================= */
+        .form-control,
+        .form-select {
+            border-radius: 4px;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ddd;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--bs-primary);
+            box-shadow: 0 0 0 3px rgba(176, 137, 104, 0.15);
+        }
+
+        .form-label {
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Minimal Copyright */
+        .copyright-bar {
+            font-size: 0.75rem;
+            color: #999;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating Action Button -->
+    <button type="button" class="fixed-cta-btn" data-bs-toggle="modal" data-bs-target="#inquiryModal">
+        <i data-lucide="message-square"></i>
+        <span>Get A Quote</span>
+    </button>
+
+    <!-- Modal Form -->
+    <div class="modal fade" id="inquiryModal" tabindex="-1" aria-labelledby="inquiryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title font-serif fw-bold fs-4" id="inquiryModalLabel">Request Your Quote</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 pt-3">
+                    <p class="text-secondary small mb-4">Fast response within 24 hours. Confidentiality guaranteed.</p>
+                    <form>
+                        <div class="mb-3">
+                            <label for="modal-name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="modal-name" placeholder="John Doe">
+                        </div>
+                        <div class="mb-3">
+                            <label for="modal-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="modal-email" placeholder="john@company.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="modal-product" class="form-label">Interested Product</label>
+                            <select class="form-select" id="modal-product">
+                                <option selected>Select a product...</option>
+                                <option value="foundation">Foundation Bottles</option>
+                                <option value="lipstick">Lipstick Tubes</option>
+                                <option value="cushion">Air Cushion Cases</option>
+                                <option value="custom">Custom Mold / Other</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 mt-2">Get Free Quote</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-6">
+                    <h1 class="hero-title display-4">
+                        Premium Foundation Bottles from China's Top Packaging Innovator
+                    </h1>
+                    <p class="lead fs-5 mb-4">
+                        IP-Protected Designs. Fast Mold Development. Free Samples Available.
+                    </p>
+
+                    <div class="d-flex gap-3 mb-4">
+                        <a href="#lead-form" class="btn btn-primary btn-lg">Get a Free Quote <i
+                                data-lucide="arrow-right" class="ms-1 inline-icon"
+                                style="height:1em; width:1em; vertical-align:-0.15em;"></i></a>
+                    </div>
+
+                    <div class="trust-indicators">
+                        <div class="trust-item">
+                            <i data-lucide="flask-conical" class="text-primary" style="width:16px; height:16px;"></i>
+                            <span>In-House R&D Since 2017</span>
+                        </div>
+                        <div class="trust-item">
+                            <i data-lucide="library" class="text-primary" style="width:16px; height:16px;"></i>
+                            <span>1000+ Design Library</span>
+                        </div>
+                        <div class="trust-item">
+                            <i data-lucide="trophy" class="text-primary" style="width:16px; height:16px;"></i>
+                            <span>Top 100 China Beauty Pkg</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                    <!-- Placeholder for Hero Image -->
+                    <div class="bg-white p-2 border rounded-1 shadow-sm position-relative">
+                        <img src="https://placehold.co/600x600/f0f0f0/666666?text=Hero+Image:+Premium+Foundation+Bottles"
+                            alt="Premium Cosmetic Packaging Collection" class="img-fluid rounded-1 w-100">
+                        <div
+                            class="position-absolute bottom-0 end-0 bg-white px-3 py-2 m-3 rounded shadow-sm text-center border">
+                            <small class="d-block text-secondary text-uppercase fw-bold"
+                                style="font-size: 0.7rem;">Verified Supplier</small>
+                            <span class="fw-bold text-dark">YUSU Packaging</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Statement -->
+    <section class="py-5 bg-white">
+        <div class="container py-lg-4 text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="mb-4">Struggling to find packaging that makes your brand stand out?</h2>
+                    <p class="text-secondary fs-5" style="max-width: 700px; margin: 0 auto;">
+                        Generic bottles look the same as your competitors. Custom designs take too long. And you need a
+                        reliable supplier who protects your brand identity.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution / Products -->
+    <section class="py-5" style="background-color: #FAFAFA;">
+        <div class="container py-lg-5">
+            <div class="text-center mb-5">
+                <h2 class="mb-3">Stand Out with Exclusive Packaging Designs</h2>
+                <p class="text-secondary">Explore our most popular IP-protected foundation bottles — designed for brands
+                    that demand more.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Product 1 -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="position-relative">
+                            <img src="https://placehold.co/400x400/eeeeee/999999?text=Gold+Bar+(B-AP40)"
+                                class="card-img-top" alt="Gold Bar Foundation Bottle">
+                            <div class="product-badge">
+                                <i data-lucide="lock" style="width:12px;"></i> IP Protected
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h4 class="card-title h5 mb-3">Gold Bar Foundation Bottle (B-AP40)</h4>
+                            <p class="card-text text-secondary mb-4">Inspired by luxury gold bars. Maximum shelf impact.
+                            </p>
+                            <a href="#lead-form" class="btn btn-outline-dark w-100 stretched-link">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="position-relative">
+                            <img src="https://placehold.co/400x400/eeeeee/999999?text=Plum+Blossom+(A-BE23)"
+                                class="card-img-top" alt="Plum Blossom Foundation Bottle">
+                            <div class="product-badge">
+                                <i data-lucide="lock" style="width:12px;"></i> IP Protected
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h4 class="card-title h5 mb-3">Plum Blossom Bottle (A-BE23)</h4>
+                            <p class="card-text text-secondary mb-4">Eastern elegance meets modern cosmetics style.</p>
+                            <a href="#lead-form" class="btn btn-outline-dark w-100 stretched-link">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="position-relative">
+                            <img src="https://placehold.co/400x400/eeeeee/999999?text=Chamfered+(B-AP37)"
+                                class="card-img-top" alt="Chamfered Foundation Bottle">
+                            <div class="product-badge">
+                                <i data-lucide="lock" style="width:12px;"></i> IP Protected
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h4 class="card-title h5 mb-3">Chamfered Bottle (B-AP37)</h4>
+                            <p class="card-text text-secondary mb-4">Precision geometry. Minimalist design.</p>
+                            <a href="#lead-form" class="btn btn-outline-dark w-100 stretched-link">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="container">
+            <div class="text-center">
+                <p class="fw-bold mb-4 text-uppercase letter-spacing-1 small text-secondary">Trusted by 100+ Brands
+                    Worldwide</p>
+                <div class="d-flex flex-wrap justify-content-center gap-5 align-items-center opacity-75">
+                    <!-- Placeholder Logos with Text Fallback -->
+                    <span class="h4 m-0 font-serif text-secondary">PERFECT DIARY</span>
+                    <span class="h4 m-0 font-serif text-secondary">ZEESEA</span>
+                    <span class="h4 m-0 font-serif text-secondary">COSMAX</span>
+                    <span class="h4 m-0 font-serif text-secondary">O.TWO.O</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <section class="py-5 bg-white">
+        <div class="container py-lg-5">
+            <div class="text-center mb-5">
+                <h2 class="mb-2">Why Brands Choose YUSU</h2>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4 text-center">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="feature-icon-wrapper">
+                            <i data-lucide="palette" style="width:32px; height:32px;"></i>
+                        </div>
+                        <h4 class="h5 mb-3">130+ IP-Protected Originals</h4>
+                        <p class="text-secondary">Unique designs you can call your own. No copying. No competition
+                            overlap.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="feature-icon-wrapper">
+                            <i data-lucide="zap" style="width:32px; height:32px;"></i>
+                        </div>
+                        <h4 class="h5 mb-3">50%+ Faster Mold Development</h4>
+                        <p class="text-secondary">Our in-house mold team cuts lead times in half. Get to market faster.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="feature-icon-wrapper">
+                            <i data-lucide="package" style="width:32px; height:32px;"></i>
+                        </div>
+                        <h4 class="h5 mb-3">Free Samples, Fast Shipping</h4>
+                        <p class="text-secondary">Try before you commit. Samples are free — you only pay shipping.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Form Section (Main Conversion) -->
+    <section class="py-5" id="lead-form" style="background-color: #EEEEEE;">
+        <div class="container py-lg-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="lead-form-section">
+                        <div class="text-center mb-4">
+                            <h2 class="mb-2">Get Your Free Quote</h2>
+                            <p class="text-secondary">Complete the form below and we'll respond within 24 hours.</p>
+                        </div>
+
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Work Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="john@company.com"
+                                        required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="whatsapp" class="form-label">WhatsApp Number</label>
+                                    <input type="tel" class="form-control" id="whatsapp" placeholder="+1 234 567 8900">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="product-interest" class="form-label">Product Interest</label>
+                                    <select class="form-select" id="product-interest">
+                                        <option selected>Select product category...</option>
+                                        <option value="foundation">Foundation Bottles</option>
+                                        <option value="lipstick">Lipstick Tubes</option>
+                                        <option value="cushion">Air Cushion Cases</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">Your Message (Optional)</label>
+                                    <textarea class="form-control" id="message" rows="3"
+                                        placeholder="Tell us about your project or specific model numbers..."></textarea>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-primary w-100 py-3 fs-6">Get My Free
+                                        Quote</button>
+                                </div>
+                                <div class="col-12 text-center mt-3">
+                                    <small class="text-secondary">
+                                        <i data-lucide="lock" style="width:12px; vertical-align:middle;"></i> Your
+                                        information is safe. We respond within 24 hours.
+                                    </small>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plain Footer (Minimal) -->
+    <div class="copyright-bar bg-white">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Guangzhou Yusu Packaging Products Co., Ltd. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
