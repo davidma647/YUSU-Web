@@ -1,24 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-
-    // 1. Preloader Logic (Global)
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        window.addEventListener('load', function () {
-            preloader.classList.add('fade-out');
-            setTimeout(() => {
-                preloader.remove();
-            }, 500);
-        });
-
-        setTimeout(() => {
-            if (document.body.contains(preloader)) {
-                preloader.classList.add('fade-out');
-                setTimeout(() => preloader.remove(), 500);
-            }
-        }, 3000);
-    }
-
-    // 2. Scroll Animations Utility (Global)
+    // 1. Scroll Animations Utility (Global)
     // Only defines the observer, specific elements added per page usually, 
     // but we support .fade-up auto-trigger if the class exists.
     const fadeUpObserver = new IntersectionObserver((entries) => {

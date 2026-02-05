@@ -1,0 +1,49 @@
+// In this file you can override the default variables of Bootstrap
+
+/* ============================================
+   Brand Colors
+   ============================================ */
+$primary: #B08968;
+$secondary: #5A5A5A;
+$success: #15803D;
+$danger: #B91C1C;
+$dark: #2D2D2D;
+$light: #F8F8F8;
+
+// Create theme-specific colors
+$text-secondary: #6B6B6B;
+
+
+/* ============================================
+   Typography
+   ============================================ */
+$font-family-sans-serif: 'Inter', system-ui, -apple-system, sans-serif;
+$font-family-serif: 'Cormorant Garamond', serif; // Custom variable, needs to be used in styles
+
+// Set base font pairings
+$headings-font-family: $font-family-serif;
+$headings-color: $dark;
+$body-color: $dark;
+$body-bg: $light;
+
+
+/* ============================================
+   Components
+   ============================================ */
+// Navbar
+$navbar-light-color: $dark;
+$navbar-light-hover-color: $primary;
+$navbar-light-active-color: $primary;
+$nav-link-font-weight: 600;
+$nav-link-font-size: 0.875rem;
+
+// Buttons
+$btn-font-weight: 500;
+$btn-border-radius: 4px;
+$btn-padding-y: 0.75rem;
+$btn-padding-x: 1.5rem;
+$btn-letter-spacing: 0.1em; // Custom property not in BS, handled in custom CSS usually, or via mixin overrides if advanced. Kept here for reference.
+
+// Cards & Shadows
+$enable-shadows: true;
+$box-shadow: 0 4px 14px 0 rgba(176, 137, 104, 0.35); // Replaces --shadow-primary as default shadow? Or keep separate.

@@ -25,14 +25,6 @@
     <?php wp_body_open(); ?>
 
     <div id="page" class="site">
-
-        <!-- Preloader (可选) -->
-        <div id="preloader">
-            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
-
         <header id="masthead" class="site-header">
 
             <!-- Navbar: 添加了 navbar-transparent id="mainNavbar" -->

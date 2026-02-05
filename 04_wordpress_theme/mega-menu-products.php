@@ -134,8 +134,9 @@
                     <?php endif; ?>
                 </div>
                 <div class="mt-4">
-                    <a href="<?php echo esc_url(home_url('/products')); ?>" class="btn btn-outline-dark btn-sm w-100">
-                        Browse Full Catalog
+                    <a href="<?php echo esc_url(home_url('/products')); ?>" class="btn btn-outline-dark w-100 py-3"
+                        style="letter-spacing: 0.15em; font-weight: 600;">
+                        BROWSE FULL CATALOG
                     </a>
                 </div>
             </div>

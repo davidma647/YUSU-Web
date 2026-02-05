@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Page without Title (Custom H1)
+Template Name: Page without Title
 */
 
 get_header();

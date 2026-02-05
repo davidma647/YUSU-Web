@@ -45,11 +45,6 @@ function bootscore_child_enqueue_styles()
         $bootstrap_source = 'bootstrap-cdn';
     }
 
-    // 3. 子主题全局样式 (Custom Global Overrides)
-    // 依赖于上面确定的 bootstrap source
-    $modified_globalCss = date('YmdHi', filemtime(get_stylesheet_directory() . '/assets/css/global.css'));
-    wp_enqueue_style('global-style', get_stylesheet_directory_uri() . '/assets/css/global.css', array($bootstrap_source), $modified_globalCss);
-
     // Explicitly dequeue parent main styles if they exist to prevent 404
     wp_dequeue_style('bootscore-main');
     wp_deregister_style('bootscore-main');
@@ -70,6 +65,14 @@ function bootscore_child_enqueue_styles()
     // 5. Lucide Icons
     wp_enqueue_script('lucide-icons', 'https://unpkg.com/lucide@latest', array(), null, true);
     wp_add_inline_script('lucide-icons', 'lucide.createIcons();');
+
+    // ========== 页面专属 JS ==========
+
+    // 首页
+    if (is_front_page()) {
+        $home_js_ver = date('YmdHi', filemtime(get_stylesheet_directory() . '/assets/js/home.js'));
+        wp_enqueue_script('yusu-home', get_stylesheet_directory_uri() . '/assets/js/home.js', array('jquery', 'lucide-icons'), $home_js_ver, true);
+    }
 }
 
 
