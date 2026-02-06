@@ -42,28 +42,22 @@ if (is_array($hero_banner_mobile_data)) {
 $cta_background_url = is_array($cta_background) ? $cta_background['url'] : ($cta_background ?: 'https://iph.href.lu/');
 ?>
 
-<!-- Dynamic Banner Styles (CTA Only) -->
-<style>
-    .final-cta-section {
-        background-image: linear-gradient(135deg, rgba(176, 137, 104, 0.95) 0%, rgba(133, 103, 77, 0.95) 100%), url('<?php echo esc_url($cta_background_url); ?>');
-    }
-</style>
+
 
 <div class="home-page-wrapper">
     <!-- Module 1: Hero Section -->
     <section id="hero" class="hero-section" aria-labelledby="hero-heading">
-        <!-- SEO Friendly Background -->
         <div class="hero-background">
-            <!-- Desktop Banner: sizes="100vw" 强制使用最高分辨率 -->
+            <!-- Desktop Banner -->
             <img src="<?php echo esc_url($hero_banner_url); ?>" alt="<?php echo esc_attr($hero_banner_alt); ?>"
-                class="hero-img d-none d-lg-block" sizes="100vw" loading="eager" fetchpriority="high">
-
+                class="d-none d-lg-block">
             <!-- Mobile Banner -->
             <img src="<?php echo esc_url($hero_banner_mobile_url); ?>" alt="<?php echo esc_attr($hero_banner_alt); ?>"
-                class="hero-img d-lg-none" sizes="100vw" loading="eager" fetchpriority="high">
-
-            <div class="hero-gradient"></div>
+                class="d-lg-none">
         </div>
+
+        <!-- Gradient Overlay -->
+        <div class="hero-gradient"></div>
 
         <div class="container position-relative z-1">
             <div class="row align-items-center">
@@ -125,6 +119,7 @@ $cta_background_url = is_array($cta_background) ? $cta_background['url'] : ($cta
                     $render_logos = function ($logos) {
                         if ($logos) {
                             foreach ($logos as $logo) {
+
                                 // Gallery Field 直接返回 Image Array
                                 if (is_array($logo)) {
                                     $img_url = $logo['url'];
@@ -136,14 +131,14 @@ $cta_background_url = is_array($cta_background) ? $cta_background['url'] : ($cta
                                 }
 
                                 if ($img_url) {
-                                    echo '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($img_alt) . '" loading="lazy">';
+                                    echo '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($img_alt) . '" style="height: 80px; width: auto;" loading="lazy">';
                                 }
                             }
                         } else {
                             // 兜底占位图 (Default Placeholders)
                             $placeholders = ['Brand A', 'Brand B', 'Brand C', 'Brand D', 'Brand E', 'Brand F'];
                             foreach ($placeholders as $brand) {
-                                echo '<img src="https://iph.href.lu/200x80?text=' . urlencode($brand) . '" alt="' . esc_attr($brand) . '" loading="lazy">';
+                                echo '<img src="https://iph.href.lu/200x80?text=' . urlencode($brand) . '" alt="' . esc_attr($brand) . '" style="height: 80px; width: auto;" loading="lazy">';
                             }
                         }
                     };
@@ -461,46 +456,145 @@ $cta_background_url = is_array($cta_background) ? $cta_background['url'] : ($cta
         </div>
     </section>
 
-    <!-- Module 6.5: Certifications -->
-    <section class="py-5 bg-light border-top border-bottom">
-        <div class="container">
-            <div class="row text-center justify-content-center g-4">
-                <div class="col-6 col-md-3 d-flex flex-column align-items-center cert-item" data-bs-toggle="modal"
-                    data-bs-target="#certModal" data-cert-title="ISO 9001 Certification"
-                    data-cert-img="https://iph.href.lu/600x800?text=ISO+9001">
-                    <div class="cert-icon-wrapper mb-3 text-primary bg-white p-3 rounded-circle shadow-sm">
-                        <i data-lucide="award" style="width: 32px; height: 32px;"></i>
+    <section class="py-5 bg-light border-top border-bottom" id="trust-matrix">
+        <div class="container py-lg-4">
+            <div class="row g-5 align-items-center">
+
+                <!-- LEFT: Certifications (Hard Standards) -->
+                <div class="col-lg-5 border-end-lg border-secondary-subtle">
+                    <div class="pe-lg-4">
+                        <div class="mb-4">
+                            <h6 class="text-uppercase fw-bold text-secondary letter-spacing-2 mb-1">Verified Standards
+                            </h6>
+                            <p class="text-secondary-custom small mb-0">Our manufacturing meets the highest global
+                                compliance.</p>
+                        </div>
+
+                        <div class="row g-4">
+                            <!-- Cert 1 -->
+                            <div class="col-6 d-flex align-items-start gap-3">
+                                <div class="bg-white p-2 rounded shadow-sm text-primary flex-shrink-0">
+                                    <i data-lucide="award" style="width: 20px; height: 20px;"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1 fs-6 font-serif">ISO 9001</h6>
+                                    <p class="small text-secondary mb-0 lh-sm">Quality Mgmt.</p>
+                                </div>
+                            </div>
+                            <!-- Cert 2 -->
+                            <div class="col-6 d-flex align-items-start gap-3">
+                                <div class="bg-white p-2 rounded shadow-sm text-primary flex-shrink-0">
+                                    <i data-lucide="leaf" style="width: 20px; height: 20px;"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1 fs-6 font-serif">ISO 14001</h6>
+                                    <p class="small text-secondary mb-0 lh-sm">Eco-Friendly</p>
+                                </div>
+                            </div>
+                            <!-- Cert 3 -->
+                            <div class="col-6 d-flex align-items-start gap-3">
+                                <div class="bg-white p-2 rounded shadow-sm text-primary flex-shrink-0">
+                                    <i data-lucide="shield-check" style="width: 20px; height: 20px;"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1 fs-6 font-serif">SGS Verified</h6>
+                                    <p class="small text-secondary mb-0 lh-sm">Safety Audit</p>
+                                </div>
+                            </div>
+                            <!-- Cert 4 -->
+                            <div class="col-6 d-flex align-items-start gap-3">
+                                <div class="bg-white p-2 rounded shadow-sm text-primary flex-shrink-0">
+                                    <i data-lucide="star" style="width: 20px; height: 20px;"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1 fs-6 font-serif">Top 100</h6>
+                                    <p class="small text-secondary mb-0 lh-sm">China Beauty</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h5 class="h6 text-uppercase fw-bold letter-spacing-1 mb-1">ISO 9001</h5>
-                    <p class="small text-secondary-custom mb-0">Quality Management</p>
                 </div>
-                <div class="col-6 col-md-3 d-flex flex-column align-items-center cert-item" data-bs-toggle="modal"
-                    data-bs-target="#certModal" data-cert-title="ISO 14001 Certification"
-                    data-cert-img="https://iph.href.lu/600x800?text=ISO+14001">
-                    <div class="cert-icon-wrapper mb-3 text-primary bg-white p-3 rounded-circle shadow-sm">
-                        <i data-lucide="leaf" style="width: 32px; height: 32px;"></i>
+
+                <!-- RIGHT: OEM Ecosystem (Soft Power / Compatibility) -->
+                <div class="col-lg-7">
+                    <div class="ps-lg-4">
+                        <div class="mb-4 d-flex align-items-center justify-content-between">
+                            <div>
+                                <h6 class="text-uppercase fw-bold text-secondary letter-spacing-2 mb-1">Production
+                                    Ecosystem</h6>
+                                <p class="text-dark fw-medium mb-0">Engineered for seamless compatibility with 20+
+                                    top-tier fillers.</p>
+                            </div>
+                        </div>
+
+                        <!-- Marquee Container -->
+                        <div class="eco-marquee-wrapper d-flex flex-column gap-3">
+                            <?php
+                            $partner_logos = get_field('partner_logos');
+                            if ($partner_logos):
+                                $total_logos = count($partner_logos);
+                                $midpoint = ceil($total_logos / 2);
+                                $row1_logos = array_slice($partner_logos, 0, $midpoint);
+                                $row2_logos = array_slice($partner_logos, $midpoint);
+                                ?>
+                                <!-- Row 1: Top Manufacturers -->
+                                <div class="eco-track">
+                                    <!-- Set 1 -->
+                                    <?php foreach ($row1_logos as $logo): ?>
+                                        <div class="eco-card">
+                                            <img src="<?php echo esc_url($logo['url']); ?>"
+                                                alt="<?php echo esc_attr($logo['alt']); ?>">
+                                        </div>
+                                    <?php endforeach; ?>
+                                    <!-- Duplicate for Infinite Scroll -->
+                                    <?php foreach ($row1_logos as $logo): ?>
+                                        <div class="eco-card">
+                                            <img src="<?php echo esc_url($logo['url']); ?>"
+                                                alt="<?php echo esc_attr($logo['alt']); ?>">
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+
+                                <!-- Row 2: Global Supply Chain (Reverse Scroll) -->
+                                <div class="eco-track reverse">
+                                    <!-- Set 1 -->
+                                    <?php foreach ($row2_logos as $logo): ?>
+                                        <div class="eco-card">
+                                            <img src="<?php echo esc_url($logo['url']); ?>"
+                                                alt="<?php echo esc_attr($logo['alt']); ?>">
+                                        </div>
+                                    <?php endforeach; ?>
+                                    <!-- Duplicate for Infinite Scroll -->
+                                    <?php foreach ($row2_logos as $logo): ?>
+                                        <div class="eco-card">
+                                            <img src="<?php echo esc_url($logo['url']); ?>"
+                                                alt="<?php echo esc_attr($logo['alt']); ?>">
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php else: ?>
+                                <!-- Fallback if no logos configured -->
+                                <div class="eco-track">
+                                    <div class="eco-card"><span class="text-muted small">Configure 'partner_logos' in
+                                            Dashboard</span></div>
+                                    <div class="eco-card"><span class="text-muted small">Configure 'partner_logos' in
+                                            Dashboard</span></div>
+                                    <div class="eco-card"><span class="text-muted small">Configure 'partner_logos' in
+                                            Dashboard</span></div>
+                                    <div class="eco-card"><span class="text-muted small">Configure 'partner_logos' in
+                                            Dashboard</span></div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="mt-3 text-end d-lg-none">
+                            <span class="text-secondary-custom small fst-italic">Trusted by 20+ Global
+                                Manufacturers</span>
+                        </div>
+
                     </div>
-                    <h5 class="h6 text-uppercase fw-bold letter-spacing-1 mb-1">ISO 14001</h5>
-                    <p class="small text-secondary-custom mb-0">Eco-Friendly Certified</p>
                 </div>
-                <div class="col-6 col-md-3 d-flex flex-column align-items-center cert-item" data-bs-toggle="modal"
-                    data-bs-target="#certModal" data-cert-title="SGS Verification Report"
-                    data-cert-img="https://iph.href.lu/600x800?text=SGS+Report">
-                    <div class="cert-icon-wrapper mb-3 text-primary bg-white p-3 rounded-circle shadow-sm">
-                        <i data-lucide="shield-check" style="width: 32px; height: 32px;"></i>
-                    </div>
-                    <h5 class="h6 text-uppercase fw-bold letter-spacing-1 mb-1">SGS Verified</h5>
-                    <p class="small text-secondary-custom mb-0">Safety & Compliance</p>
-                </div>
-                <div class="col-6 col-md-3 d-flex flex-column align-items-center cert-item" data-bs-toggle="modal"
-                    data-bs-target="#certModal" data-cert-title="Top 100 China Beauty Packaging"
-                    data-cert-img="https://iph.href.lu/600x800?text=Top+100+Award">
-                    <div class="cert-icon-wrapper mb-3 text-primary bg-white p-3 rounded-circle shadow-sm">
-                        <i data-lucide="star" style="width: 32px; height: 32px;"></i>
-                    </div>
-                    <h5 class="h6 text-uppercase fw-bold letter-spacing-1 mb-1">Top 100</h5>
-                    <p class="small text-secondary-custom mb-0">China Beauty Packaging</p>
-                </div>
+
             </div>
         </div>
     </section>
@@ -554,7 +648,8 @@ $cta_background_url = is_array($cta_background) ? $cta_background['url'] : ($cta
     </section>
 
     <!-- Module 8: Final CTA -->
-    <section id="final-cta" class="final-cta-section py-5" aria-labelledby="final-cta-heading">
+    <section id="final-cta" class="final-cta-section py-5" aria-labelledby="final-cta-heading"
+        style="background-image: linear-gradient(135deg, rgba(176, 137, 104, 0.95) 0%, rgba(133, 103, 77, 0.95) 100%), url('<?php echo esc_url($cta_background_url); ?>');">
         <div class="container py-lg-5">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
@@ -617,7 +712,7 @@ $cta_background_url = is_array($cta_background) ? $cta_background['url'] : ($cta
         </div>
     </section>
 
-</div> <!-- End .home-page-wrapper -->
+</div>
 
 <!-- Modals -->
 <!-- 1. Video Modal -->
@@ -639,20 +734,7 @@ $cta_background_url = is_array($cta_background) ? $cta_background['url'] : ($cta
     </div>
 </div>
 
-<!-- 2. Certification Modal -->
-<div class="modal fade" id="certModal" tabindex="-1" aria-labelledby="certModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0">
-            <div class="modal-header border-0">
-                <h5 class="modal-title font-serif fw-bold" id="certModalLabel">Certification</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-center p-0">
-                <img id="certModalImage" src="" alt="Certificate" class="img-fluid w-100">
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <!-- 3. Sample Request Modal -->
 <div class="modal fade" id="sampleModal" tabindex="-1" aria-labelledby="sampleModalLabel" aria-hidden="true">
@@ -675,6 +757,22 @@ $cta_background_url = is_array($cta_background) ? $cta_background['url'] : ($cta
                         <button type="submit" class="btn btn-primary">Send Request</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 4. Image Preview Modal (Lightbox) -->
+<div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg border-0">
+        <div class="modal-content bg-transparent border-0 shadow-none">
+            <div class="modal-header border-0 p-0 mb-2">
+                <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0 text-center">
+                <img id="imagePreviewImg" src="" alt="Preview" class="img-fluid rounded shadow-lg"
+                    style="max-height: 85vh; width: auto;">
             </div>
         </div>
     </div>

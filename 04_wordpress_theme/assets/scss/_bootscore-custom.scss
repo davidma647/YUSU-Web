@@ -174,7 +174,7 @@
             border-radius: 0;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             padding: 0;
-            margin-top: 0;
+            margin-top: 0; // Ensure no default bootstrap margin
             display: none;
 
             &::before {
@@ -186,6 +186,11 @@
                 height: 30px;
                 background: transparent;
             }
+        }
+
+        // Adjust top position when navbar is scrolled (compact height)
+        &.navbar-scrolled .dropdown-menu.mega-menu {
+            top: var(--navbar-scrolled-height);
         }
 
         .dropdown:hover .dropdown-menu,

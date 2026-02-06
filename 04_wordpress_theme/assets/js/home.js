@@ -1,34 +1,73 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Init Icons
-    if (typeof lucide !== 'undefined') { lucide.createIcons(); }
 
-    // Animation Observer
+    // ==========================================
+    // 0. Init Global Utilities
+    // ==========================================
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+
+    // ==========================================
+    // 1. Scroll Animations (IntersectionObserver)
+    // ==========================================
     const fadeUpObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                fadeUpObserver.unobserve(entry.target);
+                fadeUpObserver.unobserve(entry.target); // Animate only once
             }
         });
-    }, { threshold: 0.1 });
+    }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    });
 
-    document.querySelectorAll('.section-heading, .section-subheading, .product-card, .process-step, .stat-item, .hero-section h1, .hero-section .lead, .hero-section .btn').forEach((el, index) => {
+    // Target elements to automatically add fade-up class
+    const autoAnimatedElements = document.querySelectorAll(
+        '.section-heading, .section-subheading, .product-card, .process-step, .hero-section h1, .hero-section .lead, .hero-section .btn'
+    );
+
+    autoAnimatedElements.forEach((el, index) => {
         el.classList.add('fade-up');
-        if (el.classList.contains('product-card')) { el.style.transitionDelay = `${(index % 3) * 100}ms`; }
+        // Optional: Add staggering delay classes based on visual groups
+        if (el.classList.contains('product-card')) {
+            // Simple staggering for grids
+            const delay = (index % 3) * 100; // 0, 100, 200ms
+            el.style.transitionDelay = `${delay}ms`;
+        }
         fadeUpObserver.observe(el);
     });
 
-    // Modals
-    var certModal = document.getElementById('certModal');
-    if (certModal) {
-        certModal.addEventListener('show.bs.modal', function (event) {
-            var button = event.relatedTarget;
-            var title = button.getAttribute('data-cert-title');
-            var imgSrc = button.getAttribute('data-cert-img');
-            var modalTitle = certModal.querySelector('.modal-title');
-            var modalImage = certModal.querySelector('#certModalImage');
-            if (modalTitle) modalTitle.textContent = title;
-            if (modalImage) modalImage.src = imgSrc;
-        });
+    // Observe ALL elements with fade-up class (both auto-added and manually added)
+    document.querySelectorAll('.fade-up').forEach(el => {
+        fadeUpObserver.observe(el);
+    });
+
+    // ==========================================
+    // 2. Image Preview Modal (Lightbox)
+    // ==========================================
+    const imageModalElement = document.getElementById('imagePreviewModal');
+    let imageModal;
+    if (imageModalElement && typeof bootstrap !== 'undefined') {
+        imageModal = new bootstrap.Modal(imageModalElement);
     }
+
+    document.querySelectorAll('.product-card-image img').forEach(img => {
+        img.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation(); // Prevent triggering any parent links
+
+            // Use data-src if available (for high-res), otherwise fallback to src
+            const src = this.getAttribute('data-src') || this.getAttribute('src');
+            const alt = this.getAttribute('alt');
+            const previewImg = document.getElementById('imagePreviewImg');
+
+            if (previewImg && imageModal) {
+                previewImg.src = src;
+                previewImg.alt = alt;
+                imageModal.show();
+            }
+        });
+    });
+
 });

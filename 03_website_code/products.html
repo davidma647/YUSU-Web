@@ -623,6 +623,55 @@
         }
 
         /* ============================================
+           Mutually Exclusive Feedback Animations
+           ============================================ */
+        @keyframes feedback-select {
+            0% {
+                transform: scale(1);
+            }
+
+            40% {
+                transform: scale(1.1);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                border-color: var(--bs-dark);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes feedback-deselect {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+                filter: grayscale(0);
+            }
+
+            50% {
+                transform: scale(0.92);
+                opacity: 0.8;
+                filter: grayscale(1);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                filter: grayscale(0);
+            }
+        }
+
+        .feedback-select-anim {
+            animation: feedback-select 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+            position: relative;
+        }
+
+        .feedback-deselect-anim {
+            animation: feedback-deselect 0.3s ease-out;
+        }
+
+        /* ============================================
            Product Grid
            ============================================ */
 
@@ -1217,10 +1266,42 @@
                                     data-filter-value="yusu-original">
                                 <label class="btn btn-sm btn-outline-secondary" for="status-ip">✨ YUSU Originals</label>
 
-                                <!-- Placeholders -->
-                                <input type="checkbox" class="btn-check" id="col-std" disabled>
-                                <label class="btn btn-sm btn-outline-secondary border-0 bg-transparent text-muted"
-                                    for="col-std">Standard Mold</label>
+                                <input type="checkbox" class="btn-check" id="status-face" autocomplete="off"
+                                    data-filter-value="face-packaging">
+                                <label class="btn btn-sm btn-outline-secondary" for="status-face">Face Packaging</label>
+
+                                <input type="checkbox" class="btn-check" id="status-lip" autocomplete="off"
+                                    data-filter-value="lip-packaging">
+                                <label class="btn btn-sm btn-outline-secondary" for="status-lip">Lip Packaging</label>
+
+                                <input type="checkbox" class="btn-check" id="status-skincare" autocomplete="off"
+                                    data-filter-value="skincare-packaging">
+                                <label class="btn btn-sm btn-outline-secondary" for="status-skincare">Skincare
+                                    Packaging</label>
+
+                                <input type="checkbox" class="btn-check" id="status-eye" autocomplete="off"
+                                    data-filter-value="eye-packaging">
+                                <label class="btn btn-sm btn-outline-secondary" for="status-eye">Eye Packaging</label>
+
+                                <input type="checkbox" class="btn-check" id="status-perfume" autocomplete="off"
+                                    data-filter-value="perfume-bottles">
+                                <label class="btn btn-sm btn-outline-secondary" for="status-perfume">Perfume
+                                    Bottles</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 1.5: Sub-Categories (Dynamic, Initially Hidden) -->
+                    <div id="subCategoryRow" class="row align-items-center g-0 sub-category-row"
+                        style="display: none; overflow: hidden;">
+                        <div class="col-12 col-md-auto">
+                            <span
+                                class="filter-category-label text-secondary text-uppercase fw-bold d-block mb-2 mb-md-0"
+                                id="subCategoryLabel">Refine</span>
+                        </div>
+                        <div class="col-12 col-md">
+                            <div class="filter-pills d-flex flex-wrap gap-2" id="subCategoryPills">
+                                <!-- Dynamically populated based on selected category -->
                             </div>
                         </div>
                     </div>
@@ -2186,24 +2267,132 @@
     <!-- Filter Interaction Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const filterCheckboxes = document.querySelectorAll('.filter-pills .btn-check');
+            // ===========================================
+            // Sub-Category Mapping (Level 2)
+            // ===========================================
+            const subCategoryMap = {
+                'face-packaging': [
+                    { value: 'liquid-foundation', label: 'Liquid Foundation' },
+                    { value: 'cushion-compacts', label: 'Cushion & Compacts' },
+                    { value: 'stick-foundation', label: 'Stick Foundation' }
+                ],
+                'lip-packaging': [
+                    { value: 'lipstick-tubes', label: 'Lipstick Tubes' },
+                    { value: 'lip-gloss', label: 'Lip Gloss & Glaze' },
+                    { value: 'lip-care', label: 'Lip Care Jars' }
+                ],
+                'skincare-packaging': [
+                    { value: 'sun-protection', label: 'Sun Protection' },
+                    { value: 'serum-droppers', label: 'Serum & Droppers' },
+                    { value: 'cream-lotions', label: 'Cream & Lotions' }
+                ],
+                'perfume-bottles': [
+                    { value: 'perfume-spray', label: 'Perfume Spray Bottles' }
+                ],
+                'eye-packaging': [
+                    { value: 'mascara-eyeliner', label: 'Mascara & Eyeliner' },
+                    { value: 'eyeshadow-palettes', label: 'Eyeshadow Palettes' }
+                ]
+            };
+
+            const categoryLabels = {
+                'face-packaging': 'Refine Face',
+                'lip-packaging': 'Refine Lip',
+                'skincare-packaging': 'Refine Skincare',
+                'perfume-bottles': 'Refine Perfume',
+                'eye-packaging': 'Refine Eye'
+            };
+
+            // ===========================================
+            // DOM Elements
+            // ===========================================
+            const filterCheckboxes = document.querySelectorAll('.filter-pills .btn-check:not([id^="sub-"])');
             const items = document.querySelectorAll('.filter-item');
             const interceptorCard = document.querySelector('.interceptor-card');
             const loadMoreBtn = document.getElementById('loadMoreBtn');
             const clearFiltersBtn = document.getElementById('clearFiltersBtn');
+            const subCategoryRow = document.getElementById('subCategoryRow');
+            const subCategoryLabel = document.getElementById('subCategoryLabel');
+            const subCategoryPills = document.getElementById('subCategoryPills');
 
-            // Function to get active filters
+            let currentActiveCategory = null;
+
+            // ===========================================
+            // Sub-Category Row Management
+            // ===========================================
+            function showSubCategories(categoryValue) {
+                const subCategories = subCategoryMap[categoryValue];
+                if (!subCategories || subCategories.length === 0) {
+                    hideSubCategories();
+                    return;
+                }
+
+                // Update label
+                subCategoryLabel.textContent = categoryLabels[categoryValue] || 'Refine';
+
+                // Build sub-category pills
+                subCategoryPills.innerHTML = subCategories.map(sub => `
+                    <input type="checkbox" class="btn-check sub-category-check" id="sub-${sub.value}" autocomplete="off" data-filter-value="${sub.value}">
+                    <label class="btn btn-sm btn-outline-secondary" for="sub-${sub.value}">${sub.label}</label>
+                `).join('');
+
+                // Attach event listeners to new sub-category checkboxes
+                document.querySelectorAll('.sub-category-check').forEach(cb => {
+                    cb.addEventListener('change', applyFilters);
+                });
+
+                // Show with animation
+                subCategoryRow.style.display = 'flex';
+                subCategoryRow.animate([
+                    { opacity: 0, maxHeight: '0px' },
+                    { opacity: 1, maxHeight: '100px' }
+                ], {
+                    duration: 250,
+                    easing: 'ease-out',
+                    fill: 'forwards'
+                });
+
+                currentActiveCategory = categoryValue;
+            }
+
+            function hideSubCategories() {
+                if (subCategoryRow.style.display !== 'none') {
+                    subCategoryRow.animate([
+                        { opacity: 1, maxHeight: '100px' },
+                        { opacity: 0, maxHeight: '0px' }
+                    ], {
+                        duration: 200,
+                        easing: 'ease-in',
+                        fill: 'forwards'
+                    }).onfinish = () => {
+                        subCategoryRow.style.display = 'none';
+                        subCategoryPills.innerHTML = '';
+                    };
+                }
+                currentActiveCategory = null;
+            }
+
+            // ===========================================
+            // Get Active Filters (Both Levels)
+            // ===========================================
             function getActiveFilters() {
                 const active = [];
+                // Level 1 filters
                 filterCheckboxes.forEach(cb => {
                     if (cb.checked) {
                         active.push(cb.getAttribute('data-filter-value'));
                     }
                 });
+                // Level 2 filters (sub-categories)
+                document.querySelectorAll('.sub-category-check:checked').forEach(cb => {
+                    active.push(cb.getAttribute('data-filter-value'));
+                });
                 return active;
             }
 
+            // ===========================================
             // Main Filter Function
+            // ===========================================
             function applyFilters() {
                 const activeFilters = getActiveFilters();
                 const isFiltering = activeFilters.length > 0;
@@ -2229,12 +2418,6 @@
                     if (isFiltering) {
                         loadMoreBtn.classList.add('d-none');
                     } else {
-                        // Only show if we haven't clicked it properly yet? 
-                        // Or better: show it only if not all items are revealed. 
-                        // For simplicity: if cancelling filter, revert to initial state 
-                        // UNLESS they were already revealed. 
-                        // But requirements say "Load More hidden when filtering". 
-                        // We will rely on its style property if manually hidden.
                         if (loadMoreBtn.style.display !== 'none') {
                             loadMoreBtn.classList.remove('d-none');
                         }
@@ -2244,28 +2427,19 @@
                 items.forEach(item => {
                     const itemTags = item.getAttribute('data-filter-tags') || '';
 
-                    // Logic: Item must match AT LEAST ONE from EACH active group? 
-                    // Or simplified: Item must match ANY active tag?
-                    // Usually "Within Group = OR", "Between Groups = AND".
-                    // But here we have a flat list of checkboxes. 
-                    // Let's assume ANY match for now, or match ALL selected?
-                    // User prompt: "30ML", "Glass". If checking both, likely expects "30ML AND Glass".
-                    // Let's implement AND logic across all selected filters.
-
+                    // AND logic: Item must match ALL selected filters
                     const matches = activeFilters.every(filter => itemTags.includes(filter));
 
                     if (isFiltering) {
-                        // Filtering active
-                        // Reset d-none from "more-designs" so we search EVERYTHING
                         item.classList.remove('d-none');
 
                         if (matches) {
-                            item.style.display = 'block'; // Ensure visible overrides d-none
+                            item.style.display = 'block';
                             item.animate([
                                 { opacity: 0, transform: 'translateY(20px)' },
                                 { opacity: 1, transform: 'translateY(0)' }
                             ], {
-                                duration: 800,
+                                duration: 300,
                                 easing: 'ease-out',
                                 fill: 'forwards'
                             });
@@ -2273,26 +2447,107 @@
                             item.style.display = 'none';
                         }
                     } else {
-                        // Filtering cleared: Reset to default state
-                        // Remove inline styles to let d-none classes take over again
                         item.style.display = '';
-
-                        // BUT: hidden items need their d-none back?
-                        if (item.classList.contains('more-designs') && loadMoreBtn.style.display !== 'none') {
+                        if (item.classList.contains('more-designs') && loadMoreBtn && loadMoreBtn.style.display !== 'none') {
                             item.classList.add('d-none');
                         }
                     }
                 });
             }
 
-            // Event Listeners
+            // ===========================================
+            // Category Checkbox Event Listeners (Level 1)
+            // ===========================================
+            const categoryCheckboxIds = ['status-face', 'status-lip', 'status-skincare', 'status-eye', 'status-perfume'];
+            const categoryFilterValues = ['face-packaging', 'lip-packaging', 'skincare-packaging', 'eye-packaging', 'perfume-bottles'];
+
             filterCheckboxes.forEach(cb => {
-                cb.addEventListener('change', applyFilters);
+                cb.addEventListener('change', function () {
+                    const filterValue = this.getAttribute('data-filter-value');
+                    const label = this.nextElementSibling;
+
+                    // If this is a main category checkbox
+                    if (categoryFilterValues.includes(filterValue)) {
+                        if (this.checked) {
+                            // Apply "Select" animation to the clicked item
+                            if (label) {
+                                label.classList.remove('feedback-deselect-anim');
+                                label.classList.add('feedback-select-anim');
+                                setTimeout(() => label.classList.remove('feedback-select-anim'), 350);
+                            }
+
+                            // Uncheck other main category checkboxes (radio-like behavior)
+                            filterCheckboxes.forEach(otherCb => {
+                                const otherValue = otherCb.getAttribute('data-filter-value');
+                                if (categoryFilterValues.includes(otherValue) && otherCb !== this) {
+                                    if (otherCb.checked) {
+                                        otherCb.checked = false;
+                                        // Apply "Deselect" animation to the previously checked item
+                                        const otherLabel = otherCb.nextElementSibling;
+                                        if (otherLabel) {
+                                            otherLabel.classList.remove('feedback-select-anim');
+                                            otherLabel.classList.add('feedback-deselect-anim');
+                                            setTimeout(() => otherLabel.classList.remove('feedback-deselect-anim'), 300);
+                                        }
+                                    }
+                                }
+                            });
+
+                            // Also uncheck YUSU Originals when selecting a category
+                            const originalsCheckbox = document.getElementById('status-ip');
+                            if (originalsCheckbox && originalsCheckbox.checked) {
+                                originalsCheckbox.checked = false;
+                                const originalLabel = originalsCheckbox.nextElementSibling;
+                                if (originalLabel) {
+                                    originalLabel.classList.add('feedback-deselect-anim');
+                                    setTimeout(() => originalLabel.classList.remove('feedback-deselect-anim'), 300);
+                                }
+                            }
+
+                            showSubCategories(filterValue);
+                        } else {
+                            hideSubCategories();
+                        }
+                    }
+
+                    // If YUSU Originals is clicked
+                    if (filterValue === 'yusu-original') {
+                        if (this.checked) {
+                            // Apply "Select" animation
+                            if (label) {
+                                label.classList.add('feedback-select-anim');
+                                setTimeout(() => label.classList.remove('feedback-select-anim'), 350);
+                            }
+
+                            // Uncheck all main category checkboxes
+                            filterCheckboxes.forEach(otherCb => {
+                                const otherValue = otherCb.getAttribute('data-filter-value');
+                                if (categoryFilterValues.includes(otherValue) && otherCb.checked) {
+                                    otherCb.checked = false;
+                                    // Apply "Deselect" animation
+                                    const otherLabel = otherCb.nextElementSibling;
+                                    if (otherLabel) {
+                                        otherLabel.classList.add('feedback-deselect-anim');
+                                        setTimeout(() => otherLabel.classList.remove('feedback-deselect-anim'), 300);
+                                    }
+                                }
+                            });
+                            hideSubCategories();
+                        }
+                    }
+
+                    applyFilters();
+                });
             });
 
+            // ===========================================
+            // Clear All Filters
+            // ===========================================
             if (clearFiltersBtn) {
                 clearFiltersBtn.addEventListener('click', function () {
                     filterCheckboxes.forEach(cb => cb.checked = false);
+                    document.querySelectorAll('.sub-category-check').forEach(cb => cb.checked = false);
+                    hideSubCategories();
                     applyFilters();
                 });
             }

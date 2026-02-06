@@ -12,6 +12,7 @@
 | 移动端 Banner | `hero_banner_mobile` | Image (Array) | 移动端首屏大图 |
 | CTA 背景图 | `cta_background` | Image (URL) | 底部号召区域背景 |
 | 合作品牌方 | `trust_logos` | Gallery | 合作伙伴 Logo 图库 (多选) |
+| 合作的OEM厂 Logo | `partner_logos` | Gallery | Production Ecosystem 部分的合作工厂 Logo (多选) |
 
 ---
 
