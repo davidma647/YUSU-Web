@@ -4,6 +4,17 @@
 
 ---
 
+## 首页 (Home Settings)
+
+| 字段标签 | 字段名 (Field Name) | 类型 | 说明 |
+|---------|---------------------|------|------|
+| 桌面端 Banner | `hero_banner` | Image (Array) | 桌面端首屏大图 |
+| 移动端 Banner | `hero_banner_mobile` | Image (Array) | 移动端首屏大图 |
+| CTA 背景图 | `cta_background` | Image (URL) | 底部号召区域背景 |
+| 合作品牌方 | `trust_logos` | Gallery | 合作伙伴 Logo 图库 (多选) |
+
+---
+
 ## 文章类型 (Post Types)
 
 ### `product` - 产品
@@ -38,6 +49,7 @@
 
 | 字段标签 | 字段名 (Field Name) | 类型 | 说明 | PHP 调用示例 |
 |---------|---------------------|------|------|-------------|
+| 分类封面 | `category_image` | Image (Array) | 分类封面大图，用于首页展示 | `get_field('category_image', 'term_' . $term_id)` |
 | 分类图标 | `category_icon` | Image | 分类展示图标 | `get_field('category_icon', 'term_' . $term_id)` |
 | 分类描述 | *(内置)* | Text | WordPress 内置 | `term_description($term_id)` |
 
@@ -100,4 +112,4 @@ endif;
 
 ---
 
-*最后更新：2026-02-04*
+*最后更新：2026-02-06*

@@ -71,10 +71,21 @@
     padding-top: 0;
     padding-bottom: 0;
 
-    .navbar-brand img {
-        height: 90px;
-        width: auto;
-        transition: all 0.3s ease;
+    .navbar-brand {
+
+        // Imagify <picture> 兼容
+        picture {
+            display: inline-flex;
+            align-items: center;
+            height: 48px;
+            line-height: 0; // 消除 baseline 对齐产生的间隙
+        }
+
+        img {
+            height: 48px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
     }
 
     /* Scrolled State */
@@ -99,6 +110,17 @@
         letter-spacing: 0.05em;
         transition: color 0.2s ease;
         position: relative;
+    }
+
+    /* Scrolled State Logo */
+    &-scrolled .navbar-brand {
+        picture {
+            height: 48px;
+        }
+
+        img {
+            height: 48px;
+        }
     }
 }
 
@@ -436,6 +458,33 @@
 .site-footer {
     background-color: $dark;
     color: rgba(255, 255, 255, 0.8);
+
+    // Imagify <picture> 兼容 - Footer Logo (品牌列第一个 .d-flex 容器)
+    // 选择器: .col-lg-4 > .d-flex 中的 picture 和 img
+    >.container>.row>.col-lg-4 {
+
+        // Logo 容器
+        >.d-flex:first-child {
+            picture {
+                display: inline-flex !important;
+                align-items: center;
+                height: 48px !important;
+                line-height: 0;
+            }
+
+            img {
+                height: 48px !important;
+                width: auto !important;
+                max-height: 48px !important;
+            }
+        }
+    }
+
+    // 通用 Footer 图片兼容
+    picture {
+        display: inline-block;
+        line-height: 0;
+    }
 
     h5 {
         font-size: 1.125rem; // Increased from 1rem

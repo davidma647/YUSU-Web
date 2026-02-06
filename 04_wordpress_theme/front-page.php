@@ -1,18 +1,71 @@
 <?php
 /**
- * Template Part: Home Page Content
- * Description: Extracted from home.html with Header/Footer removed and images replaced.
- * Usage: Copy content below into WordPress Editor for the Home page.
+ * Template Name: front Page
+ * Description: 首页专用模板，直接加载 home.php 模板部件
+ * 
+ * WordPress 会自动将此文件用作首页模板。
  */
+
+get_header();
+
+// 获取 SCF 自定义字段 (返回格式需为 Image Array)
+$front_page_id = get_option('page_on_front');
+$hero_banner_data = function_exists('get_field') ? get_field('hero_banner', $front_page_id) : '';
+$hero_banner_mobile_data = function_exists('get_field') ? get_field('hero_banner_mobile', $front_page_id) : '';
+$cta_background = function_exists('get_field') ? get_field('cta_background', $front_page_id) : '';
+
+// 解析 Hero Banner (Array or String fallback)
+if (is_array($hero_banner_data)) {
+    // 优先使用 sizes['full'] 确保获取原图，否则使用 url
+    $hero_banner_url = isset($hero_banner_data['sizes']['full'])
+        ? $hero_banner_data['sizes']['full']
+        : $hero_banner_data['url'];
+    $hero_banner_alt = $hero_banner_data['alt'] ?: 'YUSU Cosmetic Packaging Innovations';
+    // 获取图片宽度用于 srcset
+    $hero_banner_width = isset($hero_banner_data['width']) ? $hero_banner_data['width'] : '';
+} else {
+    $hero_banner_url = $hero_banner_data ?: 'https://iph.href.lu/1920x800?text=Banner';
+    $hero_banner_alt = 'YUSU Cosmetic Packaging Innovations';
+    $hero_banner_width = '';
+}
+
+// 解析 Mobile Banner
+if (is_array($hero_banner_mobile_data)) {
+    $hero_banner_mobile_url = isset($hero_banner_mobile_data['sizes']['full'])
+        ? $hero_banner_mobile_data['sizes']['full']
+        : $hero_banner_mobile_data['url'];
+} else {
+    $hero_banner_mobile_url = $hero_banner_mobile_data ?: $hero_banner_url;
+}
+
+// CTA Background still uses CSS background (URL only)
+$cta_background_url = is_array($cta_background) ? $cta_background['url'] : ($cta_background ?: 'https://iph.href.lu/');
 ?>
 
-<!-- Attributes for Page Animations -->
-<!-- Page specific styles are now loaded via assets/css/home.css -->
+<!-- Dynamic Banner Styles (CTA Only) -->
+<style>
+    .final-cta-section {
+        background-image: linear-gradient(135deg, rgba(176, 137, 104, 0.95) 0%, rgba(133, 103, 77, 0.95) 100%), url('<?php echo esc_url($cta_background_url); ?>');
+    }
+</style>
 
 <div class="home-page-wrapper">
     <!-- Module 1: Hero Section -->
     <section id="hero" class="hero-section" aria-labelledby="hero-heading">
-        <div class="container">
+        <!-- SEO Friendly Background -->
+        <div class="hero-background">
+            <!-- Desktop Banner: sizes="100vw" 强制使用最高分辨率 -->
+            <img src="<?php echo esc_url($hero_banner_url); ?>" alt="<?php echo esc_attr($hero_banner_alt); ?>"
+                class="hero-img d-none d-lg-block" sizes="100vw" loading="eager" fetchpriority="high">
+
+            <!-- Mobile Banner -->
+            <img src="<?php echo esc_url($hero_banner_mobile_url); ?>" alt="<?php echo esc_attr($hero_banner_alt); ?>"
+                class="hero-img d-lg-none" sizes="100vw" loading="eager" fetchpriority="high">
+
+            <div class="hero-gradient"></div>
+        </div>
+
+        <div class="container position-relative z-1">
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-text-wrapper">
                     <span class="d-block text-primary fw-bold text-uppercase ls-1 mb-3 fade-up delay-100">
@@ -64,20 +117,41 @@
             </div>
             <div class="logo-scroll-container">
                 <div class="logo-track">
-                    <!-- Repeated logos for scrolling effect -->
-                    <img src="https://iph.href.lu/200x80?text=Brand+A" alt="Brand A" loading="lazy">
-                    <img src="https://iph.href.lu/200x80?text=Brand+B" alt="Brand B" loading="lazy">
-                    <img src="https://iph.href.lu/200x80?text=Brand+C" alt="Brand C" loading="lazy">
-                    <img src="https://iph.href.lu/200x80?text=Brand+D" alt="Brand D" loading="lazy">
-                    <img src="https://iph.href.lu/200x80?text=Brand+E" alt="Brand E" loading="lazy">
-                    <img src="https://iph.href.lu/200x80?text=Brand+F" alt="Brand F" loading="lazy">
+                    <?php
+                    // 获取 Trust Logos Repeater
+                    $trust_logos = function_exists('get_field') ? get_field('trust_logos', $front_page_id) : false;
 
-                    <img src="https://iph.href.lu/200x80?text=Brand+A" alt="Brand A" loading="lazy">
-                    <img src="https://iph.href.lu/200x80?text=Brand+B" alt="Brand B" loading="lazy">
-                    <img src="https://iph.href.lu/200x80?text=Brand+C" alt="Brand C" loading="lazy">
-                    <img src="https://iph.href.lu/200x80?text=Brand+D" alt="Brand D" loading="lazy">
-                    <img src="https://iph.href.lu/200x80?text=Brand+E" alt="Brand E" loading="lazy">
-                    <img src="https://iph.href.lu/200x80?text=Brand+F" alt="Brand F" loading="lazy">
+                    // 定义输出逻辑 (Closure to avoid global scope pollution)
+                    $render_logos = function ($logos) {
+                        if ($logos) {
+                            foreach ($logos as $logo) {
+                                // Gallery Field 直接返回 Image Array
+                                if (is_array($logo)) {
+                                    $img_url = $logo['url'];
+                                    $img_alt = $logo['alt'] ?: 'Brand Partner';
+                                } else {
+                                    // 兼容如果返回格式是 URL
+                                    $img_url = $logo;
+                                    $img_alt = 'Brand Partner';
+                                }
+
+                                if ($img_url) {
+                                    echo '<img src="' . esc_url($img_url) . '" alt="' . esc_attr($img_alt) . '" loading="lazy">';
+                                }
+                            }
+                        } else {
+                            // 兜底占位图 (Default Placeholders)
+                            $placeholders = ['Brand A', 'Brand B', 'Brand C', 'Brand D', 'Brand E', 'Brand F'];
+                            foreach ($placeholders as $brand) {
+                                echo '<img src="https://iph.href.lu/200x80?text=' . urlencode($brand) . '" alt="' . esc_attr($brand) . '" loading="lazy">';
+                            }
+                        }
+                    };
+
+                    // 输出两遍以保持无限滚动效果 (Infinite Scroll)
+                    $render_logos($trust_logos);
+                    $render_logos($trust_logos);
+                    ?>
                 </div>
             </div>
         </div>
@@ -92,70 +166,98 @@
             </div>
 
             <div class="row g-4">
-                <!-- Product 1 -->
-                <div class="col-md-4">
-                    <article class="product-card h-100">
-                        <div class="product-card-image">
-                            <img src="https://iph.href.lu/200x300?text=Perfume" alt="Gold Bar Foundation Bottle"
-                                loading="lazy">
-                        </div>
-                        <div class="p-4" style="cursor: default;">
-                            <div class="product-badge mb-2">
-                                <i data-lucide="lock" style="width: 14px; height: 14px;"></i>
-                                YUSU Originals
-                            </div>
-                            <p class="mb-3 text-secondary-custom" style="font-size: 0.9375rem;">
-                                Command shelf attention with this iconic, IP-protected silhouette.
-                            </p>
-                            <a href="product-detail.html" class="product-card-link">
-                                View Details <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-                            </a>
-                        </div>
-                    </article>
-                </div>
+                <?php
+                // 查询勾选了"是否主推"的产品
+                $featured_args = array(
+                    'post_type' => 'product',
+                    'posts_per_page' => 3,
+                    'meta_query' => array(
+                        array(
+                            'key' => 'product_featured',
+                            'value' => '1',
+                            'compare' => '=',
+                        ),
+                    ),
+                );
+                $featured_query = new WP_Query($featured_args);
 
-                <!-- Product 2 -->
-                <div class="col-md-4">
-                    <article class="product-card h-100">
-                        <div class="product-card-image">
-                            <img src="https://iph.href.lu/200x300?text=Perfume" alt="Plum Blossom Bottle"
-                                loading="lazy">
-                        </div>
-                        <div class="p-4" style="cursor: default;">
-                            <div class="product-badge mb-2">
-                                <i data-lucide="lock" style="width: 14px; height: 14px;"></i>
-                                YUSU Originals
-                            </div>
-                            <p class="mb-3 text-secondary-custom" style="font-size: 0.9375rem;">
-                                Infuse Eastern elegance into your line. A cultural icon.
-                            </p>
-                            <a href="product-detail.html" class="product-card-link">
-                                View Details <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-                            </a>
-                        </div>
-                    </article>
-                </div>
+                if ($featured_query->have_posts()):
+                    while ($featured_query->have_posts()):
+                        $featured_query->the_post();
+                        // 获取 SCF 自定义字段
+                        $sku = get_field('product_sku');
+                        $capacity = get_field('product_capacity');
+                        $subtitle = get_field('product_subtitle');
+                        $permalink = get_permalink();
 
-                <!-- Product 3 -->
-                <div class="col-md-4">
-                    <article class="product-card h-100">
-                        <div class="product-card-image">
-                            <img src="https://iph.href.lu/200x300?text=Perfume" alt="Chamfered Bottle" loading="lazy">
+                        // 组合标题：SKU + 容量
+                        $title_parts = array_filter(array($sku, $capacity));
+                        $product_title = !empty($title_parts) ? implode(' ', $title_parts) : get_the_title();
+
+                        // 获取特色图片
+                        $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                        $thumbnail_url = $thumbnail_url ?: 'https://iph.href.lu/200x300?text=Product';
+                        $thumbnail_alt = esc_attr($product_title);
+                        ?>
+                        <div class="col-md-4">
+                            <article class="product-card h-100">
+                                <div class="product-card-image">
+                                    <img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php echo $thumbnail_alt; ?>"
+                                        loading="lazy">
+                                </div>
+                                <div class="p-4" style="cursor: default;">
+                                    <div class="product-badge mb-2">
+                                        <i data-lucide="lock" style="width: 14px; height: 14px;"></i>
+                                        <?php echo esc_html($product_title); ?>
+                                    </div>
+                                    <!-- 副标题：product_subtitle -->
+                                    <?php if ($subtitle): ?>
+                                        <p class="mb-3 text-secondary-custom" style="font-size: 0.9375rem;">
+                                            <?php echo esc_html($subtitle); ?>
+                                        </p>
+                                    <?php endif; ?>
+                                    <a href="<?php echo esc_url($permalink); ?>" class="product-card-link">
+                                        View Details <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                                    </a>
+                                </div>
+                            </article>
                         </div>
-                        <div class="p-4" style="cursor: default;">
-                            <div class="product-badge mb-2">
-                                <i data-lucide="lock" style="width: 14px; height: 14px;"></i>
-                                YUSU Originals
-                            </div>
-                            <p class="mb-3 text-secondary-custom" style="font-size: 0.9375rem;">
-                                Precision geometric engineering. Minimalist branding.
-                            </p>
-                            <a href="product-detail.html" class="product-card-link">
-                                View Details <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-                            </a>
+                        <?php
+                    endwhile;
+                    wp_reset_postdata();
+                else:
+                    // 兜底占位内容 (当没有主推产品时)
+                    $placeholders = array(
+                        array('title' => 'YS-F001 30ml', 'subtitle' => 'Command shelf attention with this iconic design.'),
+                        array('title' => 'YS-L002 15ml', 'subtitle' => 'Infuse Eastern elegance into your line.'),
+                        array('title' => 'YS-C003 50ml', 'subtitle' => 'Precision geometric engineering.'),
+                    );
+                    foreach ($placeholders as $placeholder):
+                        ?>
+                        <div class="col-md-4">
+                            <article class="product-card h-100">
+                                <div class="product-card-image">
+                                    <img src="https://iph.href.lu/200x300?text=Product"
+                                        alt="<?php echo esc_attr($placeholder['title']); ?>" loading="lazy">
+                                </div>
+                                <div class="p-4" style="cursor: default;">
+                                    <div class="product-badge mb-2">
+                                        <i data-lucide="lock" style="width: 14px; height: 14px;"></i>
+                                        <?php echo esc_html($placeholder['title']); ?>
+                                    </div>
+                                    <p class="mb-3 text-secondary-custom" style="font-size: 0.9375rem;">
+                                        <?php echo esc_html($placeholder['subtitle']); ?>
+                                    </p>
+                                    <a href="#" class="product-card-link">
+                                        View Details <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                                    </a>
+                                </div>
+                            </article>
                         </div>
-                    </article>
-                </div>
+                        <?php
+                    endforeach;
+                endif;
+                ?>
             </div>
         </div>
     </section>
@@ -172,73 +274,86 @@
             </div>
 
             <div class="row g-4 justify-content-center">
-                <div class="col-6 col-md-4">
-                    <a href="products.html" class="category-card">
-                        <div class="category-card-image-wrapper">
-                            <img src="https://iph.href.lu/200x300?text=Foundation" alt="Foundation Bottles"
-                                loading="lazy">
-                            <div class="category-overlay"><i data-lucide="arrow-right"></i></div>
+                <?php
+                // 获取所有 product_cat 分类
+                $categories = get_terms(array(
+                    'taxonomy' => 'product_cat',
+                    'hide_empty' => false, // 显示空分类
+                    'number' => 6,     // 只获取6个
+                    'orderby' => 'term_order', // 按顺序排序 (需要插件) 或改为 'name'
+                    'order' => 'ASC',
+                ));
+
+                if (!empty($categories) && !is_wp_error($categories)):
+                    foreach ($categories as $category):
+                        // 获取分类封面图片 (SCF 自定义字段)
+                        $category_image = get_field('category_image', 'term_' . $category->term_id);
+                        $image_url = $category_image ? $category_image['url'] : 'https://iph.href.lu/400x300?text=' . urlencode($category->name);
+                        $image_alt = $category_image ? ($category_image['alt'] ?: $category->name) : $category->name;
+
+                        // 获取分类链接
+                        $category_link = get_term_link($category);
+
+                        // 产品数量显示
+                        $product_count = $category->count;
+                        $count_text = $product_count > 0 ? $product_count . '+ Designs' : 'Coming Soon';
+                        ?>
+                        <div class="col-6 col-md-4">
+                            <a href="<?php echo esc_url($category_link); ?>" class="category-card">
+                                <div class="category-card-image-wrapper">
+                                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>"
+                                        loading="lazy">
+                                    <div class="category-overlay"><i data-lucide="arrow-right"></i></div>
+                                </div>
+                                <div class="category-card-content">
+                                    <h3 class="category-card-title">
+                                        <?php echo esc_html($category->name); ?>
+                                    </h3>
+                                    <p class="category-card-count">
+                                        <?php echo esc_html($count_text); ?>
+                                    </p>
+                                </div>
+                            </a>
                         </div>
-                        <div class="category-card-content">
-                            <h3 class="category-card-title">Foundation Bottles</h3>
-                            <p class="category-card-count">80+ Designs</p>
+                        <?php
+                    endforeach;
+                else:
+                    // 兜底：没有分类时显示占位内容
+                    $placeholder_cats = array(
+                        array('name' => 'Foundation Bottles', 'count' => '80+'),
+                        array('name' => 'Lipstick & Glaze', 'count' => '60+'),
+                        array('name' => 'Compact Cushions', 'count' => '50+'),
+                        array('name' => 'Sun Protection', 'count' => '40+'),
+                        array('name' => 'Perfume Bottles', 'count' => '30+'),
+                        array('name' => 'Skincare Jars', 'count' => '45+'),
+                    );
+                    foreach ($placeholder_cats as $cat):
+                        ?>
+                        <div class="col-6 col-md-4">
+                            <a href="#" class="category-card">
+                                <div class="category-card-image-wrapper">
+                                    <img src="https://iph.href.lu/400x300?text=<?php echo urlencode($cat['name']); ?>"
+                                        alt="<?php echo esc_attr($cat['name']); ?>" loading="lazy">
+                                    <div class="category-overlay"><i data-lucide="arrow-right"></i></div>
+                                </div>
+                                <div class="category-card-content">
+                                    <h3 class="category-card-title">
+                                        <?php echo esc_html($cat['name']); ?>
+                                    </h3>
+                                    <p class="category-card-count">
+                                        <?php echo esc_html($cat['count']); ?> Designs
+                                    </p>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4">
-                    <a href="products.html" class="category-card">
-                        <div class="category-card-image-wrapper">
-                            <img src="https://iph.href.lu/200x300?text=Lips" alt="Lipstick & Lip Glaze" loading="lazy">
-                            <div class="category-overlay"><i data-lucide="arrow-right"></i></div>
-                        </div>
-                        <div class="category-card-content">
-                            <h3 class="category-card-title">Lipstick & Glaze</h3>
-                            <p class="category-card-count">60+ Designs</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4">
-                    <a href="products.html" class="category-card">
-                        <div class="category-card-image-wrapper">
-                            <img src="https://iph.href.lu/200x300?text=Cushion" alt="Air Cushion Compacts"
-                                loading="lazy">
-                            <div class="category-overlay"><i data-lucide="arrow-right"></i></div>
-                        </div>
-                        <div class="category-card-content">
-                            <h3 class="category-card-title">Compact Cushions</h3>
-                            <p class="category-card-count">50+ Designs</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Row 2 -->
-                <div class="col-6 col-md-4">
-                    <a href="products.html" class="category-card">
-                        <div class="category-card-image-wrapper">
-                            <img src="https://iph.href.lu/200x300?text=Sunscreen" alt="Sunscreen" loading="lazy">
-                            <div class="category-overlay"><i data-lucide="arrow-right"></i></div>
-                        </div>
-                        <div class="category-card-content">
-                            <h3 class="category-card-title">Sun Protection</h3>
-                            <p class="category-card-count">40+ Designs</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-6 col-md-4">
-                    <a href="products.html" class="category-card">
-                        <div class="category-card-image-wrapper">
-                            <img src="https://iph.href.lu/200x300?text=Perfume" alt="Perfume" loading="lazy">
-                            <div class="category-overlay"><i data-lucide="arrow-right"></i></div>
-                        </div>
-                        <div class="category-card-content">
-                            <h3 class="category-card-title">Perfume Bottles</h3>
-                            <p class="category-card-count">30+ Designs</p>
-                        </div>
-                    </a>
-                </div>
+                        <?php
+                    endforeach;
+                endif;
+                ?>
             </div>
 
             <div class="text-center mt-5">
-                <a href="products.html" class="btn btn-outline-dark">
+                <a href="<?php echo esc_url(get_post_type_archive_link('product')); ?>" class="btn btn-outline-dark">
                     View All Products <i data-lucide="arrow-right" class="ms-2" style="width: 16px; height: 16px;"></i>
                 </a>
             </div>
@@ -564,3 +679,5 @@
         </div>
     </div>
 </div>
+
+<?php get_footer(); ?>
