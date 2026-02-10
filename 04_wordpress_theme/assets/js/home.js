@@ -1,11 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // ==========================================
-    // 0. Init Global Utilities
-    // ==========================================
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
+
 
     // ==========================================
     // 1. Scroll Animations (IntersectionObserver)
@@ -42,32 +37,4 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.fade-up').forEach(el => {
         fadeUpObserver.observe(el);
     });
-
-    // ==========================================
-    // 2. Image Preview Modal (Lightbox)
-    // ==========================================
-    const imageModalElement = document.getElementById('imagePreviewModal');
-    let imageModal;
-    if (imageModalElement && typeof bootstrap !== 'undefined') {
-        imageModal = new bootstrap.Modal(imageModalElement);
-    }
-
-    document.querySelectorAll('.product-card-image img').forEach(img => {
-        img.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation(); // Prevent triggering any parent links
-
-            // Use data-src if available (for high-res), otherwise fallback to src
-            const src = this.getAttribute('data-src') || this.getAttribute('src');
-            const alt = this.getAttribute('alt');
-            const previewImg = document.getElementById('imagePreviewImg');
-
-            if (previewImg && imageModal) {
-                previewImg.src = src;
-                previewImg.alt = alt;
-                imageModal.show();
-            }
-        });
-    });
-
 });

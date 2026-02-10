@@ -274,20 +274,38 @@ $cta_background_url = is_array($cta_background) ? $cta_background['url'] : ($cta
                 $categories = get_terms(array(
                     'taxonomy' => 'product_cat',
                     'hide_empty' => false, // 显示空分类
-                    'number' => 6,     // 只获取6个
-                    'orderby' => 'term_order', // 按顺序排序 (需要插件) 或改为 'name'
-                    'order' => 'ASC',
                 ));
 
                 if (!empty($categories) && !is_wp_error($categories)):
+                    // 1. 自定义排序 (SCF category_sort_order)
+                    usort($categories, function ($a, $b) {
+                        $order_a = (int) get_field('category_sort_order', 'product_cat_' . $a->term_id);
+                        $order_b = (int) get_field('category_sort_order', 'product_cat_' . $b->term_id);
+
+                        // 升序排列 (数字越小越靠前)，若由于未设置均为0则按名称排
+                        if ($order_a === $order_b) {
+                            return strcmp($a->name, $b->name);
+                        }
+                        return $order_a - $order_b;
+                    });
+
+                    // 2. 只取前6个
+                    $categories = array_slice($categories, 0, 6);
+
                     foreach ($categories as $category):
+                        // 3. 处理显示名称 (YUSU Originals 加 ✨)
+                        $display_name = $category->name;
+                        if ($display_name === 'YUSU Originals') {
+                            $display_name = '✨ ' . $display_name;
+                        }
+
                         // 获取分类封面图片 (SCF 自定义字段)
                         $category_image = get_field('category_image', 'term_' . $category->term_id);
                         $image_url = $category_image ? $category_image['url'] : 'https://iph.href.lu/400x300?text=' . urlencode($category->name);
                         $image_alt = $category_image ? ($category_image['alt'] ?: $category->name) : $category->name;
 
-                        // 获取分类链接
-                        $category_link = get_term_link($category);
+                        // 获取分类链接 → 跳转到产品页并按分类过滤
+                        $category_link = home_url('/products/?category=' . $category->slug);
 
                         // 产品数量显示
                         $product_count = $category->count;
@@ -302,7 +320,7 @@ $cta_background_url = is_array($cta_background) ? $cta_background['url'] : ($cta
                                 </div>
                                 <div class="category-card-content">
                                     <h3 class="category-card-title">
-                                        <?php echo esc_html($category->name); ?>
+                                        <?php echo esc_html($display_name); ?>
                                     </h3>
                                     <p class="category-card-count">
                                         <?php echo esc_html($count_text); ?>
@@ -762,20 +780,6 @@ $cta_background_url = is_array($cta_background) ? $cta_background['url'] : ($cta
     </div>
 </div>
 
-<!-- 4. Image Preview Modal (Lightbox) -->
-<div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg border-0">
-        <div class="modal-content bg-transparent border-0 shadow-none">
-            <div class="modal-header border-0 p-0 mb-2">
-                <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0 text-center">
-                <img id="imagePreviewImg" src="" alt="Preview" class="img-fluid rounded shadow-lg"
-                    style="max-height: 85vh; width: auto;">
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <?php get_footer(); ?>

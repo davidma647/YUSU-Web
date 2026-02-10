@@ -94,43 +94,62 @@
                 </div>
             </div>
 
-            <!-- 右侧栏: 分类 -->
-            <!-- 右侧栏: 移动端全宽 -->
+            <!-- 右侧栏: 分类 移动端全宽 -->
             <div class="col-12 col-lg-5 ps-lg-5">
                 <div class="mega-menu-header">By Category</div>
                 <div class="row">
                     <?php
-                    // 获取所有产品分类
+                    // 获取所有产品分类 (仅父类)
                     $categories = get_terms(array(
-                        'taxonomy' => 'product_cat',
-                        'hide_empty' => false, // 显示空分类（可改为 true 只显示有产品的）
-                        'orderby' => 'count',
-                        'order' => 'DESC'
+                        'taxonomy'   => 'product_cat',
+                        'hide_empty' => false,
+                        'parent'     => 0, // Only show parent categories
                     ));
 
                     if (!empty($categories) && !is_wp_error($categories)):
+                        // 按照自定义排序字段标签 (category_sort_order) 排序
+                        // 请在 SCF 中为 "分类 (Taxonomy: product_cat)" 添加字段: category_sort_order (数字类型)
+                        usort($categories, function ($a, $b) {
+                            $order_a = (int) get_field('category_sort_order', 'product_cat_' . $a->term_id);
+                            $order_b = (int) get_field('category_sort_order', 'product_cat_' . $b->term_id);
+
+                            // 升序排列 (数字越小越靠前)，若由于未设置均为0则按名称排
+                            if ($order_a === $order_b) {
+                                return strcmp($a->name, $b->name);
+                            }
+                            return $order_a - $order_b;
+                        });
+
                         // 将分类分成两列
                         $total = count($categories);
                         $half = ceil($total / 2);
                         $col1 = array_slice($categories, 0, $half);
                         $col2 = array_slice($categories, $half);
+
+                        // 定义处理显示名称的闭包
+                        $get_display_name = function ($name) {
+                            if ($name === 'YUSU Originals') {
+                                return '✨ ' . $name;
+                            }
+                            return $name;
+                        };
                         ?>
-                        <div class="col-12 col-sm-6">
-                            <?php foreach ($col1 as $cat): ?>
-                                <a href="<?php echo esc_url(get_term_link($cat)); ?>" class="mega-menu-link">
-                                    <?php echo esc_html($cat->name); ?> <span class="count"><?php echo $cat->count; ?></span>
-                                </a>
-                            <?php endforeach; ?>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <?php foreach ($col2 as $cat): ?>
-                                <a href="<?php echo esc_url(get_term_link($cat)); ?>" class="mega-menu-link">
-                                    <?php echo esc_html($cat->name); ?> <span class="count"><?php echo $cat->count; ?></span>
-                                </a>
-                            <?php endforeach; ?>
-                        </div>
+                            <div class="col-12 col-sm-6">
+                                <?php foreach ($col1 as $cat): ?>
+                                        <a href="<?php echo esc_url(get_term_link($cat)); ?>" class="mega-menu-link">
+                                            <?php echo esc_html($get_display_name($cat->name)); ?> <span class="count"><?php echo $cat->count; ?></span>
+                                        </a>
+                                <?php endforeach; ?>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <?php foreach ($col2 as $cat): ?>
+                                        <a href="<?php echo esc_url(get_term_link($cat)); ?>" class="mega-menu-link">
+                                            <?php echo esc_html($get_display_name($cat->name)); ?> <span class="count"><?php echo $cat->count; ?></span>
+                                        </a>
+                                <?php endforeach; ?>
+                            </div>
                     <?php else: ?>
-                        <div class="col-12 text-muted small">暂无分类，请在后台添加产品分类。</div>
+                            <div class="col-12 text-muted small">暂无分类，请在后台添加产品分类。</div>
                     <?php endif; ?>
                 </div>
                 <div class="mt-4">

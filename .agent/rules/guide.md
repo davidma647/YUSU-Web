@@ -78,14 +78,27 @@ HTML 静态页面 → 验证效果 → 转换为 PHP → 上传到 WordPress
 04_wordpress_theme/
 ├── assets/
 │   ├── css/
+│   ├── js/
+│   │   ├── global.js  # 全站通用交互（Header/Footer/Modals）
+│   │   ├── home.js    # 首页专属逻辑（如滚动动画）
+│   │   └── ...
 │   └── scss/          # SCSS 源文件
 ├── template-parts/
+│   └── global-modals.php # 全站通用模态框 HTML
 ├── header.php
 ├── footer.php
 ├── front-page.php
 ├── functions.php
 └── ...
 ```
+
+### 🔧 关键文件职责
+
+| 文件 | 职责说明 |
+|------|----------|
+| **`assets/js/global.js`** | **全站通用逻辑**。负责 Header (Sticky Navbar), Footer, 以及 **Global Modals** (Lead Gen, Image Zoom) 的事件处理。**不包含** 页面特定的动画逻辑。 |
+| **`assets/js/home.js`** | **首页专属逻辑**。仅包含首页特有的交互，核心职责是处理 **Scroll Animations** (IntersectionObserver) 等视觉效果。 |
+| **`template-parts/global-modals.php`** | **通用模态框模板**。存放 "Request Sample" 和 "Image Zoom" 的 HTML 结构。由 `footer.php` 统一引入，确保全站任何页面都能调用这些模态框。 |
 
 **重要：**
 - 这个目录的代码会 **直接复制粘贴** 到服务器
@@ -132,3 +145,5 @@ HTML 静态页面 → 验证效果 → 转换为 PHP → 上传到 WordPress
 4. **SCSS 直接复制**：SCSS 文件会直接复制到服务器，无需担心编译
 
 ---
+
+*最后更新：2026-02-06*

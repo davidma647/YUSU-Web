@@ -1,21 +1,27 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // 1. Scroll Animations Utility (Global)
-    // Only defines the observer, specific elements added per page usually, 
-    // but we support .fade-up auto-trigger if the class exists.
-    const fadeUpObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                fadeUpObserver.unobserve(entry.target);
+
+    // 1. Lead Gen Modal (Global)
+    const leadModal = document.getElementById('leadGenModal');
+    if (leadModal) {
+        leadModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget;
+            // Extract info from data-bs-* attributes
+            const recipient = button.getAttribute('data-bs-whatever');
+            // Update the modal's content.
+            const modalTitle = leadModal.querySelector('.modal-title');
+            const modalContext = leadModal.querySelector('#leadContext');
+
+            if (recipient && recipient.includes('Catalog')) {
+                modalTitle.textContent = 'Download 2026 Catalog';
+            } else {
+                modalTitle.textContent = 'Request Free Sample';
             }
+            if (modalContext) modalContext.value = recipient || '';
         });
-    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+    }
 
-    document.querySelectorAll('.fade-up').forEach(el => {
-        fadeUpObserver.observe(el);
-    });
-
-    // 3. Dynamic Certification Modal (Footer Area)
+    // 2. Dynamic Certification Modal (Footer Area)
     var certModal = document.getElementById('certModal');
     if (certModal) {
         certModal.addEventListener('show.bs.modal', function (event) {
@@ -31,11 +37,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 4. Image Preview / Lightbox (Global/Footer)
-    const imageModalElement = document.getElementById('imagePreviewModal');
+    // 3. Image Preview / Lightbox (Global/Footer)
+    const imageModalElement = document.getElementById('imageZoomModal');
     let imageModal;
-    if (imageModalElement) {
-        imageModal = new bootstrap.Modal(imageModalElement);
+    if (imageModalElement && typeof bootstrap !== 'undefined') {
+        // Use getOrCreateInstance to prevent conflicts if initialized elsewhere
+        imageModal = bootstrap.Modal.getOrCreateInstance(imageModalElement);
     }
 
     // Attach listener to any product image with correct selector globally
@@ -43,9 +50,12 @@ document.addEventListener('DOMContentLoaded', function () {
         img.addEventListener('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            const src = this.getAttribute('src');
+
+            // Support high-res image via data-src
+            const src = this.getAttribute('data-src') || this.getAttribute('src');
             const alt = this.getAttribute('alt');
-            const previewImg = document.getElementById('imagePreviewImg');
+            const previewImg = document.getElementById('zoomImage');
+
             if (previewImg && imageModal) {
                 previewImg.src = src;
                 previewImg.alt = alt;
@@ -54,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // 5. Sticky Navbar Logic (Header)
+    // 4. Sticky Navbar Logic (Header)
     const navbar = document.getElementById('mainNavbar');
     function updateNavbarStyle() {
         if (window.scrollY > 20) {
@@ -70,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
         window.addEventListener('scroll', updateNavbarStyle);
     }
 
-    // 6. Desktop Dropdown Hover Interaction (Header)
+    // 5. Desktop Dropdown Hover Interaction (Header)
     if (window.matchMedia('(min-width: 992px)').matches) {
         const dropdowns = document.querySelectorAll('.nav-item.dropdown');
         dropdowns.forEach(dropdown => {

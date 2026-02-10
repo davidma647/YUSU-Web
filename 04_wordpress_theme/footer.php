@@ -38,22 +38,22 @@
                     <ul class="footer-links list-unstyled">
                         <?php
                         $categories = get_terms(array(
-                            'taxonomy'   => 'product_cat',
+                            'taxonomy' => 'product_cat',
                             'hide_empty' => false,
-                            'orderby'    => 'count',
-                            'order'      => 'DESC',
-                            'number'     => 6  // 限制显示数量
+                            'orderby' => 'count',
+                            'order' => 'DESC',
+                            'number' => 6  // 限制显示数量
                         ));
-                        
-                        if (!empty($categories) && !is_wp_error($categories)) :
-                            foreach ($categories as $cat) :
-                        ?>
-                        <li>
-                            <a href="<?php echo esc_url(home_url('/products/?category=' . $cat->slug)); ?>">
-                                <?php echo esc_html($cat->name); ?>
-                            </a>
-                        </li>
-                        <?php
+
+                        if (!empty($categories) && !is_wp_error($categories)):
+                            foreach ($categories as $cat):
+                                ?>
+                                <li>
+                                    <a href="<?php echo esc_url(home_url('/products/?category=' . $cat->slug)); ?>">
+                                        <?php echo esc_html($cat->name); ?>
+                                    </a>
+                                </li>
+                                <?php
                             endforeach;
                         endif;
                         ?>
@@ -110,6 +110,8 @@
         </div>
     </footer>
 </div>
+
+<?php get_template_part('global-modals'); ?>
 
 <?php wp_footer(); ?>
 

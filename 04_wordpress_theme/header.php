@@ -65,6 +65,15 @@
                         <!-- 1. 使用 WordPress 动态菜单 (Main Menu) -->
                         <!-- 我们手动构建 UL 以便插入特殊 Mega Menu 逻辑 -->
                         <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-4">
+                            <?php
+                            // Check if current page is related to Products
+                            $is_products_active = is_page('products') ||
+                                is_post_type_archive('product') ||
+                                is_singular('product') ||
+                                is_tax('product_cat') ||
+                                is_tax('product_capacity') ||
+                                is_tax('product_material');
+                            ?>
 
                             <li class="nav-item">
                                 <a class="nav-link <?php echo is_front_page() ? 'active' : ''; ?>" aria-current="page"
@@ -74,8 +83,9 @@
                             <!-- 2. Products 菜单 - 桌面端 Mega Menu / 移动端 Collapse -->
                             <!-- 桌面端：dropdown hover -->
                             <li class="nav-item dropdown position-static d-none d-lg-block">
-                                <a class="nav-link dropdown-toggle" href="<?php echo esc_url(home_url('/products')); ?>"
-                                    id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                <a class="nav-link dropdown-toggle <?php echo $is_products_active ? 'active' : ''; ?>"
+                                    href="<?php echo esc_url(home_url('/products')); ?>" id="productsDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false"
                                     onclick="if(event.target === this) window.location.href=this.href;">
                                     Products
                                 </a>
@@ -84,7 +94,7 @@
 
                             <!-- 移动端：collapse 展开 -->
                             <li class="nav-item d-lg-none">
-                                <a class="nav-link d-flex justify-content-between align-items-center"
+                                <a class="nav-link d-flex justify-content-between align-items-center <?php echo $is_products_active ? 'active' : ''; ?>"
                                     data-bs-toggle="collapse" href="#mobileProductsMenu" role="button"
                                     aria-expanded="false" aria-controls="mobileProductsMenu">
                                     <span>Products</span>

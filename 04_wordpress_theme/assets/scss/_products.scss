@@ -1,0 +1,474 @@
+:root {
+    /* Brand Colors */
+    --bs-primary: #B08968;
+    --bs-primary-hover: #9A7759;
+    --bs-primary-active: #85674D;
+    --bs-secondary: #5A5A5A;
+    --bs-dark: #2D2D2D;
+    --bs-light: #F8F8F8;
+    --bs-text-secondary: #6B6B6B;
+    --bs-border-color: #F3F4F6;
+
+    /* Status Colors */
+    --bs-danger: #B91C1C;
+    --bs-success: #15803D;
+
+    /* Typography */
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Inter', sans-serif;
+
+    /* Shadows */
+    --shadow-primary: 0 4px 14px 0 rgba(176, 137, 104, 0.35);
+    --shadow-card-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+
+
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bs-light);
+    color: var(--bs-dark);
+    padding-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-serif);
+    color: var(--bs-dark);
+}
+
+.font-serif {
+    font-family: var(--font-serif);
+}
+
+.text-primary {
+    color: var(--bs-primary) !important;
+}
+
+.text-secondary-custom {
+    color: var(--bs-text-secondary);
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ============================================
+   Button Overrides
+   ============================================ */
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border: none;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.875rem;
+    border-radius: 4px;
+    box-shadow: var(--shadow-primary);
+    padding: 0.75rem 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--bs-primary-hover);
+    transform: translateY(-1px);
+}
+
+.btn-outline-dark {
+    background: transparent;
+    border: 1px solid var(--bs-dark);
+    color: var(--bs-dark);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.875rem;
+    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--bs-dark);
+    color: #fff;
+}
+
+/* Fix: Override bg-white !important and ensure icon color on hover */
+.hover-actions .btn-outline-dark:hover {
+    background-color: var(--bs-dark) !important;
+    color: #fff !important;
+}
+
+.hover-actions .btn-outline-dark:hover i,
+.hover-actions .btn-outline-dark:hover svg {
+    color: #fff !important;
+    stroke: #fff;
+}
+
+
+
+/* ============================================
+   Hero Section (Category)
+   ============================================ */
+
+.category-hero {
+    padding-top: 160px;
+    /* Accounts for navbar + spacing */
+    padding-bottom: 80px;
+    background-color: var(--bs-light);
+    text-align: center;
+}
+
+.category-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.category-hero .lead {
+    font-size: 1.125rem;
+    color: var(--bs-text-secondary);
+    font-weight: 400;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+
+/* ============================================
+   Visual Filter Section (Redesign)
+   ============================================ */
+.filter-bar {
+    background: #fff;
+    border-bottom: 1px solid var(--bs-border-color);
+    padding: 1.5rem 0;
+    margin-bottom: 3rem;
+}
+
+.filter-category-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    width: 100px;
+    /* Fixed width for alignment */
+    flex-shrink: 0;
+}
+
+/* Chip Styles */
+.filter-pills .btn-sm {
+    font-size: 0.75rem;
+    padding: 0.35rem 1rem;
+    border-radius: 50rem;
+    /* Pill shape */
+    transition: all 0.2s ease;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+/* Default State (Inactive) */
+.filter-pills .btn-outline-secondary {
+    color: var(--bs-secondary);
+    border-color: #E5E7EB;
+    background-color: #fff;
+}
+
+.filter-pills .btn-outline-secondary:hover {
+    border-color: var(--bs-dark);
+    color: var(--bs-dark);
+    background-color: #F8F9FA;
+}
+
+/* Active State */
+.filter-pills .btn-check:checked+.btn-outline-secondary {
+    background-color: var(--bs-dark);
+    border-color: var(--bs-dark);
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Disabled Placeholder */
+.filter-pills .btn-check:disabled+.btn-outline-secondary {
+    opacity: 0.5;
+    pointer-events: none;
+    border-style: dashed;
+}
+
+/* Critical Mobile Interaction Fix */
+@media (hover: none) {
+    .hover-actions {
+        transform: translateY(0) !important;
+        visibility: visible !important;
+        /* Always visible on touch devices */
+        background: rgba(255, 255, 255, 0.9);
+        padding: 0.75rem;
+        bottom: 0;
+    }
+}
+
+/* Chevron Animation for Filter Toggle */
+.filter-chevron {
+    transition: transform 0.3s ease;
+}
+
+[aria-expanded="true"] .filter-chevron {
+    transform: rotate(180deg);
+}
+
+
+
+/* ============================================
+   Product Grid
+   ============================================ */
+
+.product-card {
+    background: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    /* Sharp but subtle edges */
+    transition: all 0.3s ease;
+    height: 100%;
+    position: relative;
+}
+
+.product-card:hover {
+    border-color: #E5E7EB;
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+}
+
+.product-img-wrapper {
+    background: var(--bs-light);
+    aspect-ratio: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 4px;
+}
+
+.product-img-wrapper img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+    cursor: zoom-in;
+}
+
+.product-card:hover .product-img-wrapper img {
+    transform: scale(1.08);
+    /* Minimal zoom */
+}
+
+/* Hover Overlay for CTA */
+.hover-actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+    transform: translateY(100%);
+    transition: transform 0.3s ease, visibility 0.3s ease;
+    visibility: hidden;
+    /* Prevent flash during modal-close reflow */
+    display: flex;
+    gap: 0.5rem;
+}
+
+.product-card:hover .hover-actions {
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* Mobile: Always show actions */
+@media (max-width: 991.98px) {
+    .hover-actions {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        /* Always visible on mobile */
+        background: rgba(255, 255, 255, 0.95);
+    }
+}
+
+.badge-ip {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--bs-dark);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    /* Subtle rounding for precision */
+    z-index: 10;
+}
+
+
+
+.card-body {
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.product-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--bs-dark);
+}
+
+.product-meta {
+    font-size: 0.875rem;
+    color: var(--bs-text-secondary);
+}
+
+/* ============================================
+   USP Bar
+   ============================================ */
+
+.usp-bar {
+    background: #fff;
+    border-top: 1px solid var(--bs-border-color);
+    border-bottom: 1px solid var(--bs-border-color);
+    padding: 2.5rem 0;
+    margin: 4rem 0;
+}
+
+.usp-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.usp-icon-wrapper {
+    background: rgba(176, 137, 104, 0.1);
+    color: var(--bs-primary);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.usp-content h5 {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.05em;
+}
+
+.usp-content p {
+    font-size: 0.875rem;
+    color: var(--bs-text-secondary);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ============================================
+   Secondary Categories
+   ============================================ */
+
+.secondary-category-section {
+    padding: 5rem 0;
+}
+
+.secondary-category-section:nth-child(even) {
+    background: #fff;
+}
+
+.cat-heading {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    color: var(--bs-dark);
+}
+
+.feature-list i {
+    color: var(--bs-primary);
+    width: 20px;
+}
+
+
+
+/* Custom Input Placeholder for Glass Form */
+.placeholder-white-50::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    opacity: 1;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+
+
+/* ============================================
+   Animations (Premium Industrial Feel)
+   ============================================ */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(5px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform, filter;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* Staggered Delays */
+.delay-100 {
+    transition-delay: 0.1s;
+}
+
+.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.delay-300 {
+    transition-delay: 0.3s;
+}

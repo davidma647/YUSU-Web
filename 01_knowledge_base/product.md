@@ -13,7 +13,7 @@
 
 #### 1. **Face Packaging (面部底妆)**
 > **策略理由**: 核心流量入口，整合液体瓶与盒装底妆，消除“瓶 vs 盒”的逻辑冲突。
-- **Liquid Foundation** (粉底液瓶)
+- **Foundation Bottles** (粉底液瓶)
 - **Cushion & Compacts** (气垫 & 粉饼/散粉盒)
 - **Stick Foundation** (粉条管)
 
