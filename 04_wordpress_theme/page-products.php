@@ -295,7 +295,7 @@ get_header();
             ?>
             <div class="col interceptor-card animate-on-scroll delay-300">
                 <div class="product-card bg-dark text-white h-100 d-flex flex-column justify-content-center align-items-center text-center p-4 position-relative overflow-hidden"
-                    style="min-height: 480px;">
+                    style="min-height: 480px; cursor: default;">
                     <!-- Background Pattern/Effect -->
                     <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10"
                         style="background: radial-gradient(circle at top right, #B08968, transparent);"></div>
@@ -309,7 +309,7 @@ get_header();
                         <button class="btn btn-primary w-100 text-uppercase letter-spacing-1" data-bs-toggle="modal"
                             data-bs-target="#leadGenModal"
                             data-bs-whatever="<?php echo esc_attr__('Catalog Download: Interceptor Card', 'bootscore-child'); ?>">
-                            <?php echo esc_html__('Download Catalog', 'bootscore-child'); ?>
+                            <?php echo esc_html__('SEND REQUIREMENTS', 'bootscore-child'); ?>
                         </button>
                     </div>
                 </div>
@@ -433,28 +433,28 @@ get_header();
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h3 class="product-title"><?php echo esc_html($sku ?: get_the_title()); ?></h3>
-                                <div class="product-meta">
+                                <h3 class="product-title" style="cursor: default;"><?php echo esc_html($sku ?: get_the_title()); ?></h3>
+                                <div class="product-subtitle mt-2" style="cursor: default;">
                                     <?php
-                                    // 显示简要参数 (Volume & Material from Taxonomy)
-                                    $meta_display_parts = array();
+                                    $specs = array();
 
                                     // Volume
-                                    if (isset($vol_terms) && !empty($vol_terms) && !is_wp_error($vol_terms)) {
+                                    if (!empty($vol_terms) && !is_wp_error($vol_terms)) {
                                         $vol_names = wp_list_pluck($vol_terms, 'name');
-                                        $meta_display_parts[] = implode('/', $vol_names);
+                                        $specs[] = esc_html(implode('/', $vol_names));
                                     }
 
                                     // Material
-                                    if (isset($mat_terms) && !empty($mat_terms) && !is_wp_error($mat_terms)) {
+                                    if (!empty($mat_terms) && !is_wp_error($mat_terms)) {
                                         $mat_names = wp_list_pluck($mat_terms, 'name');
-                                        $meta_display_parts[] = '<strong>' . implode('/', $mat_names) . '</strong>';
+                                        $specs[] = esc_html(implode('/', $mat_names));
                                     }
 
-                                    if (!empty($meta_display_parts)) {
-                                        echo wp_kses_post(implode(' | ', $meta_display_parts));
-                                    }
-                                    ?>
+                                    if (!empty($specs)): ?>
+                                                    <p class="small text-secondary text-uppercase fw-semibold mb-0 letter-spacing-1">
+                                                        <?php echo implode('<span class="mx-2 opacity-25">|</span>', $specs); ?>
+                                                    </p>
+                                            <?php endif; ?>
                                 </div>
                             </div>
                         </div>

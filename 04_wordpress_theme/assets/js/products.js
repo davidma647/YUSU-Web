@@ -147,12 +147,6 @@ document.addEventListener('DOMContentLoaded', function () {
             else clearFiltersBtn.classList.add('d-none');
         }
 
-        // Handle Interceptor Card
-        if (interceptorCard) {
-            if (isFiltering) interceptorCard.classList.add('d-none');
-            else interceptorCard.classList.remove('d-none');
-        }
-
         // Handle Load More Button
         if (loadMoreBtn) {
             if (isFiltering) loadMoreBtn.classList.add('d-none');
@@ -197,9 +191,17 @@ document.addEventListener('DOMContentLoaded', function () {
         if (noResults) {
             if (visibleCount === 0) {
                 noResults.classList.remove('d-none');
-
             } else {
                 noResults.classList.add('d-none');
+            }
+        }
+
+        // Handle Interceptor Card: Hide if no products are visible
+        if (interceptorCard) {
+            if (visibleCount === 0) {
+                interceptorCard.classList.add('d-none');
+            } else {
+                interceptorCard.classList.remove('d-none');
             }
         }
     }
