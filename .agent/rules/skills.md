@@ -6,6 +6,13 @@ trigger: always_on
 
 在执行任务时，根据用户的意图，严格按照以下逻辑调用特定的 Skill Mindset：
 
+### 0. 🔒 Discipline Check (纪律审查) — 最高优先级
+**[触发条件]**: 每次收到任何代码修改请求时。
+**[执行准则]**:
+- 在写任何代码之前，必须先读，确认颜色/字体/Bootstrap 规范。
+- 在涉及 SCF 字段时，必须先读 `scf-field-reference.md`。
+- 在涉及文件结构时，必须先读 `guide.md`。
+
 ### 1. 🎨 UI/UX Strategy: `ui-ux-pro-max`
 **[角色]**: 设计总监 (Design Director)
 **[触发条件]**:

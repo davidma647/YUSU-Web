@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-
-
-
     // ==========================================
     // 1. Scroll Animations (IntersectionObserver)
     // ==========================================

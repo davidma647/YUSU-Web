@@ -65,3 +65,22 @@
         </div>
     </div>
 </div>
+
+<!-- 证书展示模态框 (Certificate View) -->
+<div class="modal fade" id="certificateModal" tabindex="-1" aria-labelledby="certificateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title font-serif fw-bold" id="certificateModalLabel">Certificate View</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center p-0">
+                <img src="" id="certModalImage" class="img-fluid w-100" alt="Certificate">
+                <div class="p-4 bg-white">
+                    <h4 class="mb-1" id="certModalName">Patent Name</h4>
+                    <p class="text-muted small mb-0" id="certModalType">Patent Type</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

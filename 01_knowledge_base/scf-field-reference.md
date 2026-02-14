@@ -64,6 +64,24 @@
 
 ---
 
+## 创新页面 (Innovation Page)
+
+| 字段标签 | 字段名 (Field Name) | 类型 | 说明 |
+|---------|---------------------|------|------|
+| 桌面端 Banner | `hero_banner` | Image (Array) | 必填。桌面端首屏背景图 (推荐 1920px 宽) |
+| 移动端 Banner | `hero_banner_mobile` | Image (Array) | 选填。移动端首屏背景图 (推荐 750px 宽) |
+| 证书画廊 | `certificates` | Repeater | 专利证书展示列表 |
+
+**Repeater: `certificates` 子字段**：
+
+| 子字段标签 | 子字段名 (Sub Field) | 类型 | 说明 |
+|-----------|----------------------|------|------|
+| 证书标题 | `cert_title` | Text | 例如: Patent CN-2024-8832 |
+| 证书类型 | `cert_type` | Select (单选) | 值 : 标签<br>patent : 专利证书<br>factory : 工厂证书 |
+| 证书图片 | `cert_image` | Image (Array)| 证书图片 (弹窗用大图) |
+
+---
+
 ## 常用 PHP 代码片段
 
 ### 获取当前产品的所有自定义字段

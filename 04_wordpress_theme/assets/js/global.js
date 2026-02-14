@@ -1,5 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    // 0. Scroll Animations (IntersectionObserver)
+    const fadeUpObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                fadeUpObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+    document.querySelectorAll('.fade-up').forEach(el => {
+        fadeUpObserver.observe(el);
+    });
+
     // 1. Lead Gen Modal (Global)
     const leadModal = document.getElementById('leadGenModal');
     if (leadModal) {
@@ -21,19 +35,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 2. Dynamic Certification Modal (Footer Area)
-    var certModal = document.getElementById('certModal');
+    // 2. Certificate Modal (Global)
+    const certModal = document.getElementById('certificateModal');
     if (certModal) {
         certModal.addEventListener('show.bs.modal', function (event) {
-            var button = event.relatedTarget;
-            var title = button.getAttribute('data-cert-title');
-            var imgSrc = button.getAttribute('data-cert-img');
+            const trigger = event.relatedTarget;
+            // Support both naming conventions just in case, prioritizing innovation page one
+            const imageSrc = trigger.getAttribute('data-cert-image') || trigger.getAttribute('data-cert-img');
+            const title = trigger.getAttribute('data-cert-title');
+            const type = trigger.getAttribute('data-cert-type');
 
-            var modalTitle = certModal.querySelector('.modal-title');
-            var modalImage = certModal.querySelector('#certModalImage');
+            const modalImage = certModal.querySelector('#certModalImage');
+            const modalTitle = certModal.querySelector('#certModalName');
+            const modalType = certModal.querySelector('#certModalType');
 
-            modalTitle.textContent = title;
-            modalImage.src = imgSrc;
+            if (modalImage && imageSrc) modalImage.src = imageSrc;
+            if (modalTitle && title) modalTitle.textContent = title;
+            if (modalType && type) modalType.textContent = type;
         });
     }
 

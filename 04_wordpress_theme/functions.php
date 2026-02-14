@@ -79,6 +79,11 @@ function bootscore_child_enqueue_styles()
         $products_js_ver = date('YmdHi', filemtime(get_stylesheet_directory() . '/assets/js/products.js'));
         wp_enqueue_script('yusu-products', get_stylesheet_directory_uri() . '/assets/js/products.js', array('jquery', 'lucide-icons'), $products_js_ver, true);
     }
+
+    if (is_page_template('page-innovation.php')) {
+        $innovation_js_ver = date('YmdHi', filemtime(get_stylesheet_directory() . '/assets/js/innovation.js'));
+        wp_enqueue_script('yusu-innovation', get_stylesheet_directory_uri() . '/assets/js/innovation.js', array('jquery', 'lucide-icons'), $innovation_js_ver, true);
+    }
 }
 
 
